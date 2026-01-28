@@ -1,5 +1,5 @@
 import api from "../api.js";
-export const ALLOCATED_DEVICE = ({
+const ALLOCATED_DEVICE = ({
   commit
 }, request) => {
   if (request.filter == '') {
@@ -38,3 +38,7 @@ export const ALLOCATED_DEVICE = ({
       });
   }
 }
+
+export default {
+  ALLOCATED_DEVICE
+};

@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCH_INVENTORY_WITH_REGION_DATAS = ({
+const FETCH_INVENTORY_WITH_REGION_DATAS = ({
   commit
 }, request) => {
   return api
@@ -14,7 +14,7 @@ export const FETCH_INVENTORY_WITH_REGION_DATAS = ({
 
 /* AGGREGATOR API */
 
-export const FETCH_AGGREGATORS_INVENTORY_WITH_REGION_DATAS = ({
+const FETCH_AGGREGATORS_INVENTORY_WITH_REGION_DATAS = ({
   commit
 }, request) => {
   console.log("FETCH_AGGREGATORS_INVENTORY_WITH_REGION_DATAS ---->", JSON.stringify(request));
@@ -29,12 +29,19 @@ export const FETCH_AGGREGATORS_INVENTORY_WITH_REGION_DATAS = ({
 
 /* AGGREGATOR API */
 
-export const EDIT_INVENTORY_WITH_REGION_DETAILS = (_, request) => {
+const EDIT_INVENTORY_WITH_REGION_DETAILS = (_, request) => {
   return api.put("update-regional-inventory/4", request.request);
 };
 
 /*AGGREGATORS API */
-export const EDIT_AGGREGATORS_INVENTORY_WITH_REGION_DETAILS = (_, request) => {
+const EDIT_AGGREGATORS_INVENTORY_WITH_REGION_DETAILS = (_, request) => {
   return api.put("aggregator-inventory/agg-update-regional-inventory/" + JSON.parse(localStorage.getItem("selectedTab").split('|')[1]) + "/4", request.request);
 };
 /*AGGREGATORS API */
+
+export default {
+  FETCH_INVENTORY_WITH_REGION_DATAS,
+  FETCH_AGGREGATORS_INVENTORY_WITH_REGION_DATAS,
+  EDIT_INVENTORY_WITH_REGION_DETAILS,
+  EDIT_AGGREGATORS_INVENTORY_WITH_REGION_DETAILS
+};

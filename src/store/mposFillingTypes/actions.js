@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const FETCH_ALL_FILLING_TYPES = ({
+const FETCH_ALL_FILLING_TYPES = ({
   commit,
   rootState
 }) => {
@@ -26,4 +26,8 @@ export const FETCH_ALL_FILLING_TYPES = ({
       console.error("Error fetching filling types:", error);
       throw error;
     });
+};
+
+export default {
+  FETCH_ALL_FILLING_TYPES
 };

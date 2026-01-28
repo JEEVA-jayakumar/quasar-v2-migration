@@ -1,5 +1,5 @@
 import api from '../api.js';
-export const MASTER_TRACKER_LIST = ({
+const MASTER_TRACKER_LIST = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -29,7 +29,7 @@ export const MASTER_TRACKER_LIST = ({
 
 /*START AGGREGATORS DYNAMIC CODE */
   
-// export const AGGREGATORS_MASTER_TRACKER_LIST = ({
+// const AGGREGATORS_MASTER_TRACKER_LIST = ({
 //   commit
 // }, request) => {
 //   console.log("AGGREGATORS_MASTER_TRACKER_LIST ----->",JSON.stringify(request))
@@ -60,7 +60,7 @@ export const MASTER_TRACKER_LIST = ({
 
 /*START AGGREGATORS STATIC CODE */
 
-export const AGGREGATORS_MASTER_TRACKER_LIST = ({
+const AGGREGATORS_MASTER_TRACKER_LIST = ({
   commit
 }, request) => {
   console.log("AGGREGATORS_MASTER_TRACKER_LIST ----->",JSON.stringify(request))
@@ -93,7 +93,7 @@ export const AGGREGATORS_MASTER_TRACKER_LIST = ({
 /*Aggregators API */
 
 
-// export const APPROVE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
+// const APPROVE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
 //   console.log('|REQUEST : ' + JSON.stringify(request))
 //   return api
 //     .post('aggregator-inventory/agg-submit-lost-or-stolen/8', request)
@@ -112,7 +112,7 @@ export const AGGREGATORS_MASTER_TRACKER_LIST = ({
  /* START AGGREGATORS STATIC CODE  */
 
 
-export const APPROVE_PHONEPE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
+const APPROVE_PHONEPE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
   console.log('|REQUEST : ' + JSON.stringify(request))
   return api
     .post('aggregator-inventory/agg-submit-lost-or-stolen/'+JSON.parse(localStorage.getItem("selectedTab").split('|')[1]), request)
@@ -129,7 +129,7 @@ export const APPROVE_PHONEPE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
 };
 
  /* END AGGREGATORS STATIC CODE  */
-export const APPROVE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
+const APPROVE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
   console.log('|REQUEST : ' + JSON.stringify(request.regionalInventory))
   return api
     .post('submit-lost-or-stolen/8', request)
@@ -140,3 +140,11 @@ export const APPROVE_LOST_STOLEN_DEVICE = ({ commit }, request) => {
 
 
 
+
+
+export default {
+  MASTER_TRACKER_LIST,
+  AGGREGATORS_MASTER_TRACKER_LIST,
+  APPROVE_PHONEPE_LOST_STOLEN_DEVICE,
+  APPROVE_LOST_STOLEN_DEVICE
+};

@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCH_ALL_STATIC_QR_LEAD_VALIDATIONS_DATA = ({
+const FETCH_ALL_STATIC_QR_LEAD_VALIDATIONS_DATA = ({
   commit
 }, request) => {
   // return api.get("lead-validation-traker-list").then(response => {
@@ -45,7 +45,7 @@ export const FETCH_ALL_STATIC_QR_LEAD_VALIDATIONS_DATA = ({
   }
 };
 
-export const FETCH_STATIC_QR_SHORT_LEAD_DATA = ({
+const FETCH_STATIC_QR_SHORT_LEAD_DATA = ({
   commit
 }, request) => {
   return api.get('qr-lead-details/' + request).then(response => {
@@ -54,32 +54,32 @@ export const FETCH_STATIC_QR_SHORT_LEAD_DATA = ({
   });
 };
 
-export const PROCEED_TO_MARS = (_, request) => {
+const PROCEED_TO_MARS = (_, request) => {
   console.log("REQUEST", request);
   return api.put(
     "submit-to-mars-qr-response-data/" + request.leadId, request.request
   );
 };
 
-export const UPDATE_QR_DETAILS = (_, request) => {
+const UPDATE_QR_DETAILS = (_, request) => {
   console.log("SUBMIT_REQUEST_Details", JSON.stringify(request));
   return api
     .put("update-qr-lead-details/" + request.id, request.request);
 };
 
-export const REFERBACK_SAT_TO_SO_QR_DETAILS = (_, request) => {
+const REFERBACK_SAT_TO_SO_QR_DETAILS = (_, request) => {
   console.log("SUBMIT_REQUEST_Details", JSON.stringify(request));
   return api
     .put("sat-to-so-referback/" + request.id, request.request);
 };
 
-export const FORMS_UPLOADED_DOCUMENT_QR_DETAILS = (_, request) => {
+const FORMS_UPLOADED_DOCUMENT_QR_DETAILS = (_, request) => {
   console.log("FORMS_UPLOADED_DOCUMENT_QR_DETAILS", JSON.stringify(request));
   return api
     .put("update-qr-file/" + request.data1.id, request.formsList);
 };
 
-export const FETCH_STATIC_QR_INVENTORY_COUNT = ({commit}) => {
+const FETCH_STATIC_QR_INVENTORY_COUNT = ({commit}) => {
   return api.get('qr-gen/qrInventory').then(response => {
     console.log("COUNTING", JSON.stringify(response));
     commit('SET_STATIC_QR_INVENTORY_COUNT', response.data.data);
@@ -88,10 +88,21 @@ export const FETCH_STATIC_QR_INVENTORY_COUNT = ({commit}) => {
   });
 };
 
-export const FETCH_MARS_ID_DATA = ({
+const FETCH_MARS_ID_DATA = ({
   commit
 }, request) => {
   return api.get('mars-details-fetch/' + request).then(response => {
     commit('SET_MARS_ID_DATA', response.data.data);
   });
+};
+
+export default {
+  FETCH_ALL_STATIC_QR_LEAD_VALIDATIONS_DATA,
+  FETCH_STATIC_QR_SHORT_LEAD_DATA,
+  PROCEED_TO_MARS,
+  UPDATE_QR_DETAILS,
+  REFERBACK_SAT_TO_SO_QR_DETAILS,
+  FORMS_UPLOADED_DOCUMENT_QR_DETAILS,
+  FETCH_STATIC_QR_INVENTORY_COUNT,
+  FETCH_MARS_ID_DATA
 };

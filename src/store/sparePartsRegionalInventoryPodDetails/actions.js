@@ -1,5 +1,5 @@
 import api from '../api.js';
-export const FETCH_SPARE_PARTS_REGIONAL_INVENTORY_DETAILS= ({
+const FETCH_SPARE_PARTS_REGIONAL_INVENTORY_DETAILS= ({
   commit
 }, request) => {
   console.log("API ACTION REQUEST DETAILS-------->",JSON.stringify(request))
@@ -24,4 +24,9 @@ export const FETCH_SPARE_PARTS_REGIONAL_INVENTORY_DETAILS= ({
       commit('SET_SPARE_PARTS_REGIONAL_INVENTORY_DETAILS', response.data.data);
       // END=> COMMIT with data received'
     });
+};
+
+
+export default {
+  FETCH_SPARE_PARTS_REGIONAL_INVENTORY_DETAILS
 };

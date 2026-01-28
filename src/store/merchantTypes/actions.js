@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const MERCHANT_TYPE_ACTIVE_LIST = ({
+const MERCHANT_TYPE_ACTIVE_LIST = ({
   commit
 }, request) => {
   // return api.get("manage/data/merchant-category/", request).then(response => {
@@ -9,7 +9,7 @@ export const MERCHANT_TYPE_ACTIVE_LIST = ({
   });
 };
 
-export const MERCHANT_TYPE_DEACTIVED_LIST = ({
+const MERCHANT_TYPE_DEACTIVED_LIST = ({
   commit
 }, request) => {
   return api.get("manage/data/merchant-types/0", request).then(response => {
@@ -17,22 +17,31 @@ export const MERCHANT_TYPE_DEACTIVED_LIST = ({
   });
 };
 
-export const ADD_NEW_MERCHANT_TYPE = (_, request) => {
+const ADD_NEW_MERCHANT_TYPE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("manage/data/merchant-types/", request);
 };
 
-export const UPDATE_MERCHANT_TYPE = (_, request) => {
+const UPDATE_MERCHANT_TYPE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("manage/data/merchant-types/" + request.id, request);
 };
 
-export const UPDATE_MERCHANT_TYPE_AND_SET_ACTIVE = (_, request) => {
+const UPDATE_MERCHANT_TYPE_AND_SET_ACTIVE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("manage/data/merchant-types/" + request.id + "/1", request);
 };
 
-export const DELETE_MERCHANT_TYPE_AND_SET_ACTIVE = (_, request) => {
+const DELETE_MERCHANT_TYPE_AND_SET_ACTIVE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.delete("manage/data/merchant-types/" + request);
+};
+
+export default {
+  MERCHANT_TYPE_ACTIVE_LIST,
+  MERCHANT_TYPE_DEACTIVED_LIST,
+  ADD_NEW_MERCHANT_TYPE,
+  UPDATE_MERCHANT_TYPE,
+  UPDATE_MERCHANT_TYPE_AND_SET_ACTIVE,
+  DELETE_MERCHANT_TYPE_AND_SET_ACTIVE
 };

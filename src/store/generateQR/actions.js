@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCH_BANK_LIST = ({commit}) => {
+const FETCH_BANK_LIST = ({commit}) => {
   return api.get('static-qr/bankList').then(response => {
     //  console.log('BANKLISTGETTER', JSON.stringify(response))
     commit('SET_BANK_LIST', response.data.data);
@@ -8,14 +8,14 @@ export const FETCH_BANK_LIST = ({commit}) => {
   });
 };
 
-export const FETCH_REGION_LIST = ({commit}) => {
+const FETCH_REGION_LIST = ({commit}) => {
   return api.get('region').then(response => {
     commit('SET_REGION_LIST', response.data.data);
     return response;
   });
 };
 
-export const FETCH_BATCH_DETAILS = ({ commit }, request) => {
+const FETCH_BATCH_DETAILS = ({ commit }, request) => {
   // console.log("DAGA2 : ==== : ", JSON.stringify(request))
   const sorting = request.pagination.descending ? 'asc' : 'desc';
   if (request.filter == undefined) {
@@ -52,7 +52,7 @@ export const FETCH_BATCH_DETAILS = ({ commit }, request) => {
   }
 };
 
-export const FETCH_REGION_BASED_QR_ALLOCATED_LIST = ({ commit }, request) => {
+const FETCH_REGION_BASED_QR_ALLOCATED_LIST = ({ commit }, request) => {
   const sorting = request.pagination.descending ? 'asc' : 'desc';
   if (request.filter == undefined) {
     return api
@@ -90,7 +90,7 @@ export const FETCH_REGION_BASED_QR_ALLOCATED_LIST = ({ commit }, request) => {
   }
 };
 
-export const FETCH_REGION_BASED_QR_ALLOCATED_APPROVED_LIST = ({ commit }, request) => {
+const FETCH_REGION_BASED_QR_ALLOCATED_APPROVED_LIST = ({ commit }, request) => {
   // console.log("DAGA2 : ==== : ", JSON.stringify(request))
   const sorting = request.pagination.descending ? 'asc' : 'desc';
   if (request.filter == undefined) {
@@ -129,33 +129,33 @@ export const FETCH_REGION_BASED_QR_ALLOCATED_APPROVED_LIST = ({ commit }, reques
   }
 };
 
-export const GENERATE_QR = (_, request) => {
+const GENERATE_QR = (_, request) => {
   return api.post('qr-gen/generateQr', request);
 };
 
-export const APPROVE_RECIEVED_STICKER = (_, request) => {
+const APPROVE_RECIEVED_STICKER = (_, request) => {
   return api.post('qr-gen/addQrCentralInventory/' + request.batchId, request);
 };
 
-export const UPDATE_QR_COUNT = (_, request) => {
+const UPDATE_QR_COUNT = (_, request) => {
   console.log('TEST CHECK', JSON.stringify(request));
   return api.put('qr-gen/podUpdate/' + request.id + '/' + request.action, request.request);
 };
 
-export const SUBMIT_QR_COUNT = (_, request) => {
+const SUBMIT_QR_COUNT = (_, request) => {
   console.log('TEST CHECK', JSON.stringify(request));
   return api.post('qr-gen/allocationApproval', request);
 };
 
-export const ASSIGN_REGION = (_, request) => {
+const ASSIGN_REGION = (_, request) => {
   return api.post('qr-gen/regionAllocation', request);
 };
 
-export const ASSIGN_SO = (_, request) => {
+const ASSIGN_SO = (_, request) => {
   return api.post('qr-gen/allocateToSo', request);
 };
 
-export const FETCH_ACTIVE_BATCH_LIST = ({commit}) => {
+const FETCH_ACTIVE_BATCH_LIST = ({commit}) => {
   return api.get('qr-gen/batchList').then(response => {
     commit('SET_ACTIVE_BATCH_LIST', response.data.data);
     return response;
@@ -173,3 +173,18 @@ export const FETCH_ACTIVE_BATCH_LIST = ({commit}) => {
 //     commit('BATCH_DETAIL_FORM', response.data.data)
 //   })
 // }
+
+export default {
+  FETCH_BANK_LIST,
+  FETCH_REGION_LIST,
+  FETCH_BATCH_DETAILS,
+  FETCH_REGION_BASED_QR_ALLOCATED_LIST,
+  FETCH_REGION_BASED_QR_ALLOCATED_APPROVED_LIST,
+  GENERATE_QR,
+  APPROVE_RECIEVED_STICKER,
+  UPDATE_QR_COUNT,
+  SUBMIT_QR_COUNT,
+  ASSIGN_REGION,
+  ASSIGN_SO,
+  FETCH_ACTIVE_BATCH_LIST
+};

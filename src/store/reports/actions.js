@@ -16,7 +16,7 @@ link to click and download
 *************/
 
 /* API call to fetch lead approval data */
-export const REPORT_LEAD_APPROVAL_TRACKER = async (context, request) => {  // Removed unused commit parameter
+const REPORT_LEAD_APPROVAL_TRACKER = async (context, request) => {  // Removed unused commit parameter
   if (request == undefined) {
     return await api
       .get("download/lead-approval-tracker", {
@@ -56,7 +56,7 @@ export const REPORT_LEAD_APPROVAL_TRACKER = async (context, request) => {  // Re
 /* API call to fetch lead approval data */
 
 /* API call to fetch sorucewise lead data */
-export const REPORT_SOURCEWISE_LEAD_TRACKER = async (context, request) => {  // Removed unused commit parameter
+const REPORT_SOURCEWISE_LEAD_TRACKER = async (context, request) => {  // Removed unused commit parameter
   if (request == undefined) {
     return await api
       .get("download/sourcewise-lead-tracker", {
@@ -96,7 +96,7 @@ export const REPORT_SOURCEWISE_LEAD_TRACKER = async (context, request) => {  // 
 /* API call to fetch sorucewise lead data */
 
 /* API call to fetch source/region/device lead data */
-export const REPORT_SOURCE_REGION_DEVICE = async (context, request) => {  // Removed unused commit parameter
+const REPORT_SOURCE_REGION_DEVICE = async (context, request) => {  // Removed unused commit parameter
   if (request == undefined) {
     return await api
       .get("download/source-region-device", {
@@ -136,7 +136,7 @@ export const REPORT_SOURCE_REGION_DEVICE = async (context, request) => {  // Rem
 /* API call to fetch source/region/device lead data */
 
 /* API call to fetch in active lead data */
-export const REPORT_INACTIVE_MERCHANT = async (context, request) => {  // Removed unused commit parameter
+const REPORT_INACTIVE_MERCHANT = async (context, request) => {  // Removed unused commit parameter
   if (request == undefined) {
     return await api
       .get("download/inactive-merchant", {
@@ -176,7 +176,7 @@ export const REPORT_INACTIVE_MERCHANT = async (context, request) => {  // Remove
 /* API call to fetch in active lead data */
 
 /* API call to fetch proxy lead misselling data */
-export const REPORT_PROXY_LEAD_MISSELLING = async (context, request) => {  // Removed unused commit parameter
+const REPORT_PROXY_LEAD_MISSELLING = async (context, request) => {  // Removed unused commit parameter
   if (request == undefined) {
     return await api
       .get("download/proxy-lead-misselling", {
@@ -216,7 +216,7 @@ export const REPORT_PROXY_LEAD_MISSELLING = async (context, request) => {  // Re
 /* API call to fetch proxy lead misselling data */
 
 /* API call to fetch fianance verified tracker data */
-export const REPORT_FINANCE_APPROVED = async () => {  // Removed unused commit and request parameters
+const REPORT_FINANCE_APPROVED = async () => {  // Removed unused commit and request parameters
   return await api
     .get("finance-tracker-list-download", {
       responseType: "arraybuffer",
@@ -232,7 +232,7 @@ export const REPORT_FINANCE_APPROVED = async () => {  // Removed unused commit a
     });
 };
 
-export const REPORT_QR_FINANCE_APPROVED = async () => {  // Removed unused commit and request parameters
+const REPORT_QR_FINANCE_APPROVED = async () => {  // Removed unused commit and request parameters
   return await api
     .get("finance-qr-tracker-list-download", {
       responseType: "arraybuffer",
@@ -248,7 +248,7 @@ export const REPORT_QR_FINANCE_APPROVED = async () => {  // Removed unused commi
     });
 };
 
-export const POD_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
+const POD_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
   return await api
     .get("download/pod-list", {
       responseType: "arraybuffer",
@@ -262,7 +262,7 @@ export const POD_LIST_DOWNLOAD = async () => {  // Removed unused commit and req
     });
 };
 
-export const AGGREGATOR_POD_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
+const AGGREGATOR_POD_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
   return await api
     .get("download/pod-list", {
       responseType: "arraybuffer",
@@ -276,7 +276,7 @@ export const AGGREGATOR_POD_LIST_DOWNLOAD = async () => {  // Removed unused com
     });
 };
 
-export const INVENTORY_WITH_SO_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
+const INVENTORY_WITH_SO_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
   return await api
     .get("download/so-list", {
       responseType: "arraybuffer",
@@ -290,7 +290,7 @@ export const INVENTORY_WITH_SO_LIST_DOWNLOAD = async () => {  // Removed unused 
     });
 };
 
-export const AGGREGATOR_INVENTORY_WITH_SO_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
+const AGGREGATOR_INVENTORY_WITH_SO_LIST_DOWNLOAD = async () => {  // Removed unused commit and request parameters
   return await api
     .get("download/so-list", {
       responseType: "arraybuffer",
@@ -304,7 +304,7 @@ export const AGGREGATOR_INVENTORY_WITH_SO_LIST_DOWNLOAD = async () => {  // Remo
     });
 };
 
-export const QR_LIST_DOWNLOAD = async (context, request) => {  // Removed unused commit parameter
+const QR_LIST_DOWNLOAD = async (context, request) => {  // Removed unused commit parameter
   return await api
     .post("download/qr-implementation-report", request.params, {
       responseType: "arraybuffer",
@@ -318,7 +318,7 @@ export const QR_LIST_DOWNLOAD = async (context, request) => {  // Removed unused
     });
 };
 
-export const INVENTORY_WITH_RESELLER_LIST_ = async () => {  // Removed unused commit and request parameters
+const INVENTORY_WITH_RESELLER_LIST_ = async () => {  // Removed unused commit and request parameters
   return await api
     .get("download/reseller-list", {
       responseType: "arraybuffer",
@@ -332,7 +332,7 @@ export const INVENTORY_WITH_RESELLER_LIST_ = async () => {  // Removed unused co
     });
 };
 
-export const INVENTORY_WITH_CENTRAL = async () => {  // Removed unused commit and request parameters
+const INVENTORY_WITH_CENTRAL = async () => {  // Removed unused commit and request parameters
   return await api
     .get("download/inventory-central", {
       responseType: "arraybuffer",
@@ -346,3 +346,20 @@ export const INVENTORY_WITH_CENTRAL = async () => {  // Removed unused commit an
     });
 };
 /* API call to fetch fianance verified tracker data */
+
+export default {
+  REPORT_LEAD_APPROVAL_TRACKER,
+  REPORT_SOURCEWISE_LEAD_TRACKER,
+  REPORT_SOURCE_REGION_DEVICE,
+  REPORT_INACTIVE_MERCHANT,
+  REPORT_PROXY_LEAD_MISSELLING,
+  REPORT_FINANCE_APPROVED,
+  REPORT_QR_FINANCE_APPROVED,
+  POD_LIST_DOWNLOAD,
+  AGGREGATOR_POD_LIST_DOWNLOAD,
+  INVENTORY_WITH_SO_LIST_DOWNLOAD,
+  AGGREGATOR_INVENTORY_WITH_SO_LIST_DOWNLOAD,
+  QR_LIST_DOWNLOAD,
+  INVENTORY_WITH_RESELLER_LIST_,
+  INVENTORY_WITH_CENTRAL
+};

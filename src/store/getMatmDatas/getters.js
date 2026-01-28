@@ -1,6 +1,12 @@
-export const getMatmDatas = state => {
+const getMatmDatas = state => {
     return state.MatmDatas;
 };
-export const getMatmPlanDetails = state => {
+const getMatmPlanDetails = state => {
     return state.MatmPlanDetails ;
+};
+
+
+export default {
+  getMatmDatas,
+  getMatmPlanDetails
 };

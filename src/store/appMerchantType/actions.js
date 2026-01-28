@@ -1,7 +1,7 @@
 import api from '../api.js'
 
 // Fetch Merchant Document Types
-export const APP_MERCHANT_DOCUMENT_TYPE = ({commit}) => {
+const APP_MERCHANT_DOCUMENT_TYPE = ({commit}) => {
   return api.get('manage/data/merchant-types')
     .then(response => {
       commit('SET_APP_MERCHANT_DOCUMENT_TYPE', response.data.data)
@@ -14,7 +14,7 @@ export const APP_MERCHANT_DOCUMENT_TYPE = ({commit}) => {
 }
 
 // Fetch SO Rental Plan
-export const SO_RENTAL_PLAN = ({commit}) => {
+const SO_RENTAL_PLAN = ({commit}) => {
   return api.get('parameters/rental-plan?institutionCode=101')
     .then(response => {
       commit('SET_SO_RENTAL_PLAN', response.data.items)
@@ -25,3 +25,9 @@ export const SO_RENTAL_PLAN = ({commit}) => {
       throw error
     })
 }
+
+
+export default {
+  APP_MERCHANT_DOCUMENT_TYPE,
+  SO_RENTAL_PLAN
+};

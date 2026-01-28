@@ -1,4 +1,4 @@
-export const gethitachiEmiData = (state) => {
+const gethitachiEmiData = (state) => {
     return state.HitachiEmiData
   }
 
@@ -6,3 +6,8 @@ export const gethitachiEmiData = (state) => {
 //     return state.additionalTidVerifyData
 //   }
   
+
+
+export default {
+  gethitachiEmiData
+};

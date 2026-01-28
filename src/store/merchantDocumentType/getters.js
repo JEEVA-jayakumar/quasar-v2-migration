@@ -1,6 +1,12 @@
-export const getActiveMerchantDocumentTypes = state => {
+const getActiveMerchantDocumentTypes = state => {
   return state.activeMerchantDocumentTypes;
 };
-export const getDeActivatedMerchantDocumentTypes = state => {
+const getDeActivatedMerchantDocumentTypes = state => {
   return state.deActivatedMerchantDocumentTypes;
+};
+
+
+export default {
+  getActiveMerchantDocumentTypes,
+  getDeActivatedMerchantDocumentTypes
 };

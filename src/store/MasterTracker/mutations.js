@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
   console.log("API_RESPONSE >>", payload);
   let statusMessage;
   if (payload.apiStatusCode == 200) {
@@ -39,7 +39,13 @@ SET_AGGREGATORS_MASTER_TRACKER_LIST = (state, payload) => {
 
 /*AGGREGATORS API */
 
-export const SET_APPROVE_LOST_STOLEN_DEVICE= (state, payload) => {
+const SET_APPROVE_LOST_STOLEN_DEVICE= (state, payload) => {
 console.log("LOST OR STOLEN Payload : ------------ : " +  JSON.stringify(payload))
 state.ApproveLostOrStolenData = payload;
 }
+
+
+export default {
+  API_RESPONSE_LOG,
+  SET_APPROVE_LOST_STOLEN_DEVICE
+};

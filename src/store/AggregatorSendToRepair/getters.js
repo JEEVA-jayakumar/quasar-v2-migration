@@ -1,7 +1,13 @@
-export const getPhonepeSendToRepairDetails = (state) => {
+const getPhonepeSendToRepairDetails = (state) => {
   return state.PhonepeSendToRepairDetails
 }
 
-export const getPhonepeMovedToScrapDetails = (state) => {
+const getPhonepeMovedToScrapDetails = (state) => {
   return state.PhonepeMovedToScrapDetails
 }
+
+
+export default {
+  getPhonepeSendToRepairDetails,
+  getPhonepeMovedToScrapDetails
+};

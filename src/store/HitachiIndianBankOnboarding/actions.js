@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const ONBOARDING_MERCHANT_ASSIGNED_LIST = ({ commit }, request) => {
+const ONBOARDING_MERCHANT_ASSIGNED_LIST = ({ commit }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
   console.log("requested datas:----------------:assigned-----" + JSON.stringify(request));
   return api
@@ -25,7 +25,7 @@ export const ONBOARDING_MERCHANT_ASSIGNED_LIST = ({ commit }, request) => {
     });
 };
 
-export const HITACHI_INDIAN_ONBOARDING_LIST = ({
+const HITACHI_INDIAN_ONBOARDING_LIST = ({
   commit
 }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
@@ -52,12 +52,19 @@ export const HITACHI_INDIAN_ONBOARDING_LIST = ({
     });
 };
 
-export const REASSIGN_HITACHI_MERCHANTS = (_, request) => {
+const REASSIGN_HITACHI_MERCHANTS = (_, request) => {
   return api
     .put("re-submit-ogs-data/" + request.tid, request);
 };
 
-export const CHANGE_HITACHI_REGION = (_, request) => {
+const CHANGE_HITACHI_REGION = (_, request) => {
   return api
     .post("reassign-region", request);
+};
+
+export default {
+  ONBOARDING_MERCHANT_ASSIGNED_LIST,
+  HITACHI_INDIAN_ONBOARDING_LIST,
+  REASSIGN_HITACHI_MERCHANTS,
+  CHANGE_HITACHI_REGION
 };

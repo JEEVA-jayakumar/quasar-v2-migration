@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const REPLACEMENT_RECOVERY_LIST = ({
+const REPLACEMENT_RECOVERY_LIST = ({
   commit
 }, request) => {
   // Removed unused sorting variable
@@ -20,3 +20,7 @@ export const REPLACEMENT_RECOVERY_LIST = ({
       // END=> COMMIT with data received'
     })
 }
+
+export default {
+  REPLACEMENT_RECOVERY_LIST
+};

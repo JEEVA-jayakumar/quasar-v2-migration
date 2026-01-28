@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const CITY_FROM_MARS = ({
+const CITY_FROM_MARS = ({
   commit,
   rootState
 }) => {
@@ -22,3 +22,7 @@ export const CITY_FROM_MARS = ({
       throw error;
     });
 }
+
+export default {
+  CITY_FROM_MARS
+};

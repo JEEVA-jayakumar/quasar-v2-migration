@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const CATEGORY_BASED_RENTAL_PLAN = ({ commit }, request) => {
+const CATEGORY_BASED_RENTAL_PLAN = ({ commit }, request) => {
   return api
     .get(
       `/staticApi/rental-plan-details/${request.leadSource}/${request.device}/${request.plan}`
@@ -11,7 +11,7 @@ export const CATEGORY_BASED_RENTAL_PLAN = ({ commit }, request) => {
     })
 }
 
-export const CATEGORY_BASED_RENTAL_PLAN1 = ({ commit }, request) => {
+const CATEGORY_BASED_RENTAL_PLAN1 = ({ commit }, request) => {
   return api
     .get(
       `/staticApi/rental-plan-details/${request.leadSource}/${request.device}/${request.plan}`
@@ -22,16 +22,24 @@ export const CATEGORY_BASED_RENTAL_PLAN1 = ({ commit }, request) => {
     })
 }
 
-export const EDIT_RENTAL_PLAN = (_, request) => {
+const EDIT_RENTAL_PLAN = (_, request) => {
   return api.put(
     `/api/manage/data/rental-plan-details/${request.id}`,
     request
   )
 }
 
-export const ENABLE_OR_DISABLE_RENTAL_PLAN = (_, request) => {
+const ENABLE_OR_DISABLE_RENTAL_PLAN = (_, request) => {
   return api.put(
     `/api/manage/data/rental-plan-details/${request.id}`,
     request
   )
 }
+
+
+export default {
+  CATEGORY_BASED_RENTAL_PLAN,
+  CATEGORY_BASED_RENTAL_PLAN1,
+  EDIT_RENTAL_PLAN,
+  ENABLE_OR_DISABLE_RENTAL_PLAN
+};

@@ -1,4 +1,9 @@
-export const getUnAllocatedDevicesRegionMenu = (state) => {
+const getUnAllocatedDevicesRegionMenu = (state) => {
     return state.UnAllocatedDevicesRegionMenu 
   }
 
+
+
+export default {
+  getUnAllocatedDevicesRegionMenu
+};

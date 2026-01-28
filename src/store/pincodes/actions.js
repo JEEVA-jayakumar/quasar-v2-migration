@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const FETCH_ALL_PINCODES = ({ commit }, request) => {
+const FETCH_ALL_PINCODES = ({ commit }, request) => {
   if (request == undefined) {
     return api
       .get("user/state-pincode")
@@ -16,12 +16,18 @@ export const FETCH_ALL_PINCODES = ({ commit }, request) => {
   }
 };
 
-export const ADD_NEW_PINCODE = (_, request) => {
+const ADD_NEW_PINCODE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("user/state-pincode", request);
 };
 
-export const EDIT_NEW_PINCODE = (_, request) => {
+const EDIT_NEW_PINCODE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("user/state-pincode/" + request.id, request);
+};
+
+export default {
+  FETCH_ALL_PINCODES,
+  ADD_NEW_PINCODE,
+  EDIT_NEW_PINCODE
 };

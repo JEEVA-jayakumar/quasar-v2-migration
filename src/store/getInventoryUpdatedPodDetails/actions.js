@@ -1,5 +1,5 @@
 import api from '../api.js';
-export const FETCH_INVENTORY_UPDATED_POD_DETAILS= ({
+const FETCH_INVENTORY_UPDATED_POD_DETAILS= ({
   commit
 }, request) => {
   console.log("API ACTION REQUEST DETAILS-------->",request)
@@ -14,7 +14,7 @@ export const FETCH_INVENTORY_UPDATED_POD_DETAILS= ({
 
 /* PHONEPE API START*/
 
-export const FETCH_PHONEPE_INVENTORY_UPDATED_POD_DETAILS= ({
+const FETCH_PHONEPE_INVENTORY_UPDATED_POD_DETAILS= ({
   commit
 }, request) => {
   console.log("API ACTION REQUEST DETAILS-------->",request)
@@ -28,3 +28,9 @@ export const FETCH_PHONEPE_INVENTORY_UPDATED_POD_DETAILS= ({
 };
 
 /* PHONEPE API END*/
+
+
+export default {
+  FETCH_INVENTORY_UPDATED_POD_DETAILS,
+  FETCH_PHONEPE_INVENTORY_UPDATED_POD_DETAILS
+};

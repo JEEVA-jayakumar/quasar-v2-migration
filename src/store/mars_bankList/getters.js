@@ -1,3 +1,8 @@
-export const bankListFromMars = state => {
+const bankListFromMars = state => {
   return state.bankList;
+};
+
+
+export default {
+  bankListFromMars
 };

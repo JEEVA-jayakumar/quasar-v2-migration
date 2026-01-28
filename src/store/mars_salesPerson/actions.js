@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const SALES_PERSON_FROM_MARS = ({
+const SALES_PERSON_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -22,7 +22,7 @@ export const SALES_PERSON_FROM_MARS = ({
     });
 };
 
-export const QR_SALES_PERSON_FROM_MARS = ({
+const QR_SALES_PERSON_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -38,4 +38,9 @@ export const QR_SALES_PERSON_FROM_MARS = ({
       console.error("Error fetching QR sales person from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  SALES_PERSON_FROM_MARS,
+  QR_SALES_PERSON_FROM_MARS
 };

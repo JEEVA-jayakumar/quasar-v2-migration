@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_ADDITIONAL_TID_DATAS = async ({ commit }, request) => {
+const FETCH_ADDITIONAL_TID_DATAS = async ({ commit }, request) => {
   const sorting = request.pagination.descending ? 'asc' : 'desc'
 
   const response = await api.get(
@@ -14,7 +14,7 @@ export const FETCH_ADDITIONAL_TID_DATAS = async ({ commit }, request) => {
   commit('SET_ADDITIONAL_TID_DATAS', response.data.data)
 }
 
-export const ADDITIONAL_TID_VERIFY_DATA = async ({ commit }, request) => {
+const ADDITIONAL_TID_VERIFY_DATA = async ({ commit }, request) => {
   console.log(
     'REQUEST------------------->',
     JSON.stringify(request.leadInformation.id)
@@ -26,3 +26,9 @@ export const ADDITIONAL_TID_VERIFY_DATA = async ({ commit }, request) => {
 
   commit('SET_ADDITIONAL_TID_VERIFY_DATA', response.data.data)
 }
+
+
+export default {
+  FETCH_ADDITIONAL_TID_DATAS,
+  ADDITIONAL_TID_VERIFY_DATA
+};

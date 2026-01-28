@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const FETCH_ALL_MPOS_CITY = ({
+const FETCH_ALL_MPOS_CITY = ({
   commit,
   rootState
 }, request) => {
@@ -25,4 +25,8 @@ export const FETCH_ALL_MPOS_CITY = ({
       console.error("Error fetching MPOS cities:", error);
       throw error;
     });
+};
+
+export default {
+  FETCH_ALL_MPOS_CITY
 };

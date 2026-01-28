@@ -1,3 +1,8 @@
-export const getinstitutionCode = (state) => {
+const getinstitutionCode = (state) => {
   return state.instituionCode
 }
+
+
+export default {
+  getinstitutionCode
+};

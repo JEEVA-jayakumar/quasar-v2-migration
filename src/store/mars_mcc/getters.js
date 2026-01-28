@@ -1,6 +1,12 @@
-export const mccFromMars = (state) => {
+const mccFromMars = (state) => {
   return state.MARS_mcc
 }
-export const mccFromMarsQr = (state) => {
+const mccFromMarsQr = (state) => {
   return state.MARS_mccQR
 }
+
+
+export default {
+  mccFromMars,
+  mccFromMarsQr
+};

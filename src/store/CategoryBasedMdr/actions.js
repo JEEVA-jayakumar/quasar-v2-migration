@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const CATEGORY_BASED_MDR_PLAN = async ({ commit }, request) => {
+const CATEGORY_BASED_MDR_PLAN = async ({ commit }, request) => {
   console.log(
     'REQUEST DATAS 1234---------------->',
     JSON.stringify(request)
@@ -20,7 +20,7 @@ export const CATEGORY_BASED_MDR_PLAN = async ({ commit }, request) => {
 };
 
 // Remove unused 'commit' parameter
-export const EDIT_MDR_PLAN = async (_, request) => {
+const EDIT_MDR_PLAN = async (_, request) => {
   try {
     return await api.put(
       `https://smart.bijlipay.co.in:8080/api/manage/data/mdr-details/${request.id}`,
@@ -33,7 +33,7 @@ export const EDIT_MDR_PLAN = async (_, request) => {
 };
 
 // Remove unused 'commit' parameter
-export const ENABLE_OR_DISABLE_MDR_PLAN = async (_, request) => {
+const ENABLE_OR_DISABLE_MDR_PLAN = async (_, request) => {
   try {
     return await api.put(
       `https://smart.bijlipay.co.in:8080/api/manage/data/mdr-details/${request.id}`,
@@ -43,4 +43,10 @@ export const ENABLE_OR_DISABLE_MDR_PLAN = async (_, request) => {
     console.error('ENABLE_OR_DISABLE_MDR_PLAN error:', error);
     throw error;
   }
+};
+
+export default {
+  CATEGORY_BASED_MDR_PLAN,
+  EDIT_MDR_PLAN,
+  ENABLE_OR_DISABLE_MDR_PLAN
 };

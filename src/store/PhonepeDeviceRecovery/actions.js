@@ -1,7 +1,7 @@
 // import * as Vue from 'vue'; // Removed - api doesn't exist in Vue 3
 import api from "../api.js";
 
-export const FETCH_PHONEPE_DEVICE_RECOVERY_DATAS = ({ commit }, request) => {
+const FETCH_PHONEPE_DEVICE_RECOVERY_DATAS = ({ commit }, request) => {
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   const endpoint = tabId === '3' 
     ? "aggregator-inventory/agg-device-recovery-data-list" 
@@ -34,7 +34,7 @@ function COMMON_FILE_DOWNLOAD(response) {
   });
 }
 
-export const DOWNLOAD_PHONEPE_DEVICE_RECOVERY_DATAS = async () => {
+const DOWNLOAD_PHONEPE_DEVICE_RECOVERY_DATAS = async () => {
   // Removed unused _ and request parameters
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   const endpoint = tabId === '3' 
@@ -60,7 +60,7 @@ export const DOWNLOAD_PHONEPE_DEVICE_RECOVERY_DATAS = async () => {
   }
 };
 
-export const PHONEPE_VERIFY_DEVICE_AFTER_RECOVERY = (_, request) => {
+const PHONEPE_VERIFY_DEVICE_AFTER_RECOVERY = (_, request) => {
   // Changed from _ to _ since commit is not used
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   
@@ -73,7 +73,7 @@ export const PHONEPE_VERIFY_DEVICE_AFTER_RECOVERY = (_, request) => {
   );
 };
 
-export const FEED_PHONEPE_DEVICE_AFTER_SCANNED_TO_SUBMIT = ({ commit }, request) => {
+const FEED_PHONEPE_DEVICE_AFTER_SCANNED_TO_SUBMIT = ({ commit }, request) => {
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   
   return api
@@ -101,7 +101,7 @@ export const FEED_PHONEPE_DEVICE_AFTER_SCANNED_TO_SUBMIT = ({ commit }, request)
     });
 };
 
-export const FEED_PHONEPE_RECOVERY_DEVICE_BULK_UPLOAD_DATA = ({ commit }, request) => {
+const FEED_PHONEPE_RECOVERY_DEVICE_BULK_UPLOAD_DATA = ({ commit }, request) => {
   // Removed unused rootState parameter
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   
@@ -134,4 +134,12 @@ export const FEED_PHONEPE_RECOVERY_DEVICE_BULK_UPLOAD_DATA = ({ commit }, reques
         apiData: error.response?.data || []
       });
     });
+};
+
+export default {
+  FETCH_PHONEPE_DEVICE_RECOVERY_DATAS,
+  DOWNLOAD_PHONEPE_DEVICE_RECOVERY_DATAS,
+  PHONEPE_VERIFY_DEVICE_AFTER_RECOVERY,
+  FEED_PHONEPE_DEVICE_AFTER_SCANNED_TO_SUBMIT,
+  FEED_PHONEPE_RECOVERY_DEVICE_BULK_UPLOAD_DATA
 };

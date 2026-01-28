@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     console.log("API_RESPONSE >>", payload);
     let statusMessage;
     if (payload.apiStatusCode == 200) {
@@ -34,3 +34,8 @@ SET_PHONEPE_INVENTORY_UPDATED_POD_DETAILS= (state, payload) => {
   console.log("ADDITIONAL TIDPayload : ------------ : " +  JSON.stringify(payload))
   state.PhonepeInventoryUpdatedPodDetails = payload;
 }
+
+
+export default {
+  API_RESPONSE_LOG
+};

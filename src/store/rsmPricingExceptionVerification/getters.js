@@ -1,9 +1,16 @@
-export const getPricingExceptionList = (state) => {
+const getPricingExceptionList = (state) => {
   return state.pricingExceptionList
 }
-export const getPricingRsmList = (state) => {
+const getPricingRsmList = (state) => {
   return state.pricingRSMList
 }
-export const pricingExceptionByRsmIDList = (state) => {
+const pricingExceptionByRsmIDList = (state) => {
   return state.pricingExceptionByRsmIDList
 }
+
+
+export default {
+  getPricingExceptionList,
+  getPricingRsmList,
+  pricingExceptionByRsmIDList
+};

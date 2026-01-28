@@ -1,7 +1,7 @@
 import api from "../api.js";
 
 
-export const FETCH_APPLICATION_NUMBER = ({
+const FETCH_APPLICATION_NUMBER = ({
   commit
   // Removed unused rootState parameter
 }, request) => {
@@ -10,3 +10,7 @@ export const FETCH_APPLICATION_NUMBER = ({
       commit('SET_APPLICATION_NUMBER', response.data.data);
     });
 }
+
+export default {
+  FETCH_APPLICATION_NUMBER
+};

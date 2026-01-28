@@ -1,4 +1,9 @@
-export const getFaultyDevice = (state) => {
+const getFaultyDevice = (state) => {
     return state.FaultyDevice 
   }
 
+
+
+export default {
+  getFaultyDevice
+};

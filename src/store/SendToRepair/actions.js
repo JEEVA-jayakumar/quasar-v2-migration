@@ -1,5 +1,5 @@
 import api from '../api.js';
-// export const FETCH_SEND_TO_REPAIR_DETAILS = ({
+// const FETCH_SEND_TO_REPAIR_DETAILS = ({
 //   commit
 // }, request) => {
 // //   let sorting = request.pagination.descending ? 'asc' : 'desc';  https://smart.bijlipay.co.in:8080/api/central-devices-sent-for-repair
@@ -13,7 +13,7 @@ import api from '../api.js';
 //          // END=> COMMIT with data received'
 //        })
 //    };
-export const FETCH_SEND_TO_REPAIR_DETAILS = ({
+const FETCH_SEND_TO_REPAIR_DETAILS = ({
   commit
 }, request) => {
   if (request.pagination.sortBy == null) {
@@ -60,7 +60,7 @@ export const FETCH_SEND_TO_REPAIR_DETAILS = ({
 
 /*START AGGREGATORS DYNAMIC CODE */
 
-// export const FETCH_AGGREGATORS_SEND_TO_REPAIR_DETAILS = ({
+// const FETCH_AGGREGATORS_SEND_TO_REPAIR_DETAILS = ({
 //   commit
 // }, request) => {
 //   if (request.pagination.sortBy == null) {
@@ -108,7 +108,7 @@ export const FETCH_SEND_TO_REPAIR_DETAILS = ({
 
 /*START AGGREGATORS STATIC CODE */
 
-export const FETCH_AGGREGATORS_SEND_TO_REPAIR_DETAILS = ({
+const FETCH_AGGREGATORS_SEND_TO_REPAIR_DETAILS = ({
   commit
 }, request) => {
   if (request.pagination.sortBy == null) {
@@ -156,7 +156,7 @@ export const FETCH_AGGREGATORS_SEND_TO_REPAIR_DETAILS = ({
 
 /*AGGREGATORS API */
 
-export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
+const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
   console.log("|REQUEST : " +JSON.stringify(request))
 
     return api
@@ -174,7 +174,7 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
   };
 
   /*AGGREGATORS API */
-  export const APPROVE_AGGREGATORS_SEND_TO_REPAIR = ({ commit }, request) => {
+  const APPROVE_AGGREGATORS_SEND_TO_REPAIR = ({ commit }, request) => {
     console.log("|REQUEST : " +JSON.stringify(request))
   
       return api
@@ -192,7 +192,7 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
     };
   /*AGGREGATORS API */
 
-  export const MOVED_TO_SCRAP_DATAS = ({ commit }, request) => {
+  const MOVED_TO_SCRAP_DATAS = ({ commit }, request) => {
     console.log("|REQUEST : " + request)
     return api
       .post("central-faulty-device-accept-or-move-to-scrap/2",request)
@@ -209,7 +209,7 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
   };
 
    /*AGGREGATORS API */
-   export const AGGREGATORS_MOVED_TO_SCRAP_DATAS = ({ commit }, request) => {
+   const AGGREGATORS_MOVED_TO_SCRAP_DATAS = ({ commit }, request) => {
     console.log("|REQUEST : " + request)
     return api
       .post("aggregator-inventory/agg-central-faulty-device-accept-or-move-to-scrap/2",request)
@@ -227,7 +227,7 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
 
     /*AGGREGATORS API */
 
-    export const FETCH_ALL_MOVED_TO_SCRAP_DATA = ({
+    const FETCH_ALL_MOVED_TO_SCRAP_DATA = ({
       commit
     }, request) => {
        let sorting = request.pagination.descending ? 'desc' : 'asc';
@@ -256,7 +256,7 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
 
       /* START AGGREGATORS DYNAMIC CODE */
 
-    // export const FETCH_AGGREGATORS_ALL_MOVED_TO_SCRAP_DATA = ({
+    // const FETCH_AGGREGATORS_ALL_MOVED_TO_SCRAP_DATA = ({
     //   commit
     // }, request) => {
     //    let sorting = request.pagination.descending ? 'desc' : 'asc';
@@ -287,7 +287,7 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
 
     /* START AGGREGATORS STATIC CODE */
       
-    export const FETCH_AGGREGATORS_ALL_MOVED_TO_SCRAP_DATA = ({
+    const FETCH_AGGREGATORS_ALL_MOVED_TO_SCRAP_DATA = ({
       commit
     }, request) => {
        let sorting = request.pagination.descending ? 'desc' : 'asc';
@@ -321,7 +321,7 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
 
     
   // /*START >> Module>> all FINANCE APPROVED tracker*/https://smart.bijlipay.co.in:8080/api/central-inventory-get-device-by-status/3
-  // export const FETCH_ALL_MOVED_TO_SCRAP_DATA = ({ commit }, request) => {
+  // const FETCH_ALL_MOVED_TO_SCRAP_DATA = ({ commit }, request) => {
   //   console.log("|REQUEST : " + request)
   //   // if (request.pagination.sortBy == null) {
   //     return api
@@ -343,3 +343,15 @@ export const APPROVE_SEND_TO_REPAIR = ({ commit }, request) => {
   // };
 
 
+
+
+export default {
+  AGGREGATORS_MOVED_TO_SCRAP_DATAS,
+  APPROVE_AGGREGATORS_SEND_TO_REPAIR,
+  APPROVE_SEND_TO_REPAIR,
+  FETCH_AGGREGATORS_ALL_MOVED_TO_SCRAP_DATA,
+  FETCH_AGGREGATORS_SEND_TO_REPAIR_DETAILS,
+  FETCH_ALL_MOVED_TO_SCRAP_DATA,
+  FETCH_SEND_TO_REPAIR_DETAILS,
+  MOVED_TO_SCRAP_DATAS
+};

@@ -6,7 +6,7 @@ import api from "../api.js";
  * @param {Object} request - API payload
  * @returns {Promise} Axios response
  */
-export const DELETE_ASSIGN_USER = async (_, request) => {
+const DELETE_ASSIGN_USER = async (_, request) => {
   try {
     const response = await api.put("user/reassign-existing-lead-toSo", request);
     console.log("DELETE_ASSIGN_USER response:", response);
@@ -17,4 +17,8 @@ export const DELETE_ASSIGN_USER = async (_, request) => {
     console.error("DELETE_ASSIGN_USER API error:", error);
     throw error;
   }
+};
+
+export default {
+  DELETE_ASSIGN_USER
 };

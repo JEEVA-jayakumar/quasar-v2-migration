@@ -1,3 +1,8 @@
-export const getInstance= (state) => {
+const getInstance= (state) => {
     return state.Instance
   }
+
+
+export default {
+  getInstance
+};

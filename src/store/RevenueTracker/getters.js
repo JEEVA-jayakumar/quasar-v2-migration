@@ -1,3 +1,8 @@
-export const revenueTrackerInfo = (state) => {
+const revenueTrackerInfo = (state) => {
   return state.revenueTracker
 }
+
+
+export default {
+  revenueTrackerInfo
+};

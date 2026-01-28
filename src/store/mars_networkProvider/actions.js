@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const NETWORK_PROVIDER = ({
+const NETWORK_PROVIDER = ({
   commit,
   rootState
 }, request) => {
@@ -20,4 +20,8 @@ export const NETWORK_PROVIDER = ({
       console.error("Error fetching network providers from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  NETWORK_PROVIDER
 };

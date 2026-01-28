@@ -1,3 +1,8 @@
-export const getMposSubCategory = state => {
+const getMposSubCategory = state => {
   return state.mpossubCategory;
+};
+
+
+export default {
+  getMposSubCategory
 };

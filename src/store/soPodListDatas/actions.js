@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCHING_APPROVED_POD_LIST_DETAILS = ({
+const FETCHING_APPROVED_POD_LIST_DETAILS = ({
   commit
 }, request) => {
   console.log("API ACTION REQUEST DETAILS-------->",request)
@@ -25,7 +25,7 @@ export const FETCHING_APPROVED_POD_LIST_DETAILS = ({
     });
 };
 
-export const FETCHING_PHONEPE_APPROVED_POD_LIST_DETAILS = ({
+const FETCHING_PHONEPE_APPROVED_POD_LIST_DETAILS = ({
   commit
 }, request) => {
   console.log("API ACTION REQUEST DETAILS-------->",request)
@@ -50,7 +50,7 @@ export const FETCHING_PHONEPE_APPROVED_POD_LIST_DETAILS = ({
     });
 };
 
-export const FETCHING_REJECTED_POD_LIST_DETAILS = ({
+const FETCHING_REJECTED_POD_LIST_DETAILS = ({
   commit
 }, request) => {
   console.log("API ACTION REQUEST DETAILS-------->",request)
@@ -75,7 +75,7 @@ export const FETCHING_REJECTED_POD_LIST_DETAILS = ({
     });
 };
 
-export const FETCHING_PHONEPE_REJECTED_POD_LIST_DETAILS = ({
+const FETCHING_PHONEPE_REJECTED_POD_LIST_DETAILS = ({
   commit
 }, request) => {
   console.log("API ACTION REQUEST DETAILS-------->",request)
@@ -101,7 +101,15 @@ export const FETCHING_PHONEPE_REJECTED_POD_LIST_DETAILS = ({
 };
 
 // Remove unused commit and rootState parameters
-export const UPDATE_SO_REJECTED_POD_DETAILS = (context, request) => {
+const UPDATE_SO_REJECTED_POD_DETAILS = (context, request) => {
   console.log("SUBMIT request ----> Action",JSON.stringify(request))
   return api.post("spare-pod/updatePod/"+request.pod_number+"/2", request)
+};
+
+export default {
+  FETCHING_APPROVED_POD_LIST_DETAILS,
+  FETCHING_PHONEPE_APPROVED_POD_LIST_DETAILS,
+  FETCHING_REJECTED_POD_LIST_DETAILS,
+  FETCHING_PHONEPE_REJECTED_POD_LIST_DETAILS,
+  UPDATE_SO_REJECTED_POD_DETAILS
 };

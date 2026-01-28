@@ -1,4 +1,9 @@
-export const marsAdditionalState= (state) => {
+const marsAdditionalState= (state) => {
     
     return state.AdditionalState
   }
+
+
+export default {
+  marsAdditionalState
+};

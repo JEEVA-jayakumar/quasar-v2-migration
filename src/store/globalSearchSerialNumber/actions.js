@@ -1,7 +1,7 @@
 import * as Vue from "vue";
 import api from "../api.js";
 
-export const FETCH_GLOBAL_SEARCH_DATAS = ({ commit }, request) => {
+const FETCH_GLOBAL_SEARCH_DATAS = ({ commit }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
   console.log(" request", request);
   
@@ -78,7 +78,7 @@ export const FETCH_GLOBAL_SEARCH_DATAS = ({ commit }, request) => {
   }
 };
 
-export const FETCH_DOC_VIEW = ({ commit }, request) => {
+const FETCH_DOC_VIEW = ({ commit }, request) => {
   return api
     .get(
       "crm-request/getTidDetails/" + request.searchTerm
@@ -89,7 +89,7 @@ export const FETCH_DOC_VIEW = ({ commit }, request) => {
     });
 };
 
-export const FETCH_DOC_VIEW_TICKET = ({ commit }, request) => {
+const FETCH_DOC_VIEW_TICKET = ({ commit }, request) => {
   return api
     .get(
       "crm-request/getTicketDetails/" + request.searchTerm
@@ -99,7 +99,7 @@ export const FETCH_DOC_VIEW_TICKET = ({ commit }, request) => {
     });
 };
 
-export const DOC_DOWNLOAD = ({ commit, rootState }, request) => {
+const DOC_DOWNLOAD = ({ commit, rootState }, request) => {
   return api
     .get(rootState.GlobalVariables.ASSETSURL + '/' + request, {
       responseType: 'blob'
@@ -115,7 +115,7 @@ export const DOC_DOWNLOAD = ({ commit, rootState }, request) => {
 
 /* AGGREGATORS API */
 
-export const FETCH_PHONE_PE_GLOBAL_SEARCH_DATAS = ({ commit }, request) => {
+const FETCH_PHONE_PE_GLOBAL_SEARCH_DATAS = ({ commit }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
   console.log("PAGI : ------ : " + JSON.stringify(request.pagination.sortBy));
   
@@ -142,4 +142,12 @@ export const FETCH_PHONE_PE_GLOBAL_SEARCH_DATAS = ({ commit }, request) => {
       commit("API_RESPONSE_LOG", response);
       commit("SET_FETCH_PHONE_PE_GLOBAL_SEARCH_DATAS", response.body.data);
     });
+};
+
+export default {
+  FETCH_GLOBAL_SEARCH_DATAS,
+  FETCH_DOC_VIEW,
+  FETCH_DOC_VIEW_TICKET,
+  DOC_DOWNLOAD,
+  FETCH_PHONE_PE_GLOBAL_SEARCH_DATAS
 };

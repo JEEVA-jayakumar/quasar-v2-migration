@@ -1,5 +1,5 @@
 import api from "../api.js";
-export const UNALLOCATED_DEVICE_LIST =({
+const UNALLOCATED_DEVICE_LIST =({
     commit
   }) => {
     return api.get("getUnAllocatedDevicesRegion").then(response => {
@@ -10,3 +10,7 @@ export const UNALLOCATED_DEVICE_LIST =({
     });
     
   };
+
+export default {
+  UNALLOCATED_DEVICE_LIST
+};

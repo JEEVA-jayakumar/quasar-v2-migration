@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const FAULTY_DEVICE = ({
+const FAULTY_DEVICE = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
@@ -19,3 +19,8 @@ export const FAULTY_DEVICE = ({
     // END=> COMMIT with data received'
   });
 }
+
+
+export default {
+  FAULTY_DEVICE
+};

@@ -1,10 +1,10 @@
 import api from "../api.js";
 
-export const CREATE_AGGREGATORS_DEVICE = (request) => {
+const CREATE_AGGREGATORS_DEVICE = (request) => {
   return api.post("aggregator/createAggregatorDevice", request);
 };
 
-export const GET_CREATED_AGGREGATORS_DEVICE_LIST = ({
+const GET_CREATED_AGGREGATORS_DEVICE_LIST = ({
   commit
 }, request) => {
   return api.get("aggregator/aggregatorDeviceList", request).then(response => {
@@ -15,7 +15,7 @@ export const GET_CREATED_AGGREGATORS_DEVICE_LIST = ({
 // Active Device List GET_ACTIVE_CREATED_DEVICE_LIST
 
 /* START Aggregators Dynamic Code */
-// export const GET_ACTIVE_CREATED_DEVICE_LIST = ({
+// const GET_ACTIVE_CREATED_DEVICE_LIST = ({
 //     commit
 // }, request) => {
 //     return api.get("aggregator/deviceList/"+ request).then(response => {
@@ -25,7 +25,7 @@ export const GET_CREATED_AGGREGATORS_DEVICE_LIST = ({
 /* END Aggregators Dynamic Code */
 
 /* START Aggregators STATIC Code */
-export const GET_ACTIVE_CREATED_DEVICE_LIST = ({
+const GET_ACTIVE_CREATED_DEVICE_LIST = ({
   commit
 }) => { // Fixed: Added arrow function syntax
   return api.get("aggregator/deviceList/" + JSON.parse(localStorage.getItem("selectedTab").split('|')[1])).then(response => {
@@ -34,10 +34,18 @@ export const GET_ACTIVE_CREATED_DEVICE_LIST = ({
 };
 /* END Aggregators STATIC Code */
 
-export const EDIT_CREATED_AGGREGATORS_DEVICE_LIST = (request) => {
+const EDIT_CREATED_AGGREGATORS_DEVICE_LIST = (request) => {
   return api.put("aggregator/updateAggregatorDevice/" + request.id, request);
 };
 
-export const DELETE_CREATED_AGGREGATORS_DEVICE_LIST = (request) => {
+const DELETE_CREATED_AGGREGATORS_DEVICE_LIST = (request) => {
   return api.delete("aggregator/deleteAggregatorDevice/" + request.id);
+};
+
+export default {
+  CREATE_AGGREGATORS_DEVICE,
+  GET_CREATED_AGGREGATORS_DEVICE_LIST,
+  GET_ACTIVE_CREATED_DEVICE_LIST,
+  EDIT_CREATED_AGGREGATORS_DEVICE_LIST,
+  DELETE_CREATED_AGGREGATORS_DEVICE_LIST
 };

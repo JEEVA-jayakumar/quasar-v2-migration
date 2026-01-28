@@ -1,6 +1,12 @@
-export const salesPersonFromMars = (state) => {
+const salesPersonFromMars = (state) => {
   return state.MARS_salesPerson
 }
-export const qrsalesPersonFromMars = (state) => {
+const qrsalesPersonFromMars = (state) => {
   return state.MARS_qrsalesPerson
 }
+
+
+export default {
+  salesPersonFromMars,
+  qrsalesPersonFromMars
+};

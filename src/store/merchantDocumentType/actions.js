@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const MERCHANT_DOCUMENT_TYPE_ACTIVE_LIST = ({ commit }, request) => {
+const MERCHANT_DOCUMENT_TYPE_ACTIVE_LIST = ({ commit }, request) => {
   return api
     .get(
       "manage/data/merchant-document-types/?merchantTypeId=" +
@@ -14,7 +14,7 @@ export const MERCHANT_DOCUMENT_TYPE_ACTIVE_LIST = ({ commit }, request) => {
     });
 };
 
-export const MERCHANT_DOCUMENT_TYPE_DEACTIVED_LIST = ({ commit }, request) => {
+const MERCHANT_DOCUMENT_TYPE_DEACTIVED_LIST = ({ commit }, request) => {
   return api
     .get(
       "manage/data/merchant-document-types/0?merchantTypeId=" +
@@ -28,7 +28,7 @@ export const MERCHANT_DOCUMENT_TYPE_DEACTIVED_LIST = ({ commit }, request) => {
     });
 };
 
-export const ADD_NEW_MERCHANT_DOCUMENT_TYPE = (_, request) => {
+const ADD_NEW_MERCHANT_DOCUMENT_TYPE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post(
     "manage/data/merchant-document-types/?merchantTypeId=" +
@@ -39,7 +39,7 @@ export const ADD_NEW_MERCHANT_DOCUMENT_TYPE = (_, request) => {
   );
 };
 
-export const UPDATE_MERCHANT_DOCUMENT_TYPE = (_, request) => {
+const UPDATE_MERCHANT_DOCUMENT_TYPE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put(
     "manage/data/merchant-document-types/" +
@@ -55,7 +55,7 @@ export const UPDATE_MERCHANT_DOCUMENT_TYPE = (_, request) => {
 };
 
 //1 => value to enable
-export const UPDATE_MERCHANT_DOCUMENT_TYPE_AND_SET_ACTIVE = (
+const UPDATE_MERCHANT_DOCUMENT_TYPE_AND_SET_ACTIVE = (
   _,
   request
 ) => {
@@ -73,10 +73,19 @@ export const UPDATE_MERCHANT_DOCUMENT_TYPE_AND_SET_ACTIVE = (
   );
 };
 
-export const DELETE_MERCHANT_DOCUMENT_TYPE_AND_SET_ACTIVE = (
+const DELETE_MERCHANT_DOCUMENT_TYPE_AND_SET_ACTIVE = (
   _,
   request
 ) => {
   // Changed from _ to _ since commit is not used
   return api.delete("manage/data/merchant-document-types/" + request);
+};
+
+export default {
+  MERCHANT_DOCUMENT_TYPE_ACTIVE_LIST,
+  MERCHANT_DOCUMENT_TYPE_DEACTIVED_LIST,
+  ADD_NEW_MERCHANT_DOCUMENT_TYPE,
+  UPDATE_MERCHANT_DOCUMENT_TYPE,
+  UPDATE_MERCHANT_DOCUMENT_TYPE_AND_SET_ACTIVE,
+  DELETE_MERCHANT_DOCUMENT_TYPE_AND_SET_ACTIVE
 };

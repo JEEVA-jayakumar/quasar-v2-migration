@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     console.log('API_RESPONSE >>', payload)
     let statusMessage
     if (payload.apiStatusCode == 200) {
@@ -79,3 +79,8 @@ SET_PHONEPE_OPENED_TICKETS = (state, payload) => {
     // console.log("ADDITIONAL TIDPayload : ------------ : " +  JSON.stringify(payload))
     state.assignHistoryLists = payload;
   };
+
+
+export default {
+  API_RESPONSE_LOG
+};

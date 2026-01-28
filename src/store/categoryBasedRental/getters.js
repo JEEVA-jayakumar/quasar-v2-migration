@@ -1,3 +1,8 @@
-export const categoryBasedRental = (state) => {
+const categoryBasedRental = (state) => {
   return state.categoryBasedRental
 }
+
+
+export default {
+  categoryBasedRental
+};

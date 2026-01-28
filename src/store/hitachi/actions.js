@@ -1,5 +1,5 @@
 import api from '../api.js';
-export const FETCH_HITACHI_EMI_DATAS= ({
+const FETCH_HITACHI_EMI_DATAS= ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -36,3 +36,8 @@ export const FETCH_HITACHI_EMI_DATAS= ({
 //   // END=> COMMIT with data received'
 // });
 // };
+
+
+export default {
+  FETCH_HITACHI_EMI_DATAS
+};

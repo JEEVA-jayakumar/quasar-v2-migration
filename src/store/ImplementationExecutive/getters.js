@@ -1,6 +1,12 @@
-export const getImplementationExecutiveList = (state) => {
+const getImplementationExecutiveList = (state) => {
   return state.implementationExecutiveList
 }
-export const getRegionList = (state) => {
+const getRegionList = (state) => {
   return state.regionlist
 }
+
+
+export default {
+  getImplementationExecutiveList,
+  getRegionList
+};

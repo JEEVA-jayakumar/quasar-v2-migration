@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
   let statusMessage
 
   if (payload.apiStatusCode === 200) {
@@ -21,6 +21,12 @@ export const API_RESPONSE_LOG = (state, payload) => {
   }
 }
 
-export const SET_FETCH_CRM_GLOBAL_SEARCH_DATAS = (state, payload) => {
+const SET_FETCH_CRM_GLOBAL_SEARCH_DATAS = (state, payload) => {
   state.crmGlobalSearchTicketId = payload
 }
+
+
+export default {
+  API_RESPONSE_LOG,
+  SET_FETCH_CRM_GLOBAL_SEARCH_DATAS
+};

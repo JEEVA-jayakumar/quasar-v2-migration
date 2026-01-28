@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const STATE_FROM_MARS = ({
+const STATE_FROM_MARS = ({
   commit,
   rootState
 }) => {
@@ -24,4 +24,8 @@ export const STATE_FROM_MARS = ({
       console.error("Error fetching states from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  STATE_FROM_MARS
 };

@@ -1,3 +1,8 @@
-export const ifscFromMars = (state) => {
+const ifscFromMars = (state) => {
   return state.MARS_ifsc
 }
+
+
+export default {
+  ifscFromMars
+};

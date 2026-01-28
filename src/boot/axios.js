@@ -1,7 +1,5 @@
 import { defineBoot } from '#q-app/wrappers'
-import api from "./api.js";
 import axios from 'axios'
-import api from "./api.js";
 
 // Be careful when using SSR for cross-request state pollution
 // due to creating a Singleton instance here;

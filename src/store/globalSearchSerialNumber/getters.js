@@ -1,15 +1,24 @@
-export const getGlobalSearchSerialNumber = (state) => {
+const getGlobalSearchSerialNumber = (state) => {
     return state.globalSearchSerialNumber
 };
-export const getdocview = (state) => {
+const getdocview = (state) => {
     return state.getdocview
 };
-export const getdocticket = (state) => {
+const getdocticket = (state) => {
     return state.getdocticket
 };
-export const getdocdownload = (state) => {
+const getdocdownload = (state) => {
     return state.getdocdownload
 };
-export const getAggregatorsGlobalSearchSerialNumber = (state) => {
+const getAggregatorsGlobalSearchSerialNumber = (state) => {
     return state.AggregatorsglobalSearchSerialNumber
+};
+
+
+export default {
+  getGlobalSearchSerialNumber,
+  getdocview,
+  getdocticket,
+  getdocdownload,
+  getAggregatorsGlobalSearchSerialNumber
 };

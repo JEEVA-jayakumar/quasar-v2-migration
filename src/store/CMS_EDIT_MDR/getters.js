@@ -1,1 +1,6 @@
-export const someGetter = (state) => state
+const someGetter = (state) => state
+
+
+export default {
+  someGetter
+};

@@ -1,10 +1,10 @@
 // All Users
-export  const getAllUsers = state => {
+const getAllUsers = state => {
   return state.allUserData;
 };
 
 // All Roles
-export  const testData = state => {
+const testData = state => {
   return state.testData;
 };
 

@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const MERCHANT_TIER_MAPPING_GET_STATE_DETAILS = ({commit}) => {
+const MERCHANT_TIER_MAPPING_GET_STATE_DETAILS = ({commit}) => {
   // Removed unused 'request' parameter
   return api.get("getStateList").then(response => {
     commit("SET_MERCHANT_TIER_MAPPING_GET_STATE_DETAILS", response.data.data);
@@ -8,7 +8,7 @@ export const MERCHANT_TIER_MAPPING_GET_STATE_DETAILS = ({commit}) => {
   });
 };
 
-export const MERCHANT_TIER_MAPPING_SEARCH_DISTRICT = ({
+const MERCHANT_TIER_MAPPING_SEARCH_DISTRICT = ({
   commit
 }, request) => {
   return api.get("getDistrictList", request).then(response => {
@@ -27,7 +27,7 @@ export const MERCHANT_TIER_MAPPING_SEARCH_DISTRICT = ({
   });
 };
 
-export const MERCHANT_TIER_MAPPING_SUB_DISTRICT_DETAILS = ({
+const MERCHANT_TIER_MAPPING_SUB_DISTRICT_DETAILS = ({
   commit
 }, request) => {
   console.log("MERCHANT_TIER_MAPPING_SUB_DISTRICT_DETAILS", request);
@@ -46,7 +46,7 @@ export const MERCHANT_TIER_MAPPING_SUB_DISTRICT_DETAILS = ({
   });
 };
 
-export const MERCHANT_TIER_MAPPING_TOWN_OR_VILLAGE_DETAILS = ({
+const MERCHANT_TIER_MAPPING_TOWN_OR_VILLAGE_DETAILS = ({
   commit
 }, request) => {
   return api.get("getVillagenameList", request).then(response => {
@@ -64,7 +64,7 @@ export const MERCHANT_TIER_MAPPING_TOWN_OR_VILLAGE_DETAILS = ({
   });
 };
 
-export const MERCHANT_TIER_MAPPING_VILLAGE_TIER_DETAILS = ({
+const MERCHANT_TIER_MAPPING_VILLAGE_TIER_DETAILS = ({
   commit
 }, request) => {
   return api.get("getTierName", request).then(response => {
@@ -82,7 +82,7 @@ export const MERCHANT_TIER_MAPPING_VILLAGE_TIER_DETAILS = ({
   });
 };
 
-export const MERCHANT_TIER_MAPPING_VILLAGE_BASED_TIER_AND_LOCATION_DETAILS = ({
+const MERCHANT_TIER_MAPPING_VILLAGE_BASED_TIER_AND_LOCATION_DETAILS = ({
   commit
 }, request) => {
   return api.get("getTierName/" + request).then(response => {
@@ -92,4 +92,13 @@ export const MERCHANT_TIER_MAPPING_VILLAGE_BASED_TIER_AND_LOCATION_DETAILS = ({
     //   return response
     // console.log("SET_MERCHANT_TIER_MAPPING_GET_STATE_DETAILS",JSON.stringify(response.data))
   });
+};
+
+export default {
+  MERCHANT_TIER_MAPPING_GET_STATE_DETAILS,
+  MERCHANT_TIER_MAPPING_SEARCH_DISTRICT,
+  MERCHANT_TIER_MAPPING_SUB_DISTRICT_DETAILS,
+  MERCHANT_TIER_MAPPING_TOWN_OR_VILLAGE_DETAILS,
+  MERCHANT_TIER_MAPPING_VILLAGE_TIER_DETAILS,
+  MERCHANT_TIER_MAPPING_VILLAGE_BASED_TIER_AND_LOCATION_DETAILS
 };

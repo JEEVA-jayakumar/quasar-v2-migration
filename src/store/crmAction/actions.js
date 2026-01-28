@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_ISSUE_DATAS = async ({ commit }, request) => {
+const FETCH_ISSUE_DATAS = async ({ commit }, request) => {
   try {
     console.log('FETCH_ISSUE_DATAS request:', request)
 
@@ -16,7 +16,7 @@ export const FETCH_ISSUE_DATAS = async ({ commit }, request) => {
   }
 }
 
-export const FETCH_SUB_ISSUE_DATAS = async ({ commit }, request) => {
+const FETCH_SUB_ISSUE_DATAS = async ({ commit }, request) => {
   try {
     console.log('FETCH_SUB_ISSUE_DATAS request:', request)
 
@@ -32,7 +32,7 @@ export const FETCH_SUB_ISSUE_DATAS = async ({ commit }, request) => {
   }
 }
 
-export const FETCH_REMARKS_ISSUE_DATAS = async ({ commit }, request) => {
+const FETCH_REMARKS_ISSUE_DATAS = async ({ commit }, request) => {
   try {
     console.log('FETCH_REMARKS_ISSUE_DATAS request:', request)
 
@@ -47,3 +47,10 @@ export const FETCH_REMARKS_ISSUE_DATAS = async ({ commit }, request) => {
     throw error
   }
 }
+
+
+export default {
+  FETCH_ISSUE_DATAS,
+  FETCH_SUB_ISSUE_DATAS,
+  FETCH_REMARKS_ISSUE_DATAS
+};

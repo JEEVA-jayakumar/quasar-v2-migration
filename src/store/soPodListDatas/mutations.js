@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     console.log("API_RESPONSE >>", payload);
     let statusMessage;
     if (payload.apiStatusCode == 200) {
@@ -44,3 +44,8 @@ SET_REJECTED_POD_LIST_DETAILS = (state, payload) => {
     console.log("ADDITIONAL TIDPayload : ------------ : " +  JSON.stringify(payload))
     state.PhonepeRejectedSoPodListData = payload;
   }
+
+
+export default {
+  API_RESPONSE_LOG
+};

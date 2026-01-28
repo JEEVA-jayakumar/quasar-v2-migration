@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const SERVICE_PROVIDER = ({
+const SERVICE_PROVIDER = ({
   commit,
   rootState
 }, request) => {
@@ -22,4 +22,8 @@ export const SERVICE_PROVIDER = ({
       console.error("Error fetching service providers from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  SERVICE_PROVIDER
 };

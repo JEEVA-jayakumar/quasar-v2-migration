@@ -1,7 +1,13 @@
-export const getCreatedAggregatorDeviceList = state => {
+const getCreatedAggregatorDeviceList = state => {
     return state.getAggregatorDeviceList;
 };
 
-export const getCreatedActiveDeviceList = state => {
+const getCreatedActiveDeviceList = state => {
     return state.getActiveAggregatorDeviceList;
+};
+
+
+export default {
+  getCreatedAggregatorDeviceList,
+  getCreatedActiveDeviceList
 };

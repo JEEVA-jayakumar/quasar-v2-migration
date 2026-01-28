@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const CHANGE_MANAGEMENT_LIST = ({ commit }, request) => {
+const CHANGE_MANAGEMENT_LIST = ({ commit }, request) => {
   const sorting = request.pagination.descending ? 'asc' : 'desc'
 
   return api
@@ -16,3 +16,8 @@ export const CHANGE_MANAGEMENT_LIST = ({ commit }, request) => {
       return response
     })
 }
+
+
+export default {
+  CHANGE_MANAGEMENT_LIST
+};

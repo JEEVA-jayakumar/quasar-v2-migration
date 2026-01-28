@@ -1,15 +1,23 @@
-export const getBijlipayMerchantDetails = (state) => {
+const getBijlipayMerchantDetails = (state) => {
   return state.bijlipayMerchantDetails;
 };
 
-export const getBijlipayCompletedData = (state) => {
+const getBijlipayCompletedData = (state) => {
   return state.bijlipayCompletedDetails;
 };
 
-export const getBijlipayDate = (state) => {
+const getBijlipayDate = (state) => {
   return state.bijlipayDate;
 };
 
-export const getupdateRemarks = (state) => {
+const getupdateRemarks = (state) => {
   return state.updateRemarks;
+};
+
+
+export default {
+  getBijlipayMerchantDetails,
+  getBijlipayCompletedData,
+  getBijlipayDate,
+  getupdateRemarks
 };

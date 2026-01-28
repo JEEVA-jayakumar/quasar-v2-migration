@@ -1,3 +1,8 @@
-export const getUnAllocatedDevice = (state) => {
+const getUnAllocatedDevice = (state) => {
     return state.UnAllocatedDevice 
   }
+
+
+export default {
+  getUnAllocatedDevice
+};

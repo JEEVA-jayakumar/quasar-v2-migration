@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const FETCH_MARS_DATA = ({
+const FETCH_MARS_DATA = ({
     commit
 }, request) => {
     return api.get("get-mars-data-information/" + request).then(response => {
@@ -8,7 +8,7 @@ export const FETCH_MARS_DATA = ({
     });
 };
 
-export const IMPLEMENTED_QUEUE = ({
+const IMPLEMENTED_QUEUE = ({
     commit
 }, request) => {
     return api.get("merchant-tracker-implemented-list/sat/" + request).then(response => {
@@ -16,10 +16,16 @@ export const IMPLEMENTED_QUEUE = ({
     });
 };
 
-export const MIDBASEDLIST = ({
+const MIDBASEDLIST = ({
     commit
 }, request) => {
     return api.get("get-tid-listbyMid?mid=" + request).then(response => {
         commit("SET_MID_QUEUE", response.data.data);
     });
+};
+
+export default {
+  FETCH_MARS_DATA,
+  IMPLEMENTED_QUEUE,
+  MIDBASEDLIST
 };

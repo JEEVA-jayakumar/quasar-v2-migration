@@ -1,7 +1,7 @@
 import api from '../api.js';
 // Removed unused import: import { req } from 'vuelidate/lib/validators/common.js';
 
-export const FETCH_PHONEPE_CLIENT_CRM = ({
+const FETCH_PHONEPE_CLIENT_CRM = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -25,7 +25,7 @@ export const FETCH_PHONEPE_CLIENT_CRM = ({
     });
 };
 
-export const FETCH_PHONEPE_COMPLETED_DATA = ({
+const FETCH_PHONEPE_COMPLETED_DATA = ({
   commit
 }, request) => {
 if(request.pagination.sortBy == null){
@@ -70,7 +70,7 @@ if(request.pagination.sortBy == null){
 }
 };
 
-export const PHONEPE_CRM_DATE = ({
+const PHONEPE_CRM_DATE = ({
   commit
 }, request) => {
 if(request.pagination.sortBy == null){
@@ -114,7 +114,7 @@ if(request.pagination.sortBy == null){
 }
 };
 
-export const UPDATE_CRM_REMARKS = ({
+const UPDATE_CRM_REMARKS = ({
   commit
 }, request) => {
   console.log("DAGA : ==== : ", JSON.stringify(request))
@@ -125,17 +125,17 @@ export const UPDATE_CRM_REMARKS = ({
     });
 };
 
-export const ASSIGN_TO_COMPLETE = (_, request) => {
+const ASSIGN_TO_COMPLETE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("crm-request/assignTicket/1" , request)
 };
 
-export const ESCALATE_TO_SAT = (_, request) => {
+const ESCALATE_TO_SAT = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("crm-request/assignTicket/2" , request)
 };
 
-export const FETCH_STATIC_QR_NEW_REQUESTS = ({
+const FETCH_STATIC_QR_NEW_REQUESTS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -157,22 +157,22 @@ export const FETCH_STATIC_QR_NEW_REQUESTS = ({
     });
 };
 
-export const UPDATE_SCAN_QR_NUMBER = (_, request) => {
+const UPDATE_SCAN_QR_NUMBER = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("kvb-qr-scan-details/"+ request.data1.id+ "/" + 1,request.formsList);
 };
 
-export const UPDATE_SCAN_SOUNDBOX_NUMBER = (_, request) => {
+const UPDATE_SCAN_SOUNDBOX_NUMBER = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("kvb-qr-scan-details/"+ request.data1.id+ "/" + 2,request.formsList);
 };
 
-export const SUBMIT_STATIC_QR_NEW_REQUESTS = (_, request) => {
+const SUBMIT_STATIC_QR_NEW_REQUESTS = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("update-print-info/"+ request.id, request)
 };
 
-export const FETCH_STATIC_QR_REFER_BACK_REQUESTS = ({
+const FETCH_STATIC_QR_REFER_BACK_REQUESTS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -195,19 +195,19 @@ export const FETCH_STATIC_QR_REFER_BACK_REQUESTS = ({
     });
 };
 
-export const REFERBACK_RESUMBIT_LEAD = (_, request) => {
+const REFERBACK_RESUMBIT_LEAD = (_, request) => {
   // Changed from _ to _ since commit is not used
   // console.log("REQUEST_UPDATE_SCAN_SOUNDBOX_NUMBER------------------->"+JSON.stringify(request.id))
   return api.post("submit-full-lead/"+ request.id,request);
 };
 
-export const UPDATE_CALL_LOG_CRM_REMARKS = (_, request) => {
+const UPDATE_CALL_LOG_CRM_REMARKS = (_, request) => {
   // Changed from _ to _ since commit is not used
   // console.log("REQUEST_UPDATE_SCAN_SOUNDBOX_NUMBER------------------->"+JSON.stringify(request.id))
   return api.post("call-log/store-data",request);
 };
 
-export const FETCH_STATIC_QR_COURIER_REQUESTS = ({
+const FETCH_STATIC_QR_COURIER_REQUESTS = ({
   commit
 }, request) => {
   // console.log("REQUEST------------------->"+JSON.stringify(request.id))
@@ -231,13 +231,13 @@ export const FETCH_STATIC_QR_COURIER_REQUESTS = ({
     });
 };
 
-export const COURIER_POD_NUMBER_LEAD = (_, request) => {
+const COURIER_POD_NUMBER_LEAD = (_, request) => {
   // Changed from _ to _ since commit is not used
   // console.log("REQUEST_UPDATE_SCAN_SOUNDBOX_NUMBER------------------->"+JSON.stringify(request.id))
   return api.put("update-pod-details/"+ request.data1.id,request.formsList);
 };
 
-export const PHONEPE_PAPER_ROLL_PDF = ({
+const PHONEPE_PAPER_ROLL_PDF = ({
   commit
 }, request) => {
 
@@ -248,7 +248,7 @@ export const PHONEPE_PAPER_ROLL_PDF = ({
     });
 };
 
-export const FETCH_PHONEPE_PAPER_ROLL_COMPLETED_DATA = ({
+const FETCH_PHONEPE_PAPER_ROLL_COMPLETED_DATA = ({
   commit
 }, request) => {
   if (request.pagination.sortBy == null) {
@@ -285,7 +285,7 @@ export const FETCH_PHONEPE_PAPER_ROLL_COMPLETED_DATA = ({
   }
 };
 
-export const FETCH_PHONEPE_RTO_TICKET = ({
+const FETCH_PHONEPE_RTO_TICKET = ({
   commit
 }, request) => {
   if (request.pagination.sortBy == null) {
@@ -319,17 +319,17 @@ export const FETCH_PHONEPE_RTO_TICKET = ({
   }
 };
 
-export const PHONEPE_PAPER_ROLL_SUBMIT = (_, request) => {
+const PHONEPE_PAPER_ROLL_SUBMIT = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("crm-request/ticketUpdate/"+request)
 };
 
-export const MARK_RTO = (_, request) => {
+const MARK_RTO = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("crm-request/mark-rto/"+request)
 };
 
-export const UPDATE_PHONEPE_PAPERROLL_PODNUMBER = ({
+const UPDATE_PHONEPE_PAPERROLL_PODNUMBER = ({
   commit
 }, request) => {
   // data = {
@@ -343,7 +343,7 @@ export const UPDATE_PHONEPE_PAPERROLL_PODNUMBER = ({
     });
 };
 
-export const PHONEPE_PAPER_ROLL_PENDING = ({
+const PHONEPE_PAPER_ROLL_PENDING = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -365,12 +365,12 @@ export const PHONEPE_PAPER_ROLL_PENDING = ({
     });
 };
 
-export const PPE_CALLBACK_RESOLVED= (_, request) => {
+const PPE_CALLBACK_RESOLVED= (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("crm-request/assignTicket/3" , request)
 };
 
-export const PHONEPE_CRM_CALL_LOG_ATTEMPTS = ({
+const PHONEPE_CRM_CALL_LOG_ATTEMPTS = ({
   commit
 }, request) => {
 
@@ -381,7 +381,7 @@ export const PHONEPE_CRM_CALL_LOG_ATTEMPTS = ({
     });
 };
 
-export const PHONEPE_CRM_OPTION_LIST_DETAILS = ({commit}) => {
+const PHONEPE_CRM_OPTION_LIST_DETAILS = ({commit}) => {
   // Removed unused 'request' parameter
   return api
   .get("issue-options")
@@ -390,7 +390,7 @@ export const PHONEPE_CRM_OPTION_LIST_DETAILS = ({commit}) => {
   });
 };
 
-export const PHONEPE_CRM_RESOLUTION_STATUS = ({
+const PHONEPE_CRM_RESOLUTION_STATUS = ({
   commit
 }, request) => {
   return api
@@ -400,7 +400,7 @@ export const PHONEPE_CRM_RESOLUTION_STATUS = ({
   });
 };
 
-export const PHONE_PE_VIEW_CALL_LOGS = ({
+const PHONE_PE_VIEW_CALL_LOGS = ({
   commit
 }, request) => {
 
@@ -411,7 +411,7 @@ export const PHONE_PE_VIEW_CALL_LOGS = ({
     });
 };
   
-export const PHONEPE_CRM_FETCH_ISSUE_STATUS = ({
+const PHONEPE_CRM_FETCH_ISSUE_STATUS = ({
   commit
 }, request) => {
   return api
@@ -421,7 +421,7 @@ export const PHONEPE_CRM_FETCH_ISSUE_STATUS = ({
   });
 };
 
-export const PHONEPE_CRM_ISSUE_ACTION_STATUS = ({
+const PHONEPE_CRM_ISSUE_ACTION_STATUS = ({
   commit
 }, request) => {
   return api
@@ -431,13 +431,13 @@ export const PHONEPE_CRM_ISSUE_ACTION_STATUS = ({
   });
 };
 
-export const ISSUE_RESOLVED_BY_CRM   = (_, request) => {
+const ISSUE_RESOLVED_BY_CRM   = (_, request) => {
   // Changed from _ to _ since commit is not used
   // console.log("REQUEST_UPDATE_SCAN_SOUNDBOX_NUMBER------------------->"+JSON.stringify(request.id))
   return api.put("crm-request/assignTicket/1",request);
 };
 
-export const ISSUE_NOT_RESOLVED_BY_CRM   = (_, request) => {
+const ISSUE_NOT_RESOLVED_BY_CRM   = (_, request) => {
   // Changed from _ to _ since commit is not used
   console.log("REQ ACTION",request);
   
@@ -445,8 +445,43 @@ export const ISSUE_NOT_RESOLVED_BY_CRM   = (_, request) => {
   return api.put("crm-request/assignTicket/3",request);
 };
 
-export const MOVE_TO_SAT = (_, request) => {
+const MOVE_TO_SAT = (_, request) => {
   // Changed from _ to _ since commit is not used
   // console.log("REQUEST_UPDATE_SCAN_SOUNDBOX_NUMBER------------------->"+JSON.stringify(request.id))
   return api.put("crm-request/assignTicket/2",request);
+};
+
+export default {
+  FETCH_PHONEPE_CLIENT_CRM,
+  FETCH_PHONEPE_COMPLETED_DATA,
+  PHONEPE_CRM_DATE,
+  UPDATE_CRM_REMARKS,
+  ASSIGN_TO_COMPLETE,
+  ESCALATE_TO_SAT,
+  FETCH_STATIC_QR_NEW_REQUESTS,
+  UPDATE_SCAN_QR_NUMBER,
+  UPDATE_SCAN_SOUNDBOX_NUMBER,
+  SUBMIT_STATIC_QR_NEW_REQUESTS,
+  FETCH_STATIC_QR_REFER_BACK_REQUESTS,
+  REFERBACK_RESUMBIT_LEAD,
+  UPDATE_CALL_LOG_CRM_REMARKS,
+  FETCH_STATIC_QR_COURIER_REQUESTS,
+  COURIER_POD_NUMBER_LEAD,
+  PHONEPE_PAPER_ROLL_PDF,
+  FETCH_PHONEPE_PAPER_ROLL_COMPLETED_DATA,
+  FETCH_PHONEPE_RTO_TICKET,
+  PHONEPE_PAPER_ROLL_SUBMIT,
+  MARK_RTO,
+  UPDATE_PHONEPE_PAPERROLL_PODNUMBER,
+  PHONEPE_PAPER_ROLL_PENDING,
+  PPE_CALLBACK_RESOLVED,
+  PHONEPE_CRM_CALL_LOG_ATTEMPTS,
+  PHONEPE_CRM_OPTION_LIST_DETAILS,
+  PHONEPE_CRM_RESOLUTION_STATUS,
+  PHONE_PE_VIEW_CALL_LOGS,
+  PHONEPE_CRM_FETCH_ISSUE_STATUS,
+  PHONEPE_CRM_ISSUE_ACTION_STATUS,
+  ISSUE_RESOLVED_BY_CRM,
+  ISSUE_NOT_RESOLVED_BY_CRM,
+  MOVE_TO_SAT
 };

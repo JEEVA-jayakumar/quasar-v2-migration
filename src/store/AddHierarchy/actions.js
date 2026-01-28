@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const SAVE_HIERARCHY = async ({ commit }, request) => {
+const SAVE_HIERARCHY = async ({ commit }, request) => {
   const response = await api.post('hierarchy/', request)
 
   const data = {
@@ -14,7 +14,7 @@ export const SAVE_HIERARCHY = async ({ commit }, request) => {
   return response.data.data
 }
 
-export const DELETE_HIERARCHY = async (context, request) => {
+const DELETE_HIERARCHY = async (context, request) => {
   console.log(
     'DISABLE request DATAS------------->',
     JSON.stringify(request)
@@ -23,7 +23,7 @@ export const DELETE_HIERARCHY = async (context, request) => {
   return api.delete(`hierarchy/${request.value}`)
 }
 
-export const ACTIVE_HIERARCHY = async (context, request) => {
+const ACTIVE_HIERARCHY = async (context, request) => {
   console.log(
     'ACTIVE request DATAS------------->',
     JSON.stringify(request)
@@ -31,3 +31,9 @@ export const ACTIVE_HIERARCHY = async (context, request) => {
 
   return api.put(`hierarchy/${request.id}`, request)
 }
+
+export default {
+  SAVE_HIERARCHY,
+  DELETE_HIERARCHY,
+  ACTIVE_HIERARCHY
+};

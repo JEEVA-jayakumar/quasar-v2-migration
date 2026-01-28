@@ -1,6 +1,12 @@
-export const getAggregatordeviceReplacementQueueAssignedList = (state) => {
+const getAggregatordeviceReplacementQueueAssignedList = (state) => {
     return state.AggregatorDeviceReplacementQueueAssignedList
 }
-export const getAggregatorDeviceReplacementQueueUnassignedList = (state) => {
+const getAggregatorDeviceReplacementQueueUnassignedList = (state) => {
     return state.AggregatorDeviceReplacementQueueUnassignedList
 }
+
+
+export default {
+  getAggregatordeviceReplacementQueueAssignedList,
+  getAggregatorDeviceReplacementQueueUnassignedList
+};

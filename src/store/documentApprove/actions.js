@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const DOCUMENT_APPROVE = async ({ commit }, request) => {
+const DOCUMENT_APPROVE = async ({ commit }, request) => {
   const response = await api.put(
     `implementation-Validation/${request}/2`
   );
@@ -11,7 +11,7 @@ export const DOCUMENT_APPROVE = async ({ commit }, request) => {
   return response;
 };
 
-export const DOCUMENT_REJECT = async ({ commit }, request) => {
+const DOCUMENT_REJECT = async ({ commit }, request) => {
   const response = await api.put(
     `implementation-Validation/${request.data.data}/3/${request.url.reason}`
   );
@@ -20,4 +20,10 @@ export const DOCUMENT_REJECT = async ({ commit }, request) => {
   commit("SET_REGISTERED_REJECT_DATA", response.data);
 
   return response;
+};
+
+
+export default {
+  DOCUMENT_APPROVE,
+  DOCUMENT_REJECT
 };

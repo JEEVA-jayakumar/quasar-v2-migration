@@ -1,3 +1,9 @@
-export const getDeviceWithHistory = (state) => state.DeviceWithHistory;
+const getDeviceWithHistory = (state) => state.DeviceWithHistory;
 
-export const getAggregatorsDeviceWithHistory = (state) => state.AggregatorsDeviceWithHistory;
+const getAggregatorsDeviceWithHistory = (state) => state.AggregatorsDeviceWithHistory;
+
+
+export default {
+  getDeviceWithHistory,
+  getAggregatorsDeviceWithHistory
+};

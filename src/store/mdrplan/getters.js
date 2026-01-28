@@ -1,3 +1,8 @@
-export const getmdrPlan = (state) => {
+const getmdrPlan = (state) => {
   return state.mdrPlan
 }
+
+
+export default {
+  getmdrPlan
+};

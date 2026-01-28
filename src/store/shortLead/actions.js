@@ -2,7 +2,7 @@
 // import api from "../api.js";
 import * as Vue from "vue";
 
-export const STATE_SHORT_LEAD = ({
+const STATE_SHORT_LEAD = ({
   // Remove unused commit parameter
   // commit,
   rootState
@@ -15,3 +15,7 @@ export const STATE_SHORT_LEAD = ({
       // commit("SET_STATE_SHORT_LEAD", response.data);
     })
 }
+
+export default {
+  STATE_SHORT_LEAD
+};

@@ -1,18 +1,27 @@
-export const getpendingQrList = state => {
+const getpendingQrList = state => {
   return state.pendingQrList
 }
-export const getApprovedQrList = state => {
+const getApprovedQrList = state => {
   return state.approvedQrList
 }
-export const getpendingQrListOfSo = state => {
+const getpendingQrListOfSo = state => {
   return state.pendingQrListOfSo
 }
-export const getApprovedQrListOfSo = state => {
+const getApprovedQrListOfSo = state => {
   return state.approvedQrListOfSo
 }
-export const getRejectedQrListOfSo = state => {
+const getRejectedQrListOfSo = state => {
   return state.rejectedQrListOfSo
 }
-export const getStaticQrReginolInventory = state => {
+const getStaticQrReginolInventory = state => {
   return state.staticQrReginolInventory
 }
+
+export default {
+  getpendingQrList,
+  getApprovedQrList,
+  getpendingQrListOfSo,
+  getApprovedQrListOfSo,
+  getRejectedQrListOfSo,
+  getStaticQrReginolInventory
+};

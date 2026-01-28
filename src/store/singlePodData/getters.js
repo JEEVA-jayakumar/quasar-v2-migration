@@ -1,4 +1,8 @@
-export const getsinglePodDetails = (state) => {
+const getsinglePodDetails = (state) => {
     console.log("GETTER====>>>",JSON.stringify(state))
     return state.singlePodData
   }
+
+export default {
+  getsinglePodDetails
+};

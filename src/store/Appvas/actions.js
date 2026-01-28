@@ -1,7 +1,7 @@
 import api from '../api.js'
 
 // Fetch VAS device mapping data
-export const FETCH_VAS_DATAS = ({ commit }, request) => {
+const FETCH_VAS_DATAS = ({ commit }, request) => {
   return api
     .get(`vas-mapping/get-vas-device-mapping/${request}`)
     .then(response => {
@@ -14,3 +14,8 @@ export const FETCH_VAS_DATAS = ({ commit }, request) => {
       throw error
     })
 }
+
+
+export default {
+  FETCH_VAS_DATAS
+};

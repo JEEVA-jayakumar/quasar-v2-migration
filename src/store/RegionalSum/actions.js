@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const REGIONAL_SUMMARY = ({ commit }, request) => {
+const REGIONAL_SUMMARY = ({ commit }, request) => {
   // Removed the unused 'sorting' variable
   return api
     .get(
@@ -14,4 +14,8 @@ export const REGIONAL_SUMMARY = ({ commit }, request) => {
     .then(response => {
       commit("SET_REGIONAL_SUMMARY", response.data.data);
     });
+};
+
+export default {
+  REGIONAL_SUMMARY
 };

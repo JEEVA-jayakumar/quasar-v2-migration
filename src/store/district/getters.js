@@ -1,1 +1,6 @@
-export const getAllDistrict = (state) => state.allDistrict;
+const getAllDistrict = (state) => state.allDistrict;
+
+
+export default {
+  getAllDistrict
+};

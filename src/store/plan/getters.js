@@ -1,6 +1,12 @@
-export const getActivePlan = state => {
+const getActivePlan = state => {
   return state.activePlan;
 };
-export const getDeActivatedPlan = state => {
+const getDeActivatedPlan = state => {
   return state.deActivatedPlan;
+};
+
+
+export default {
+  getActivePlan,
+  getDeActivatedPlan
 };

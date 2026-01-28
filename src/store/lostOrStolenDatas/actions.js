@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCH_ALL_LOST_DEVICES_DATAS = ({
+const FETCH_ALL_LOST_DEVICES_DATAS = ({
     commit
   }, request) => {
     let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -28,7 +28,7 @@ export const FETCH_ALL_LOST_DEVICES_DATAS = ({
 
   /*START AGGREGATOS DYNAMIC CODE */
 
-  // export const FETCH_AGGREGATORS_ALL_LOST_DEVICES_DATAS = ({
+  // const FETCH_AGGREGATORS_ALL_LOST_DEVICES_DATAS = ({
   //   commit
   // }, request) => {
   //   console.log("FETCH_AGGREGATORS_ALL_LOST_DEVICES_DATAS ----->",JSON.stringify(request))
@@ -56,7 +56,7 @@ export const FETCH_ALL_LOST_DEVICES_DATAS = ({
   /*END AGGREGATOS DYNAMIC CODE */
 
   /*START AGGREGATOS STATIC CODE */
-  export const FETCH_AGGREGATORS_ALL_LOST_DEVICES_DATAS = ({
+  const FETCH_AGGREGATORS_ALL_LOST_DEVICES_DATAS = ({
     commit
   }, request) => {
     console.log("FETCH_AGGREGATORS_ALL_LOST_DEVICES_DATAS ----->",JSON.stringify(request))
@@ -84,3 +84,9 @@ export const FETCH_ALL_LOST_DEVICES_DATAS = ({
   /*END AGGREGATOS STATIC CODE */
 
    /*Aggregators API*/
+
+
+export default {
+  FETCH_AGGREGATORS_ALL_LOST_DEVICES_DATAS,
+  FETCH_ALL_LOST_DEVICES_DATAS
+};

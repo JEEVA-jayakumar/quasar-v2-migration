@@ -1,3 +1,8 @@
-export const getAllPincodes = (state) => {
+const getAllPincodes = (state) => {
   return state.pincodes
 }
+
+
+export default {
+  getAllPincodes
+};

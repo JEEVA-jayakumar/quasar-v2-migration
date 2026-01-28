@@ -1,6 +1,12 @@
-export const getActiveMerchantCategory = state => {
+const getActiveMerchantCategory = state => {
   return state.activeMerchantCategory;
 };
-export const getDeActivatedMerchantCategory = state => {
+const getDeActivatedMerchantCategory = state => {
   return state.deActivatedMerchantCategory;
+};
+
+
+export default {
+  getActiveMerchantCategory,
+  getDeActivatedMerchantCategory
 };

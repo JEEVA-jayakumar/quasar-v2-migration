@@ -1,8 +1,14 @@
-export const getInventoryUpdatedPodDetails = (state) => {
+const getInventoryUpdatedPodDetails = (state) => {
     return state.InventoryUpdatedPodDetails
   }
 
 
-  export const getPhonepeInventoryUpdatedPodDetails = (state) => {
+  const getPhonepeInventoryUpdatedPodDetails = (state) => {
     return state.PhonepeInventoryUpdatedPodDetails
   }
+
+
+export default {
+  getInventoryUpdatedPodDetails,
+  getPhonepeInventoryUpdatedPodDetails
+};

@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const DEVICE_RECOVERY_ASSIGNED_LIST = async ({ commit }, request) => {
+const DEVICE_RECOVERY_ASSIGNED_LIST = async ({ commit }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
 
   const response = await api.get(
@@ -15,7 +15,7 @@ export const DEVICE_RECOVERY_ASSIGNED_LIST = async ({ commit }, request) => {
   return response;
 };
 
-export const DEVICE_RECOVERY_UNASSIGNED_LIST = async ({ commit }, request) => {
+const DEVICE_RECOVERY_UNASSIGNED_LIST = async ({ commit }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
   const sortBy = request.pagination.sortBy || "createdAt";
 
@@ -32,10 +32,16 @@ export const DEVICE_RECOVERY_UNASSIGNED_LIST = async ({ commit }, request) => {
 };
 
 // Remove unused 'commit' parameter
-export const DEVICE_RECOVERY_SUBMIT = async (_, request) => {
+const DEVICE_RECOVERY_SUBMIT = async (_, request) => {
   const response = await api.put(
     `device-recovery-assigned-to/${request.userId}`,
     request
   );
   return response;
+};
+
+export default {
+  DEVICE_RECOVERY_ASSIGNED_LIST,
+  DEVICE_RECOVERY_UNASSIGNED_LIST,
+  DEVICE_RECOVERY_SUBMIT
 };

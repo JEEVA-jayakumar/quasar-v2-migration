@@ -1,10 +1,17 @@
-export const getCreatedAggregatorList = state => {
+const getCreatedAggregatorList = state => {
     return state.getAggregatorList;
 };
 
-export const getActiveCreatedAggregatorList = state => {
+const getActiveCreatedAggregatorList = state => {
     return state.getActiveAggregatorList;
 };
-export const getInventoryWithSOAggregatorList = state => {
+const getInventoryWithSOAggregatorList = state => {
     return state.getInventoryWithSoList;
+};
+
+
+export default {
+  getCreatedAggregatorList,
+  getActiveCreatedAggregatorList,
+  getInventoryWithSOAggregatorList
 };

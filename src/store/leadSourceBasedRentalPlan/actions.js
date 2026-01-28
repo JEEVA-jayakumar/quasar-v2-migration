@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const LEAD_AND_DEVICE_BASED_RENTAL1 = ({
+const LEAD_AND_DEVICE_BASED_RENTAL1 = ({
   commit
 }, request) => {
   console.log("ACTION LEAD_AND_DEVICE_BASED_RENTAL 124345 -------->", JSON.stringify(request));
@@ -25,7 +25,7 @@ export const LEAD_AND_DEVICE_BASED_RENTAL1 = ({
     });
 };
 
-export const LEAD_AND_DEVICE_BASED_RENTAL = ({
+const LEAD_AND_DEVICE_BASED_RENTAL = ({
   commit
 }, request) => {
   console.log("ACTION LEAD_AND_DEVICE_BASED_RENTAL 124345 -------->", JSON.stringify(request));
@@ -46,4 +46,9 @@ export const LEAD_AND_DEVICE_BASED_RENTAL = ({
       console.error("Error fetching lead and device based rental:", error);
       throw error;
     });
+};
+
+export default {
+  LEAD_AND_DEVICE_BASED_RENTAL1,
+  LEAD_AND_DEVICE_BASED_RENTAL
 };

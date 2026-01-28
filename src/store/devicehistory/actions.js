@@ -1,7 +1,7 @@
 import api from "../api.js";
 
 // Fetch device history
-export const DEVICE_WITH_HISTORY = async ({ commit }, request) => {
+const DEVICE_WITH_HISTORY = async ({ commit }, request) => {
   // Remove unused 'sorting' variable
   // const sorting = request.pagination.descending ? "asc" : "desc";
   
@@ -13,7 +13,7 @@ export const DEVICE_WITH_HISTORY = async ({ commit }, request) => {
 };
 
 // Fetch aggregator device history
-export const AGGREGATORS_DEVICE_WITH_HISTORY = async ({ commit }, request) => {
+const AGGREGATORS_DEVICE_WITH_HISTORY = async ({ commit }, request) => {
   console.log("AGGREGATORS_DEVICE_WITH_HISTORY -------->", JSON.stringify(request));
 
   const selectedTabId = JSON.parse(localStorage.getItem("selectedTab").split('|')[1]);
@@ -22,4 +22,9 @@ export const AGGREGATORS_DEVICE_WITH_HISTORY = async ({ commit }, request) => {
   );
   commit("SET_AGGREGATORS_DEVICE_WITH_HISTORY", response.data.data);
   return response;
+};
+
+export default {
+  DEVICE_WITH_HISTORY,
+  AGGREGATORS_DEVICE_WITH_HISTORY
 };

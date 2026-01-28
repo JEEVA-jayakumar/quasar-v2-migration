@@ -1,2 +1,8 @@
-export const getDocumentApprove = (state) => state.documentApprove;
-export const getDocumentReject = (state) => state.documentReject;
+const getDocumentApprove = (state) => state.documentApprove;
+const getDocumentReject = (state) => state.documentReject;
+
+
+export default {
+  getDocumentApprove,
+  getDocumentReject
+};

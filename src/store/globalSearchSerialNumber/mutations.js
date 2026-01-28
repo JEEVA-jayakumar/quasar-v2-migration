@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
    
     let statusMessage;
     if (payload.apiStatusCode == 200) {
@@ -36,3 +36,8 @@ export const API_RESPONSE_LOG = (state, payload) => {
   SET_FETCH_PHONE_PE_GLOBAL_SEARCH_DATAS= (state, payload) => {
     state.AggregatorsglobalSearchSerialNumber = payload;
   }
+
+
+export default {
+  API_RESPONSE_LOG
+};

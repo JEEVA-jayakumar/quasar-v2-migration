@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const FETCH_ALL_MPOS_SUBCATEGORY = ({
+const FETCH_ALL_MPOS_SUBCATEGORY = ({
   commit
   // Removed unused rootState parameter
 }, request) => {
@@ -19,4 +19,8 @@ export const FETCH_ALL_MPOS_SUBCATEGORY = ({
       });
       commit("SET_ALL_MPOS_SUB_CATEGORY", mposSubCategory);
     });
+};
+
+export default {
+  FETCH_ALL_MPOS_SUBCATEGORY
 };

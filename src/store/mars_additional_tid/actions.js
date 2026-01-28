@@ -1,7 +1,7 @@
 import api from "../api.js";
 // Removed unused Vue import for Vue 3 compatibility
 
-export const ADDITIONAL_TID_FROM_MARS = ({
+const ADDITIONAL_TID_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -32,7 +32,7 @@ export const ADDITIONAL_TID_FROM_MARS = ({
     });
 };
 
-export const ADDITIONAL_TID_FROM_BACK_END = ({ commit }, request) => {
+const ADDITIONAL_TID_FROM_BACK_END = ({ commit }, request) => {
   // Removed unused rootState parameter
   console.log("ACTION LEAD ID------------->"+JSON.stringify(request.params.Id.leadId))
   console.log("ACTION COUNT-------------->"+JSON.stringify(request.params.Count.count))
@@ -47,4 +47,9 @@ export const ADDITIONAL_TID_FROM_BACK_END = ({ commit }, request) => {
       console.error("Error fetching additional TID from backend:", error);
       throw error;
     });
+};
+
+export default {
+  ADDITIONAL_TID_FROM_MARS,
+  ADDITIONAL_TID_FROM_BACK_END
 };

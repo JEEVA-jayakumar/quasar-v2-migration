@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const FETCH_ALL_MPOS_STATE = ({
+const FETCH_ALL_MPOS_STATE = ({
   commit,
   rootState
 }) => {
@@ -26,4 +26,8 @@ export const FETCH_ALL_MPOS_STATE = ({
       console.error("Error fetching MPOS states:", error);
       throw error;
     });
+};
+
+export default {
+  FETCH_ALL_MPOS_STATE
 };

@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_CRM_GLOBAL_SEARCH_DATAS = async ({ commit }, request) => {
+const FETCH_CRM_GLOBAL_SEARCH_DATAS = async ({ commit }, request) => {
   try {
     const response = await api.get(
       `crm-request/searchTicket/${request.searchTerm}`
@@ -37,6 +37,12 @@ export const FETCH_CRM_GLOBAL_SEARCH_DATAS = async ({ commit }, request) => {
   }
 }
 
-export const someAction = () => {
+const someAction = () => {
   // intentionally empty (kept for compatibility)
 }
+
+
+export default {
+  FETCH_CRM_GLOBAL_SEARCH_DATAS,
+  someAction
+};

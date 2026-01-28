@@ -1,6 +1,6 @@
 import * as Vue from "vue";
 
-export const INSTITUTIONCODE_FROM_FROM_MARS = ({
+const INSTITUTIONCODE_FROM_FROM_MARS = ({
   commit,
   rootState
 }) => {
@@ -18,4 +18,8 @@ export const INSTITUTIONCODE_FROM_FROM_MARS = ({
       });
       commit("SET_INSTITUTION_CODE", institutionCode);
     });
+};
+
+export default {
+  INSTITUTIONCODE_FROM_FROM_MARS
 };

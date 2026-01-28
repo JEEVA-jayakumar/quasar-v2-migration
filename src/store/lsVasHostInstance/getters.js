@@ -1,4 +1,9 @@
-export const getlsVasHostInstanceDetails = state => {
+const getlsVasHostInstanceDetails = state => {
     console.log("GETTER lsVasHostInstanceDetails ----->",JSON.stringify(state.lsVasHostInstanceDetails))
     return state.lsVasHostInstanceDetails;
+};
+
+
+export default {
+  getlsVasHostInstanceDetails
 };

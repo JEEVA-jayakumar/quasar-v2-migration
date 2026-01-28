@@ -1,3 +1,8 @@
-export const getBankSO = (state) => {
+const getBankSO = (state) => {
   return state.bankSO;
+};
+
+
+export default {
+  getBankSO
 };

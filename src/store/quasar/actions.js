@@ -1,3 +1,8 @@
 /*
-export const someAction = (state) => {}
+const someAction = (state) => {}
  */
+
+
+export default {
+  someAction
+};

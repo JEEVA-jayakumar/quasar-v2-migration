@@ -1,15 +1,22 @@
-export const getMasterTrackerList = (state) => {
+const getMasterTrackerList = (state) => {
   return state.masterTrackerList
 }
  /*AGGREGATORS API */
 
-export const getAggregatorsMasterTrackerList = (state) => {
+const getAggregatorsMasterTrackerList = (state) => {
   return state.AggregatorsMasterTrackerList
 }
 
 
 /*AGGREGATORS API */
-export const getApproveLostOrStolenData = (state) => {
+const getApproveLostOrStolenData = (state) => {
   return state.ApproveLostOrStolenData
 }
 
+
+
+export default {
+  getMasterTrackerList,
+  getAggregatorsMasterTrackerList,
+  getApproveLostOrStolenData
+};

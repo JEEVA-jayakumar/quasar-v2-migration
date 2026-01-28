@@ -5,7 +5,7 @@ const buildSort = (pagination) =>
 
 /* -------------------------------- EQUITAS -------------------------------- */
 
-export const EQUITAS_TRACKER_LIST = ({ commit }, request) => {
+const EQUITAS_TRACKER_LIST = ({ commit }, request) => {
   const { pagination, filter, formData } = request
   const params = new URLSearchParams({
     page: pagination.page,
@@ -30,7 +30,7 @@ export const EQUITAS_TRACKER_LIST = ({ commit }, request) => {
 
 /* ---------------------------- BIJLIPAY DEACTIVE ---------------------------- */
 
-export const BIJLIPAY_DEACTIVE_LIST = ({ commit }, request) => {
+const BIJLIPAY_DEACTIVE_LIST = ({ commit }, request) => {
   const { pagination, filter, formData } = request
   const params = new URLSearchParams({
     page: pagination.page,
@@ -55,7 +55,7 @@ export const BIJLIPAY_DEACTIVE_LIST = ({ commit }, request) => {
 
 /* ---------------------- AGGREGATOR IMPLEMENTED QUEUE ---------------------- */
 
-export const AGGREGATOR_IMPLEMENTED_VERIFICATION_QUEUE = ({ commit }, request) => {
+const AGGREGATOR_IMPLEMENTED_VERIFICATION_QUEUE = ({ commit }, request) => {
   const { pagination, filter, formData } = request
   const aggId = JSON.parse(localStorage.getItem('selectedTab'))?.split('|')[1]
 
@@ -84,7 +84,7 @@ export const AGGREGATOR_IMPLEMENTED_VERIFICATION_QUEUE = ({ commit }, request) =
 
 /* -------------------------- AGGREGATOR DEACTIVE -------------------------- */
 
-export const AGGREGATOR_DEACTIVE_LIST = ({ commit }, request) => {
+const AGGREGATOR_DEACTIVE_LIST = ({ commit }, request) => {
   const { pagination, filter, formData } = request
   const aggId = JSON.parse(localStorage.getItem('selectedTab'))?.split('|')[1]
 
@@ -111,7 +111,7 @@ export const AGGREGATOR_DEACTIVE_LIST = ({ commit }, request) => {
 
 /* ---------------------------- SERVICE TICKETS ---------------------------- */
 
-export const SERVICE_TICKET_LIST = ({ commit }, request) => {
+const SERVICE_TICKET_LIST = ({ commit }, request) => {
   const { pagination, filter } = request
   const params = new URLSearchParams({
     page: pagination.page,
@@ -126,13 +126,13 @@ export const SERVICE_TICKET_LIST = ({ commit }, request) => {
     .then(res => commit('SET_SERVICE_TICKET_LIST', res.data.data))
 }
 
-export const SERVICE_TICKET_APPROVE = ({ commit }, request) => {
+const SERVICE_TICKET_APPROVE = ({ commit }, request) => {
   return api
     .put(`service-request/approve-service-ticket/${request.id}/1`)
     .then(res => commit('SET_SERVICE_TICKET_APPROVE', res))
 }
 
-export const SERVICE_TICKET_REJECT = ({ commit }, request) => {
+const SERVICE_TICKET_REJECT = ({ commit }, request) => {
   return api
     .put(
       `service-request/approve-service-ticket/${request.id}/2`,
@@ -140,3 +140,14 @@ export const SERVICE_TICKET_REJECT = ({ commit }, request) => {
     )
     .then(res => commit('SET_SERVICE_TICKET_REJECT', res))
 }
+
+
+export default {
+  EQUITAS_TRACKER_LIST,
+  BIJLIPAY_DEACTIVE_LIST,
+  AGGREGATOR_IMPLEMENTED_VERIFICATION_QUEUE,
+  AGGREGATOR_DEACTIVE_LIST,
+  SERVICE_TICKET_LIST,
+  SERVICE_TICKET_APPROVE,
+  SERVICE_TICKET_REJECT
+};

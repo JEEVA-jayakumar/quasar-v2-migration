@@ -1,5 +1,11 @@
-export const getActiveandDeactiveLeadSource = (state) =>
+const getActiveandDeactiveLeadSource = (state) =>
   state.activeanddeactiveLeadSource
 
-export const getDeactiveLeadSource = (state) =>
+const getDeactiveLeadSource = (state) =>
   state.deactiveLeadSource
+
+
+export default {
+  getActiveandDeactiveLeadSource,
+  getDeactiveLeadSource
+};

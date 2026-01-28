@@ -1,8 +1,13 @@
-export function getstaticQrPaymentTrackerData (state) {
+function getstaticQrPaymentTrackerData (state) {
     return state.staticQrPaymentTrackerData
   }
-  export function getstaticQrApprovedTrackerData (state) {
+  function getstaticQrApprovedTrackerData (state) {
    
     return state.staticQrApprovedTrackerData
     
   }
+
+export default {
+  getstaticQrApprovedTrackerData,
+  getstaticQrPaymentTrackerData
+};

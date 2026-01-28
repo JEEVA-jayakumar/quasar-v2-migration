@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const DEVICE_WITH_BPREGION = ({ commit }, request) => {
+const DEVICE_WITH_BPREGION = ({ commit }, request) => {
   if (request.filter == '') {
     return api
       .get(
@@ -26,4 +26,8 @@ export const DEVICE_WITH_BPREGION = ({ commit }, request) => {
         commit("SET_DEVICE_WITH_BPREGION", response.data.data);
       });
   }
+};
+
+export default {
+  DEVICE_WITH_BPREGION
 };

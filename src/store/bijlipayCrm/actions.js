@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCH_BIJLIPAY_PENDING_CRM = async ({ commit }, request) => {
+const FETCH_BIJLIPAY_PENDING_CRM = async ({ commit }, request) => {
   try {
     const sorting = request.pagination.descending ? 'asc' : 'desc';
 
@@ -20,7 +20,7 @@ export const FETCH_BIJLIPAY_PENDING_CRM = async ({ commit }, request) => {
   }
 };
 
-export const FETCH_BIJLIPAY_COMPLETED_DATA = async ({ commit }, request) => {
+const FETCH_BIJLIPAY_COMPLETED_DATA = async ({ commit }, request) => {
   try {
     const sorting = request.pagination.descending ? 'asc' : 'desc';
 
@@ -40,7 +40,7 @@ export const FETCH_BIJLIPAY_COMPLETED_DATA = async ({ commit }, request) => {
   }
 };
 
-export const BIJLIPAY_CRM_DATE = async ({ commit }, request) => {
+const BIJLIPAY_CRM_DATE = async ({ commit }, request) => {
   try {
     const sorting = request.pagination.descending ? 'asc' : 'desc';
 
@@ -60,7 +60,7 @@ export const BIJLIPAY_CRM_DATE = async ({ commit }, request) => {
   }
 };
 
-export const UPDATE_CRM_REMARKS = async ({ commit }, request) => {
+const UPDATE_CRM_REMARKS = async ({ commit }, request) => {
   try {
     const response = await api.put(
       `crm-request/updateCrmRemark/${request.serviceRequest}`,
@@ -75,7 +75,7 @@ export const UPDATE_CRM_REMARKS = async ({ commit }, request) => {
   }
 };
 
-export const ASSIGN_TO_COMPLETE = async (_ctx, request) => {
+const ASSIGN_TO_COMPLETE = async (_ctx, request) => {
   try {
     return await api.put('crm-request/assignTicket/1', request);
   } catch (error) {
@@ -84,11 +84,21 @@ export const ASSIGN_TO_COMPLETE = async (_ctx, request) => {
   }
 };
 
-export const ESCALATE_TO_SAT = async (_ctx, request) => {
+const ESCALATE_TO_SAT = async (_ctx, request) => {
   try {
     return await api.put('crm-request/assignTicket/2', request);
   } catch (error) {
     console.error('ESCALATE_TO_SAT error:', error);
     throw error;
   }
+};
+
+
+export default {
+  FETCH_BIJLIPAY_PENDING_CRM,
+  FETCH_BIJLIPAY_COMPLETED_DATA,
+  BIJLIPAY_CRM_DATE,
+  UPDATE_CRM_REMARKS,
+  ASSIGN_TO_COMPLETE,
+  ESCALATE_TO_SAT
 };

@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const REGION_FROM_MARS = ({
+const REGION_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -19,4 +19,8 @@ export const REGION_FROM_MARS = ({
       console.error("Error fetching regions from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  REGION_FROM_MARS
 };

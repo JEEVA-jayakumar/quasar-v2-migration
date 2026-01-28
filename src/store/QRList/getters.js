@@ -1,6 +1,11 @@
-export function getAllQRList(state) {
+function getAllQRList(state) {
     return state.QRList
 }
-export function getAllQRList1(state) {
+function getAllQRList1(state) {
     return state.QRList1
 }
+
+export default {
+  getAllQRList,
+  getAllQRList1
+};

@@ -12,7 +12,7 @@ const getBaseUrl = (isAssigned, tabValue) => {
     : `aggregator-inventory/agg-device-recovery-tracker-lst/${tabValue}${suffix}`
 }
 
-export const AGGREGATOR_DEVICE_RECOVERY_ASSIGNED_LIST = async ({ commit }, request) => {
+const AGGREGATOR_DEVICE_RECOVERY_ASSIGNED_LIST = async ({ commit }, request) => {
   const tabValue = getSelectedTabValue()
   if (!tabValue) return
 
@@ -28,7 +28,7 @@ export const AGGREGATOR_DEVICE_RECOVERY_ASSIGNED_LIST = async ({ commit }, reque
   commit('SET_AGGREGATOR_DEVICE_RECOVERY_ASSIGNED_LIST', response.data.data)
 }
 
-export const AGGREGATOR_DEVICE_RECOVERY_UNASSIGNED_LIST = async ({ commit }, request) => {
+const AGGREGATOR_DEVICE_RECOVERY_UNASSIGNED_LIST = async ({ commit }, request) => {
   const tabValue = getSelectedTabValue()
   if (!tabValue) return
 
@@ -46,6 +46,13 @@ export const AGGREGATOR_DEVICE_RECOVERY_UNASSIGNED_LIST = async ({ commit }, req
   commit('SET_AGGREGATOR_DEVICE_RECOVERY_UNASSIGNED_LIST', response.data.data)
 }
 
-export const AGGREGATOR_DEVICE_RECOVERY_SUBMIT = async (_, request) => {
+const AGGREGATOR_DEVICE_RECOVERY_SUBMIT = async (_, request) => {
   return await api.put(`device-recovery-assigned-to/${request.userId}`, request)
 }
+
+
+export default {
+  AGGREGATOR_DEVICE_RECOVERY_ASSIGNED_LIST,
+  AGGREGATOR_DEVICE_RECOVERY_UNASSIGNED_LIST,
+  AGGREGATOR_DEVICE_RECOVERY_SUBMIT
+};

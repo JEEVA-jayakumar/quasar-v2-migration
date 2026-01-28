@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCH_UNASSIGNED_SERVICE_REQUEST_DATAS = ({
+const FETCH_UNASSIGNED_SERVICE_REQUEST_DATAS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -25,7 +25,7 @@ export const FETCH_UNASSIGNED_SERVICE_REQUEST_DATAS = ({
     });
 };
 
-export const FETCH_ASSIGNED_SERVICE_REQUEST_DATAS = ({
+const FETCH_ASSIGNED_SERVICE_REQUEST_DATAS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -50,7 +50,7 @@ export const FETCH_ASSIGNED_SERVICE_REQUEST_DATAS = ({
     });
 };
 
-export const FETCH_CLOSED_SERVICE_REQUEST_DATAS = ({
+const FETCH_CLOSED_SERVICE_REQUEST_DATAS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -74,7 +74,7 @@ export const FETCH_CLOSED_SERVICE_REQUEST_DATAS = ({
     });
 };
 
-export const FETCH_CANCELLED_SERVICE_REQUEST_DATAS = ({
+const FETCH_CANCELLED_SERVICE_REQUEST_DATAS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -99,7 +99,7 @@ export const FETCH_CANCELLED_SERVICE_REQUEST_DATAS = ({
 };
 
 // Remove unused commit parameter
-export const SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE = (context, request) => {
+const SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE = (context, request) => {
   console.log("SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE-->", JSON.stringify(request))
   return api
     .post(
@@ -108,10 +108,19 @@ export const SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE = (context, request) =>
 };
 
 // Remove unused request parameter
-export const FETCH_SERVICE_REQUEST_COUNT_DETAILS = ({commit}) => {
+const FETCH_SERVICE_REQUEST_COUNT_DETAILS = ({commit}) => {
   return api
     .get("service-request/getRequestCount").then(response => {
       console.log("FETCH_SERVICE_REQUEST_COUNT_DETAILS", response)
       commit("SET_SERVICE_REQUEST_COUNT_DETAILS", response.data.data);
     });
+};
+
+export default {
+  FETCH_UNASSIGNED_SERVICE_REQUEST_DATAS,
+  FETCH_ASSIGNED_SERVICE_REQUEST_DATAS,
+  FETCH_CLOSED_SERVICE_REQUEST_DATAS,
+  FETCH_CANCELLED_SERVICE_REQUEST_DATAS,
+  SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE,
+  FETCH_SERVICE_REQUEST_COUNT_DETAILS
 };

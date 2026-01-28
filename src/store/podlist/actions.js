@@ -1,7 +1,7 @@
 import api from "../api.js";
 // Removed unused Vue import
 
-export const FETCH_POD_LIST = ({
+const FETCH_POD_LIST = ({
     commit
   }, request) => {
      let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -24,3 +24,7 @@ export const FETCH_POD_LIST = ({
         commit('SET_ALL_POD_LIST', response.data.data);
       });
   };
+
+export default {
+  FETCH_POD_LIST
+};

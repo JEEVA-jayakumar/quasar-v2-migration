@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_AGGREGATOR_TID = ({ commit }, request) => {
+const FETCH_AGGREGATOR_TID = ({ commit }, request) => {
   return api.get(`getTid/${request}`)
     .then(response => {
       const tid = response.data.data.map(item => ({
@@ -13,14 +13,14 @@ export const FETCH_AGGREGATOR_TID = ({ commit }, request) => {
 }
 
 // Remove unused 'commit' parameter
-export const FETCH_AGGREGATOR_TID_SERIAL_NUMBER = (_, request) => {
+const FETCH_AGGREGATOR_TID_SERIAL_NUMBER = (_, request) => {
   return api.get(
     `aggregator-inventory/get-aggregator-serialNo/${request.url.tid}`
   )
 }
 
 // Remove unused 'commit' parameter
-export const UPDATE_AGGREGATOR_SERIAL_NUMBER = (_, request) => {
+const UPDATE_AGGREGATOR_SERIAL_NUMBER = (_, request) => {
   const selectedTab = localStorage.getItem('selectedTab')
   const aggregatorId = selectedTab
     ? JSON.parse(selectedTab.split('|')[1])
@@ -30,3 +30,9 @@ export const UPDATE_AGGREGATOR_SERIAL_NUMBER = (_, request) => {
     `aggregator-inventory/agg-update-device-serialNo/${aggregatorId}/${request.url.tid}/${request.url.newSerialNumber}`
   )
 }
+
+export default {
+  FETCH_AGGREGATOR_TID,
+  FETCH_AGGREGATOR_TID_SERIAL_NUMBER,
+  UPDATE_AGGREGATOR_SERIAL_NUMBER
+};

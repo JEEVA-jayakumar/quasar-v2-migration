@@ -1,3 +1,8 @@
-export const getApplicationNumber = state => {
+const getApplicationNumber = state => {
   return state.applicationNumber;
+};
+
+
+export default {
+  getApplicationNumber
 };

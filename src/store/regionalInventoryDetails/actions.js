@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCHING_INCOMING_POD_LIST_DETAILS = ({ commit }, request) => {
+const FETCHING_INCOMING_POD_LIST_DETAILS = ({ commit }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
   return api
     .get(
@@ -23,7 +23,7 @@ export const FETCHING_INCOMING_POD_LIST_DETAILS = ({ commit }, request) => {
 };
 
 /* PHONEPE API START */
-export const FETCHING_PHONEPE_INCOMING_POD_LIST_DETAILS = ({ commit }, request) => {
+const FETCHING_PHONEPE_INCOMING_POD_LIST_DETAILS = ({ commit }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
   return api
     .get(
@@ -48,7 +48,7 @@ export const FETCHING_PHONEPE_INCOMING_POD_LIST_DETAILS = ({ commit }, request) 
 };
 /* PHONEPE API END */
 
-export const FETCHING_INCOMING_STOCKS_POD_LIST_DETAILS = ({ commit }, request) => {
+const FETCHING_INCOMING_STOCKS_POD_LIST_DETAILS = ({ commit }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
   return api
     .get(
@@ -71,7 +71,7 @@ export const FETCHING_INCOMING_STOCKS_POD_LIST_DETAILS = ({ commit }, request) =
 };
 
 /* PHONEPE API START */
-export const FETCHING_PHONEPE_INCOMING_STOCKS_POD_LIST_DETAILS = ({ commit }, request) => {
+const FETCHING_PHONEPE_INCOMING_STOCKS_POD_LIST_DETAILS = ({ commit }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
   return api
     .get(
@@ -96,7 +96,7 @@ export const FETCHING_PHONEPE_INCOMING_STOCKS_POD_LIST_DETAILS = ({ commit }, re
 };
 /* PHONEPE API END */
 
-export const FETCHING_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS = ({ commit }, request) => {
+const FETCHING_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS = ({ commit }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
   return api
     .get(
@@ -119,7 +119,7 @@ export const FETCHING_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS = ({ commit }, requ
 };
 
 /* PHONEPE API START */
-export const FETCHING_PHONEPE_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS = ({ commit }, request) => {
+const FETCHING_PHONEPE_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS = ({ commit }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
   return api
     .get(
@@ -145,7 +145,7 @@ export const FETCHING_PHONEPE_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS = ({ commit
 /* PHONEPE API END */
 
 // These actions don't use the request parameter, so it's removed
-export const FETCH_SPARE_PARTS_SETS_AND_COUNTS = ({commit}) => {
+const FETCH_SPARE_PARTS_SETS_AND_COUNTS = ({commit}) => {
   return api
     .get("pod-region/regionSpareCount")
     .then(response => {
@@ -154,7 +154,7 @@ export const FETCH_SPARE_PARTS_SETS_AND_COUNTS = ({commit}) => {
 };
 
 /* PHONEPE API START */
-export const FETCH_PHONEPE_SPARE_PARTS_SETS_AND_COUNTS = ({commit}) => {
+const FETCH_PHONEPE_SPARE_PARTS_SETS_AND_COUNTS = ({commit}) => {
   return api
     .get("aggregator-spare-parts/agg-regionSpareCount/" + 
       JSON.parse(localStorage.getItem("selectedTab").split('|')[1]))
@@ -165,12 +165,12 @@ export const FETCH_PHONEPE_SPARE_PARTS_SETS_AND_COUNTS = ({commit}) => {
 /* PHONEPE API END */
 
 // These actions don't use commit, so remove it from destructuring
-export const REJECT_INCOMING_POD_DETAILS = (_, request) => {
+const REJECT_INCOMING_POD_DETAILS = (_, request) => {
   return api.post("spare-pod/updatePod/" + request.pod_number + "/0", request);
 };
 
 /* PHONEPE API START */
-export const REJECT_PHONEPE_INCOMING_POD_DETAILS = (_, request) => {
+const REJECT_PHONEPE_INCOMING_POD_DETAILS = (_, request) => {
   return api.post(
     "aggregator-spare-parts/agg-updatePod/" + 
     request.pod_number + 
@@ -181,12 +181,12 @@ export const REJECT_PHONEPE_INCOMING_POD_DETAILS = (_, request) => {
 };
 /* PHONEPE API END */
 
-export const APPROVE_INCOMING_POD_DETAILS = (_, request) => {
+const APPROVE_INCOMING_POD_DETAILS = (_, request) => {
   return api.post("spare-pod/updatePod/" + request.pod_number + "/1", request);
 };
 
 /* PHONEPE API START */
-export const APPROVE_PHONEPE_INCOMING_POD_DETAILS = (_, request) => {
+const APPROVE_PHONEPE_INCOMING_POD_DETAILS = (_, request) => {
   return api.post(
     "aggregator-spare-parts/agg-updatePod/" + 
     request.pod_number + 
@@ -196,3 +196,18 @@ export const APPROVE_PHONEPE_INCOMING_POD_DETAILS = (_, request) => {
   );
 };
 /* PHONEPE API END */
+
+export default {
+  FETCHING_INCOMING_POD_LIST_DETAILS,
+  FETCHING_PHONEPE_INCOMING_POD_LIST_DETAILS,
+  FETCHING_INCOMING_STOCKS_POD_LIST_DETAILS,
+  FETCHING_PHONEPE_INCOMING_STOCKS_POD_LIST_DETAILS,
+  FETCHING_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS,
+  FETCHING_PHONEPE_INCOMING_ALLOCATED_SO_POD_LIST_DETAILS,
+  FETCH_SPARE_PARTS_SETS_AND_COUNTS,
+  FETCH_PHONEPE_SPARE_PARTS_SETS_AND_COUNTS,
+  REJECT_INCOMING_POD_DETAILS,
+  REJECT_PHONEPE_INCOMING_POD_DETAILS,
+  APPROVE_INCOMING_POD_DETAILS,
+  APPROVE_PHONEPE_INCOMING_POD_DETAILS
+};

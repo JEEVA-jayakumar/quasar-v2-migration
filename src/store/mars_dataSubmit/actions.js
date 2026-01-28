@@ -14,7 +14,7 @@ function commonDateFormat(selectedDate) {
   }
 }
 
-export const MARS_DATA_SUBMIT_INTERNAL = (_, request) => {
+const MARS_DATA_SUBMIT_INTERNAL = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post(
     "submit-to-mars-data-information/" +
@@ -25,7 +25,7 @@ export const MARS_DATA_SUBMIT_INTERNAL = (_, request) => {
   );
 };
 
-export const MARS_DATA_SUBMIT_INTERNAL_CHANGEMANAGEMENT = (_, request) => {
+const MARS_DATA_SUBMIT_INTERNAL_CHANGEMANAGEMENT = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post(
     "submit-to-mars-data-information/" +
@@ -35,7 +35,7 @@ export const MARS_DATA_SUBMIT_INTERNAL_CHANGEMANAGEMENT = (_, request) => {
   );
 };
 
-export const MARS_DATA_SUBMIT_EXTERNAL = ({
+const MARS_DATA_SUBMIT_EXTERNAL = ({
   rootState // Keep rootState, removed unused commit
 }, request) => {
   console.log("Test" + localStorage.getItem("aa_t"));
@@ -224,7 +224,7 @@ export const MARS_DATA_SUBMIT_EXTERNAL = ({
   }
 };
 
-export const MARS_DATA_EXTERNAL_SUBMIT_RESPONSE = (
+const MARS_DATA_EXTERNAL_SUBMIT_RESPONSE = (
   _, // Changed from { commit, rootState } to _ since neither is used
   request
 ) => {
@@ -234,19 +234,19 @@ export const MARS_DATA_EXTERNAL_SUBMIT_RESPONSE = (
   );
 }; 
 
-export const SAT_TO_MARS_LEADDETAILS_SHARING_TO_HITACHI = (_, request) => {
+const SAT_TO_MARS_LEADDETAILS_SHARING_TO_HITACHI = (_, request) => {
   // Changed from { commit, rootState } to _ since neither is used
   console.log("SAT_TO_MARS_LEADDETAILS_SHARING_TO_HITACHI datasss --------->", request)
   return api.post("update-lead_data-submit-to-mars/" + request.leadId, request.request);
 };
 
 //mars-device-details/submit-sub-tid-merchant-ref-code
-export const SUBMIT_SUB_TID_MERCHANT_REF_CODE_DETAILS = (_, request) => {
+const SUBMIT_SUB_TID_MERCHANT_REF_CODE_DETAILS = (_, request) => {
   // Changed from { commit, rootState } to _ since neither is used
   return api.post("mars-device-details/submit-sub-tid-merchant-ref-code/" + request.marsDeviceId + "/" + request.merchantRefCode);
 };
 
-export const FETCH_SAVED_DATA_FROM_OWN_DB = ({
+const FETCH_SAVED_DATA_FROM_OWN_DB = ({
   commit // Keep commit, removed unused rootState
 },
   request
@@ -259,7 +259,7 @@ export const FETCH_SAVED_DATA_FROM_OWN_DB = ({
     });
 };
 
-export const MARS_STATIC_QR_DATA_SUBMIT = ({
+const MARS_STATIC_QR_DATA_SUBMIT = ({
   rootState // Keep rootState, removed unused commit
 }, request) => {
   let variable = localStorage.getItem("bb_t")
@@ -291,7 +291,7 @@ export const MARS_STATIC_QR_DATA_SUBMIT = ({
   }
 }
 
-export const MARS_CHECK_STATUS_API = ({
+const MARS_CHECK_STATUS_API = ({
   rootState // Keep rootState, removed unused commit
 },
   request
@@ -314,9 +314,22 @@ export const MARS_CHECK_STATUS_API = ({
     });
 };
 
-export const EQUITAS_FRM_DATA = (_, request) => {
+const EQUITAS_FRM_DATA = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post(
     "store-equitas-frm-details",request
   );
+};
+
+export default {
+  MARS_DATA_SUBMIT_INTERNAL,
+  MARS_DATA_SUBMIT_INTERNAL_CHANGEMANAGEMENT,
+  MARS_DATA_SUBMIT_EXTERNAL,
+  MARS_DATA_EXTERNAL_SUBMIT_RESPONSE,
+  SAT_TO_MARS_LEADDETAILS_SHARING_TO_HITACHI,
+  SUBMIT_SUB_TID_MERCHANT_REF_CODE_DETAILS,
+  FETCH_SAVED_DATA_FROM_OWN_DB,
+  MARS_STATIC_QR_DATA_SUBMIT,
+  MARS_CHECK_STATUS_API,
+  EQUITAS_FRM_DATA
 };

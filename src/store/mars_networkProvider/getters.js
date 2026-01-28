@@ -1,3 +1,8 @@
-export const networkProviderFromMars = state => {
+const networkProviderFromMars = state => {
   return state.MARS_networkProvider;
+};
+
+
+export default {
+  networkProviderFromMars
 };

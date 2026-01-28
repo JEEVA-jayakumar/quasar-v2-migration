@@ -1,5 +1,5 @@
 import api from '../api.js';
-// export const FETCH_INVENTORY_STOLEN_DATA= (_, request) =>{
+// const FETCH_INVENTORY_STOLEN_DATA= (_, request) =>{
 //     //  let sorting = request.pagination.descending ? 'asc' : 'desc';
 
 //       return api
@@ -17,7 +17,7 @@ import api from '../api.js';
 //         });
 
 //   };
-export const FETCH_INVENTORY_STOLEN_DATA = ({
+const FETCH_INVENTORY_STOLEN_DATA = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -47,7 +47,7 @@ export const FETCH_INVENTORY_STOLEN_DATA = ({
 
 /* START AGGREGATORS DYNAMIC CODE */
 
-// export const FETCH_AGGREGATORS_INVENTORY_STOLEN_DATA = ({
+// const FETCH_AGGREGATORS_INVENTORY_STOLEN_DATA = ({
 //   commit
 // }, request) => {
 //    let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -77,7 +77,7 @@ export const FETCH_INVENTORY_STOLEN_DATA = ({
 
 /* START AGGREGATORS STATIC CODE */
 
-export const FETCH_AGGREGATORS_INVENTORY_STOLEN_DATA = ({
+const FETCH_AGGREGATORS_INVENTORY_STOLEN_DATA = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc';
@@ -108,3 +108,9 @@ export const FETCH_AGGREGATORS_INVENTORY_STOLEN_DATA = ({
 
 /* AGgregators API */
 
+
+
+export default {
+  FETCH_INVENTORY_STOLEN_DATA,
+  FETCH_AGGREGATORS_INVENTORY_STOLEN_DATA
+};

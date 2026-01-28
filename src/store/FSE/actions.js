@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const DEVICE_WITH_FSE = ({
+const DEVICE_WITH_FSE = ({
   commit
 }, request) => {
   if (request.filter == '') {
@@ -32,4 +32,8 @@ export const DEVICE_WITH_FSE = ({
         // END=> COMMIT with data received'
       });
   }
+};
+
+export default {
+  DEVICE_WITH_FSE
 };

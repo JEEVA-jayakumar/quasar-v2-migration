@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const AGG_MASTER_TRACKER_LIST_ALL_DATAS = async ({ commit }, request) => {
+const AGG_MASTER_TRACKER_LIST_ALL_DATAS = async ({ commit }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
 
   const response = await api.get(
@@ -14,4 +14,9 @@ export const AGG_MASTER_TRACKER_LIST_ALL_DATAS = async ({ commit }, request) => 
   commit("SET_AGG_MASTER_TRACKER_LIST_ALL_DATAS", response.data.data);
 
   return response;
+};
+
+
+export default {
+  AGG_MASTER_TRACKER_LIST_ALL_DATAS
 };

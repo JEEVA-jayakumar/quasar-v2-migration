@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const LEAD_STATUS_IN_DETAIL = ({ commit }, request) => {
+const LEAD_STATUS_IN_DETAIL = ({ commit }, request) => {
   return api
     .get(
       "list-of-user-with-lead-status-count-based-on-role/" +
@@ -14,7 +14,7 @@ export const LEAD_STATUS_IN_DETAIL = ({ commit }, request) => {
     });
 };
 
-export const FETCH_ALL_SALES_MANAGER_LEAD_VALIDATIONS_DATA = (
+const FETCH_ALL_SALES_MANAGER_LEAD_VALIDATIONS_DATA = (
   { commit },
   request
 ) => {
@@ -31,7 +31,7 @@ export const FETCH_ALL_SALES_MANAGER_LEAD_VALIDATIONS_DATA = (
     });
 };
 
-export const LEAD_STATUS_IN_DETAIL_SO = ({ commit }, request) => {
+const LEAD_STATUS_IN_DETAIL_SO = ({ commit }, request) => {
   let action;
   let custom_commit;
   if (request.tabsModel == "xtab-1") {
@@ -60,4 +60,10 @@ export const LEAD_STATUS_IN_DETAIL_SO = ({ commit }, request) => {
       // Removed the unused 'data' variable
       commit(custom_commit, response.data.data);
     });
+};
+
+export default {
+  LEAD_STATUS_IN_DETAIL,
+  FETCH_ALL_SALES_MANAGER_LEAD_VALIDATIONS_DATA,
+  LEAD_STATUS_IN_DETAIL_SO
 };

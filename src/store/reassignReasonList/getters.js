@@ -1,3 +1,7 @@
-export const getreassignReasonList = (state) => {
+const getreassignReasonList = (state) => {
     return state.reassignReasonList
   }
+
+export default {
+  getreassignReasonList
+};
