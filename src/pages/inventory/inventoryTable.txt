@@ -1,0 +1,316 @@
+<template>
+  <q-page padding>
+    <div>
+      <!-- Inventory Table Title -->
+      <div class="row bottom-border q-px-md q-py-md items-center">
+        <div class="col-12 q-title text-weight-regular text-grey-9">
+          Inventory Table
+        </div>
+      </div>
+
+      <!-- Central Inventory -->
+      <div class="row bottom-border q-ma-md q-py-md">
+        <div class="col-12 text-weight-regular text-grey-9">Central Inventory</div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <div v-if="inventoryData.centralItems.length" class="row">
+            <div
+              v-for="(device, index) in inventoryData.centralItems"
+              :key="index"
+              class="col-md-2 col-sm-3 col-xs-3 q-ma-xs q-pa-md"
+              :style="{ border: '1px solid ' + device.device.colorCode }"
+              align="center"
+            >
+              <div><big :style="{ color: device.device.colorCode }">{{ device.count }}</big></div>
+              <div>{{ device.device.deviceName }}</div>
+            </div>
+          </div>
+          <div v-else class="row group">
+            <q-alert color="primary" icon="info" label="No data available to display" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Inventory with Regions -->
+      <div class="row bottom-border q-ma-md q-py-md group">
+        <div class="col-12 text-weight-regular text-grey-9">Inventory with regions</div>
+
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <div v-if="inventoryData.regionalItems.length" class="row">
+            <div
+              v-for="(deviceInfo, index) in inventoryData.regionalItems"
+              :key="index"
+              class="col-md-2 col-sm-3 col-xs-3 q-ma-xs q-pa-md"
+              :class="activeItemId === index ? 'shadow-5 bg-grey-5' : 'shadow-0'"
+              :style="{ border: '1px solid ' + deviceInfo.device.colorCode }"
+              align="center"
+              @click="ajaxLoadDataForCentralInventoryByDeviceIdFilter(index, deviceInfo)"
+            >
+              <div><big :style="{ color: deviceInfo.device.colorCode }">{{ deviceInfo.count }}</big></div>
+              <div>{{ deviceInfo.device.deviceName }}</div>
+            </div>
+          </div>
+          <div v-else class="row group">
+            <q-alert color="primary" icon="info" label="No data available to display" />
+          </div>
+        </div>
+
+        <div v-if="inventoryData.regionalItems.length" class="col-md-6">
+          <q-table
+            :rows="getAllInventoryDevicesData"
+            :columns="columnData"
+            row-key="index"
+            :filter="filterSearch"
+            :pagination.sync="paginationControl"
+            :loading="tableAjaxLoading"
+            table-class="customTableClass shadow-0"
+            color="primary"
+          >
+            <template v-slot:top>
+              <div class="col-md-5">
+                <q-search
+                  v-model="filterSearch"
+                  clearable
+                  color="grey-9"
+                  placeholder="Type.."
+                  float-label="Search .."
+                  class="q-mr-lg q-py-sm"
+                />
+              </div>
+            </template>
+          </q-table>
+        </div>
+
+        <div class="col">
+          <q-select
+            v-model="inventoryData.region"
+            :options="inventoryData.regionFilterOptions"
+            placeholder="Select"
+            float-label="Filter By Region Wise"
+            color="grey-9"
+            @input="filterInventoryCountByRegion"
+          />
+        </div>
+      </div>
+
+      <!-- Inventory with SO -->
+      <div class="row bottom-border q-ma-md q-py-md group">
+        <div class="col-12 text-weight-regular text-grey-9">Inventory with SO</div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <div v-if="inventoryData.billPartnerInventory.length" class="row">
+            <div
+              v-for="(device, index) in inventoryData.billPartnerInventory"
+              :key="index"
+              class="col-md-2 col-sm-3 col-xs-3 q-ma-xs q-pa-md"
+              :style="{ border: '1px solid ' + device.device.colorCode }"
+              align="center"
+            >
+              <div><big :style="{ color: device.device.colorCode }">{{ device.count }}</big></div>
+              <div>{{ device.device.deviceName }}</div>
+            </div>
+          </div>
+          <div v-else class="row group">
+            <q-alert color="primary" icon="info" label="No data available to display" />
+          </div>
+        </div>
+        <div class="col">
+          <q-select
+            v-model="inventoryData.so"
+            :options="inventoryData.SOFilterOptions"
+            placeholder="Select"
+            float-label="Filter By SO Wise"
+            color="grey-9"
+            @input="filterInventoryCountBySO"
+          />
+        </div>
+      </div>
+
+      <!-- Reseller and Merchant -->
+      <div class="row bottom-border q-mx-md q-py-md" v-for="(section, index) in ['resellarItems', 'merchantItems']" :key="index">
+        <div class="col-12 text-weight-regular text-grey-9">
+          Inventory with {{ section === 'resellarItems' ? 'Reseller' : 'Merchant' }}
+        </div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <div v-if="inventoryData[section].length" class="row group">
+            <div
+              v-for="(device, i) in inventoryData[section]"
+              :key="i"
+              class="col-md-2 col-sm-3 col-xs-3 q-ma-xs q-pa-md"
+              :style="{ border: '1px solid ' + device.device.colorCode }"
+              align="center"
+            >
+              <div><big :style="{ color: device.device.colorCode }">{{ device.count }}</big></div>
+              <div>{{ device.device.deviceName }}</div>
+            </div>
+          </div>
+          <div v-else class="row group">
+            <q-alert color="primary" icon="info" label="No data available to display" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Faulty Inventory -->
+      <div class="row bottom-border q-mx-md q-py-md" v-for="(section, index) in ['faultyInventory', 'sendtoRepair']" :key="'faulty-'+index">
+        <div class="col-12 text-weight-regular text-grey-9">
+          {{ section === 'faultyInventory' ? 'Faulty Inventory' : 'Send to Repair' }}
+        </div>
+        <div class="col-md-9 col-sm-12 col-xs-12">
+          <div v-if="inventoryData[section].length" class="row group">
+            <div
+              v-for="(device, i) in inventoryData[section]"
+              :key="i"
+              class="col-md-2 col-sm-3 col-xs-3 q-ma-xs q-pa-md"
+              :style="{ border: '1px solid ' + device.device.colorCode }"
+              align="center"
+            >
+              <div><big :style="{ color: device.device.colorCode }">{{ device.count }}</big></div>
+              <div>{{ device.device.deviceName }}</div>
+            </div>
+          </div>
+          <div v-else class="row group">
+            <q-alert color="primary" icon="info" label="No data available to display" />
+          </div>
+        </div>
+      </div>
+
+      <!-- Bulk Upload Modal -->
+      <openAddBulkDeviceModelComp
+        v-if="openBulkUploadModal"
+        :propOpenBulkUploadModal="openBulkUploadModal"
+        @closeModel="fnOpenBulkUploadModal"
+      />
+    </div>
+  </q-page>
+</template>
+
+<script setup>
+import { reactive, ref, computed, onMounted } from "vue";
+import { useStore } from "vuex";
+import { useQuasar } from "quasar";
+
+// Vuex store and Quasar
+const store = useStore();
+const $q = useQuasar();
+
+// State
+const activeItemId = ref(0);
+const tableAjaxLoading = ref(false);
+const filterSearch = ref("");
+const paginationControl = reactive({ rowsPerPage: 10 });
+const columnData = reactive([
+  {
+    name: "serialNumber",
+    required: true,
+    label: "Device Serial Number",
+    align: "left",
+    field: "serialNumber",
+    sortable: true
+  }
+]);
+const openBulkUploadModal = ref(false);
+const inventoryData = reactive({
+  region: "",
+  so: "",
+  regionFilterOptions: [],
+  SOFilterOptions: [],
+  regionalItems: [],
+  billPartnerInventory: [],
+  central: "",
+  centralItems: [],
+  merchant: "",
+  merchantItems: [],
+  resellarItems: [],
+  faultyInventory: [],
+  sendtoRepair: []
+});
+
+// Vuex getters
+const getCentralInventoryDashboardCount = computed(() => store.getters["InventoryCentral/getCentralInventoryDashboardCount"]);
+const getAllInventoryDevicesData = computed(() => store.getters["InventoryCentral/getAllInventoryDevicesData"]);
+const getAllRegionsData = computed(() => store.getters["SuperAdminUsers/getAllRegionsData"]);
+const getAllSOsData = computed(() => store.getters["SuperAdminUsers/getAllSOsData"]);
+const getAllRegionalInventoryDeviceDetailsWithCount = computed(() => store.getters["SAT_RegionalInventoryAllocation/getAllRegionalInventoryDeviceDetailsWithCount"]);
+const getAllSoInventoryDeviceDetailsWithCount = computed(() => store.getters["SAT_RegionalInventoryAllocation/getAllSoInventoryDeviceDetailsWithCount"]);
+
+// Vuex actions
+const { 
+  FETCH_CENTRAL_INVENTORY_DASHBOARD_COUNT,
+  FETCH_ALL_INVENTORY_DEVICES_BY_DEVICE_TYPE,
+  FETCH_ALL_REGIONS_DATA,
+  FETCH_ALL_SO_DATA
+} = store.dispatch;
+
+// Methods
+const ajaxLoadDataForCentralInventoryByDeviceIdFilter = async (itemIndex, deviceInfo) => {
+  activeItemId.value = itemIndex;
+  await fnAjaxPopulateAllDevicesList(deviceInfo);
+};
+
+const fnAjaxPopulateAllDevicesList = async (deviceInfo) => {
+  tableAjaxLoading.value = true;
+  await store.dispatch("InventoryCentral/FETCH_ALL_INVENTORY_DEVICES_BY_DEVICE_TYPE", deviceInfo);
+  tableAjaxLoading.value = false;
+};
+
+const getAllInventoryData = async () => {
+  $q.loading.show({ delay: 0, spinnerColor: "purple-9", message: "Fetching data .." });
+  try {
+    await store.dispatch("InventoryCentral/FETCH_CENTRAL_INVENTORY_DASHBOARD_COUNT");
+    const centralData = getCentralInventoryDashboardCount.value;
+    inventoryData.centralItems = centralData.centralInventory;
+    inventoryData.merchantItems = centralData.merchantInventory;
+    inventoryData.regionalItems = centralData.regionalInventory;
+    inventoryData.billPartnerInventory = centralData.billPartnerInventory;
+    inventoryData.resellarItems = centralData.resellerInventory;
+    inventoryData.faultyInventory = centralData.faultyInventory;
+    inventoryData.sendtoRepair = centralData.faultySentToRepair;
+
+    await store.dispatch("SuperAdminUsers/FETCH_ALL_REGIONS_DATA");
+    inventoryData.regionFilterOptions = getAllRegionsData.value;
+  } finally {
+    $q.loading.hide();
+  }
+};
+
+const getAllSOData = async () => {
+  try {
+    await store.dispatch("SuperAdminUsers/FETCH_ALL_SO_DATA");
+    inventoryData.SOFilterOptions = getAllSOsData.value;
+  } finally {
+    $q.loading.hide();
+  }
+};
+
+const filterInventoryCountByRegion = async (region) => {
+  inventoryData.regionalItems = [];
+  try {
+    await store.dispatch("SAT_RegionalInventoryAllocation/FETCH_REGIONAL_INVENTORY_DEVICE_DETAIL_WITH_COUNT", region);
+    inventoryData.regionalItems = getAllRegionalInventoryDeviceDetailsWithCount.value.inventryCount;
+  } finally {
+    $q.loading.hide();
+  }
+};
+
+const filterInventoryCountBySO = async (so) => {
+  inventoryData.billPartnerInventory = [];
+  try {
+    await store.dispatch("SAT_RegionalInventoryAllocation/FETCH_SO_INVENTORY_DEVICE_DETAIL_WITH_COUNT", so);
+    inventoryData.billPartnerInventory = getAllSoInventoryDeviceDetailsWithCount.value.inventryCount;
+  } finally {
+    $q.loading.hide();
+  }
+};
+
+const fnOpenBulkUploadModal = () => {
+  openBulkUploadModal.value = !openBulkUploadModal.value;
+};
+
+// On mounted
+onMounted(() => {
+  getAllInventoryData();
+  getAllSOData();
+});
+</script>
+
+<style scoped>
+/* Optional custom styles */
+</style>

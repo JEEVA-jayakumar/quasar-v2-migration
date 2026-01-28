@@ -1,0 +1,11 @@
+node_modules/
+dist/
+dist-ssr/
+.quasar/
+src/.quasar/
+.env
+.env.local
+.DS_Store
+.vscode/
+.idea/
+*.log

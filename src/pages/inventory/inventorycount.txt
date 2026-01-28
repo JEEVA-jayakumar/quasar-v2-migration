@@ -1,0 +1,517 @@
+<template>
+  <div class="row">
+    <div class="col-md-4" style="border-right: 1px solid #ccc;">
+      <div class="q-ma-md">
+        <div class="q-mb-md text-subtitle1">Region: {{ computedUserRegion }}</div>
+        <div>
+          <q-card flat>
+            <q-card-section class="q-pa-sm">
+              <div class="text-body1">
+                <strong>
+                  <h6>Inventory with Region</h6>
+                </strong>
+              </div>
+            </q-card-section>
+            <q-separator />
+            <div
+              @click="loadDevicesTableData($REGIONAL_INVENTORY_ALL_DEVICES, { name: 'Total Devices' })"
+            >
+              <q-card-section
+                align="center"
+                class="cursor-pointer bg-grey-5 q-pa-md"
+                :class="[activeItemId === $REGIONAL_INVENTORY_ALL_DEVICES ? 'shadow-5' : 'shadow-0']"
+              >
+                <div>Count</div>
+                <div>
+                  <big>{{ fngetAllRegionalInventorySerialNumbersByDevice() }}</big>
+                </div>
+              </q-card-section>
+            </div>
+          </q-card>
+        </div>
+        
+        <div class="row q-col-gutter-md q-mt-md">
+          <div class="col-md-6">
+            <q-card flat class="cursor-pointer">
+              <q-card-section class="q-pa-sm">
+                <div class="text-body1">Pending Allocation</div>
+              </q-card-section>
+              <q-separator />
+              <div
+                @click="loadDevicesTableData($REGIONAL_INVENTORY_PENDING_ALLOCATION_DEVICE, { name: 'Pending Allocation' })"
+              >
+                <q-card-section
+                  align="center"
+                  class="bg-grey-5 q-pa-md"
+                  :class="[activeItemId === $REGIONAL_INVENTORY_PENDING_ALLOCATION_DEVICE ? 'shadow-5' : 'shadow-0']"
+                >
+                  <div>Count</div>
+                  <div>
+                    <big>
+                      {{ getAllRegionalInventoryDeviceDetailsWithCount.pendingDeviceCount?.count || 0 }}
+                    </big>
+                  </div>
+                </q-card-section>
+              </div>
+            </q-card>
+          </div>
+          
+          <div class="col-md-6">
+            <q-card flat class="cursor-pointer">
+              <q-card-section class="q-pa-sm">
+                <div class="text-body1">Allocated Devices</div>
+              </q-card-section>
+              <q-separator />
+              <div
+                @click="loadDevicesTableData($REGIONAL_INVENTORY_ALLOCATED_DEVICE, { name: 'Allocated Devices' })"
+              >
+                <q-card-section
+                  align="center"
+                  class="bg-grey-5 q-pa-md"
+                  :class="[activeItemId === $REGIONAL_INVENTORY_ALLOCATED_DEVICE ? 'shadow-5' : 'shadow-0']"
+                >
+                  <div>Count</div>
+                  <div>
+                    <big>
+                      {{ getAllRegionalInventoryDeviceDetailsWithCount.allocatedCount?.count || 0 }}
+                    </big>
+                  </div>
+                </q-card-section>
+              </div>
+            </q-card>
+          </div>
+          
+          <div class="col-md-6">
+            <q-card flat class="cursor-pointer">
+              <q-card-section class="q-pa-sm">
+                <div class="text-body1">Damaged Devices</div>
+              </q-card-section>
+              <q-separator />
+              <div
+                @click="loadDevicesTableData($REGIONAL_INVENTORY_DAMAGED_DEVICE, { name: 'Damaged Devices' })"
+              >
+                <q-card-section
+                  align="center"
+                  class="bg-grey-5 q-pa-md"
+                  :class="[activeItemId === $REGIONAL_INVENTORY_DAMAGED_DEVICE ? 'shadow-5' : 'shadow-0']"
+                >
+                  <div>Count</div>
+                  <div>
+                    <big>
+                      {{ getAllRegionalInventoryDeviceDetailsWithCount.damageDeviceCount?.count || 0 }}
+                    </big>
+                  </div>
+                </q-card-section>
+              </div>
+            </q-card>
+          </div>
+          
+          <div class="col-md-6">
+            <q-card flat class="cursor-pointer">
+              <q-card-section class="q-pa-sm">
+                <div class="text-body1">Inbound Devices</div>
+              </q-card-section>
+              <q-separator />
+              <div
+                @click="loadDevicesTableData($REGIONAL_INVENTORY_INBOUND_DEVICE, { name: 'Inbound Devices' })"
+              >
+                <q-card-section
+                  align="center"
+                  class="bg-grey-5 q-pa-md"
+                  :class="[activeItemId === $REGIONAL_INVENTORY_INBOUND_DEVICE ? 'shadow-5' : 'shadow-0']"
+                >
+                  <div>Count</div>
+                  <div>
+                    <big>
+                      {{ getAllRegionalInventoryDeviceDetailsWithCount.inbountDeviceCount?.count || 0 }}
+                    </big>
+                  </div>
+                </q-card-section>
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+      
+      <div class="q-ma-md">
+        <div class="row q-col-gutter-md">
+          <div
+            class="col-md-6"
+            v-for="(item, index) in getAllRegionalInventoryDeviceDetailsWithCount.inventryCount"
+            :key="index"
+          >
+            <q-card flat class="cursor-pointer">
+              <q-card-section class="q-pa-sm">
+                <div class="text-body1">{{ item.device?.deviceName || 'Unknown Device' }}</div>
+              </q-card-section>
+              <q-separator />
+              <div @click="loadDevicesTableData(index, item)">
+                <q-card-section
+                  align="center"
+                  :style="'background:' + (item.device?.colorCode || '#f5f5f5')"
+                  :class="[activeItemId === index ? 'shadow-5' : 'shadow-0']"
+                  class="q-pa-md"
+                >
+                  <div>Count</div>
+                  <div>
+                    <strong>{{ item.count || 0 }}</strong>
+                  </div>
+                </q-card-section>
+              </div>
+            </q-card>
+          </div>
+        </div>
+      </div>
+      
+      <div class="q-pa-md">
+        <div class="text-body1">
+          <strong>
+            <h6>Inventory with So</h6>
+          </strong>
+        </div>
+      </div>
+      
+      <div class="q-ma-md">
+        <div class="row q-col-gutter-md">
+          <div
+            class="col-md-6"
+            v-for="(item, index) in getAllRegionalInventoryDeviceDetailsWithCount.BillPartnerList"
+            :key="index"
+          >
+            <q-card flat>
+              <q-card-section class="q-pa-sm">
+                <div class="text-body1">{{ item.user?.name || 'Unknown User' }}</div>
+              </q-card-section>
+              <q-separator />
+              <q-card-section align="center" class="q-pa-md">
+                <div>
+                  <br />
+                  <big>{{ item.count || 0 }}</big>
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
+        </div>
+      </div>
+      
+      <div class="q-pa-md">
+        <div class="text-body1">
+          <strong>
+            <h6>Inventory with Reseller</h6>
+          </strong>
+        </div>
+      </div>
+      
+      <div class="q-ma-md">
+        <div class="row q-col-gutter-md">
+          <div
+            class="col-md-6"
+            v-for="(item, index) in getAllRegionalInventoryDeviceDetailsWithCount.resellerdevicecount"
+            :key="index"
+          >
+            <q-card flat>
+              <q-card-section class="q-pa-sm">
+                <div class="text-body1">{{ item.user?.name || 'Unknown User' }}</div>
+              </q-card-section>
+              <q-separator />
+              <q-card-section align="center" class="q-pa-md">
+                <div>
+                  <br />
+                  <big>{{ item.count || 0 }}</big>
+                </div>
+              </q-card-section>
+            </q-card>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="col-md-8">
+      <div class="row bottom-border q-pa-sm items-center">
+        <div class="text-weight-regular">
+          <div class="text-grey-9 text-subtitle1 q-py-sm">{{ inventoryCountTableTitle }}</div>
+        </div>
+      </div>
+      
+      <q-table
+        :title="inventoryCountTableTitle"
+        table-class="customTableClass"
+        class="q-py-none"
+        :rows="getAllRegionalInventorySerialNumbersByDevice"
+        :columns="columnData"
+        :filter="filter"
+        v-model:pagination="paginationControl"
+        :loading="toggleAjaxLoadFilter"
+        row-key="id"
+      >
+        <template #top>
+          <div class="col-md-8">
+            <q-input
+              clearable
+              color="grey-9"
+              v-model="filter"
+              placeholder="Search by device name, serial no"
+              class="q-py-sm"
+              filled
+              dense
+            />
+          </div>
+        </template>
+        
+        <template #body-cell-device_type="props">
+          <q-td :props="props">
+            {{ props.row.device?.deviceName || 'Unknown' }}
+          </q-td>
+        </template>
+        
+        <template #body-cell-serialNumber="props">
+          <q-td :props="props">
+            {{ props.row.serialNumber || 'N/A' }}
+          </q-td>
+        </template>
+      </q-table>
+    </div>
+  </div>
+</template>
+
+<script setup>
+import { ref, reactive, computed, onMounted } from 'vue';
+import { useStore } from 'vuex';
+
+const props = defineProps({
+  propMerchantTypeFromSO: {
+    type: String,
+    default: ''
+  }
+});
+
+const emit = defineEmits(['emittedForTotalSerialNumbers']);
+
+const store = useStore();
+
+// Constants (assuming these are defined globally or imported)
+const $REGIONAL_INVENTORY_ALL_DEVICES = ref(0);
+const $REGIONAL_INVENTORY_PENDING_ALLOCATION_DEVICE = ref(1);
+const $REGIONAL_INVENTORY_ALLOCATED_DEVICE = ref(2);
+const $REGIONAL_INVENTORY_DAMAGED_DEVICE = ref(3);
+const $REGIONAL_INVENTORY_INBOUND_DEVICE = ref(4);
+const $REGIONAL_INVENTORY_INVENTORY_SO = ref(5);
+const $REGIONAL_INVENTORY_FILTER_ACTION_DAMAGED = ref(-3);
+const $REGIONAL_INVENTORY_FILTER_ACTION_PENDING_ALLOCATION = ref(-1);
+const $REGIONAL_INVENTORY_FILTER_ACTION_DEVICE = ref(1);
+
+// Refs
+const toggleAjaxLoadFilter = ref(false);
+const inventoryCountTableTitle = ref("Total Devices");
+const filter = ref("");
+const activeItemId = ref(null);
+
+// Pagination
+const paginationControl = ref({
+  rowsPerPage: 10,
+  page: 1,
+  sortBy: 'device_type',
+  descending: false
+});
+
+// Column Data
+const columnData = [
+  {
+    name: "device_type",
+    required: true,
+    label: "Device Type",
+    align: "left",
+    field: row => row.device?.deviceName,
+    sortable: true
+  },
+  {
+    name: "serialNumber",
+    required: true,
+    label: "Serial Number",
+    align: "left",
+    field: row => row.serialNumber,
+    sortable: true
+  }
+];
+
+// Computed
+const getAllRegionalInventoryDeviceDetailsWithCount = computed(() => 
+  store.getters['SAT_RegionalInventoryAllocation/getAllRegionalInventoryDeviceDetailsWithCount'] || {
+    pendingDeviceCount: { count: 0 },
+    allocatedCount: { count: 0 },
+    damageDeviceCount: { count: 0 },
+    inbountDeviceCount: { count: 0 },
+    inventryCount: [],
+    BillPartnerList: [],
+    resellerdevicecount: []
+  }
+);
+
+const getAllRegionalInventorySerialNumbersByDevice = computed(() => 
+  store.getters['SAT_RegionalInventoryAllocation/getAllRegionalInventorySerialNumbersByDevice'] || []
+);
+
+const getAllInventorywithsoDeviceDetailsWithCount = computed(() => 
+  store.getters['SAT_RegionalInventoryAllocation/getAllInventorywithsoDeviceDetailsWithCount'] || {}
+);
+
+const computedUserRegion = computed(() => {
+  try {
+    const userInfo = localStorage.getItem("u_i");
+    if (userInfo) {
+      const parsed = JSON.parse(userInfo);
+      return parsed.region?.regionAreaName || 'Unknown Region';
+    }
+  } catch (error) {
+
+    console.error('Error parsing user info:', error);
+  }
+  return 'Unknown Region';
+});
+
+// Methods
+const toggleRemarks = (item) => {
+  if (item) {
+    item.showRemarks = !item.showRemarks;
+  }
+};
+
+const fngetAllRegionalInventorySerialNumbersByDevice = () => {
+  const inventoryCount = getAllRegionalInventoryDeviceDetailsWithCount.value.inventryCount || [];
+  return inventoryCount.reduce((total, value) => total + (value.count || 0), 0);
+};
+
+const loadDevicesTableData = async (itemIndex, item) => {
+  toggleAjaxLoadFilter.value = true;
+  activeItemId.value = itemIndex;
+
+  try {
+    let requestParams = {
+      region: getCurrentRegionId()
+    };
+
+    if (itemIndex === $REGIONAL_INVENTORY_ALL_DEVICES.value) {
+      inventoryCountTableTitle.value = item?.name || 'Total Devices';
+      emit('emittedForTotalSerialNumbers');
+    } 
+    else if (itemIndex === $REGIONAL_INVENTORY_DAMAGED_DEVICE.value) {
+      inventoryCountTableTitle.value = item?.name || 'Damaged Devices';
+      requestParams.action = Math.abs($REGIONAL_INVENTORY_FILTER_ACTION_DAMAGED.value);
+      await store.dispatch('SAT_RegionalInventoryAllocation/FETCH_REGIONAL_INVENTORY_SERIAL_NUMBER_BY_DEVICE', requestParams);
+    } 
+    else if (itemIndex === $REGIONAL_INVENTORY_PENDING_ALLOCATION_DEVICE.value) {
+      inventoryCountTableTitle.value = item?.name || 'Pending Allocation';
+      requestParams.action = Math.abs($REGIONAL_INVENTORY_FILTER_ACTION_PENDING_ALLOCATION.value);
+      await store.dispatch('SAT_RegionalInventoryAllocation/FETCH_REGIONAL_INVENTORY_SERIAL_NUMBER_BY_DEVICE', requestParams);
+    } 
+    else if (itemIndex === $REGIONAL_INVENTORY_INBOUND_DEVICE.value) {
+      inventoryCountTableTitle.value = item?.name || 'Inbound Devices';
+      requestParams.action = Math.abs($REGIONAL_INVENTORY_INBOUND_DEVICE.value);
+      await store.dispatch('SAT_RegionalInventoryAllocation/FETCH_REGIONAL_INVENTORY_SERIAL_NUMBER_BY_DEVICE', requestParams);
+    } 
+    else if (itemIndex === $REGIONAL_INVENTORY_INVENTORY_SO.value) {
+      inventoryCountTableTitle.value = item?.name || 'SO Inventory';
+      requestParams.action = Math.abs($REGIONAL_INVENTORY_INVENTORY_SO.value);
+      await store.dispatch('SAT_RegionalInventoryAllocation/FETCH_REGIONAL_INVENTORY_SERIAL_NUMBER_BY_DEVICE', requestParams);
+    } 
+    else if (itemIndex === $REGIONAL_INVENTORY_ALLOCATED_DEVICE.value) {
+      inventoryCountTableTitle.value = item?.name || 'Allocated Devices';
+      requestParams.action = Math.abs($REGIONAL_INVENTORY_ALLOCATED_DEVICE.value);
+      await store.dispatch('SAT_RegionalInventoryAllocation/FETCH_REGIONAL_INVENTORY_SERIAL_NUMBER_BY_DEVICE', requestParams);
+    } 
+    else {
+      inventoryCountTableTitle.value = item?.device?.deviceName || 'Device Details';
+      requestParams.action = $REGIONAL_INVENTORY_FILTER_ACTION_DEVICE.value;
+      requestParams.device = item?.device?.id;
+      if (requestParams.device) {
+        await store.dispatch('SAT_RegionalInventoryAllocation/FETCH_REGIONAL_INVENTORY_SERIAL_NUMBER_BY_DEVICE', requestParams);
+      }
+    }
+  } catch (error) {
+
+    console.error('Error loading device data:', error);
+  } finally {
+    toggleAjaxLoadFilter.value = false;
+  }
+};
+
+const getCurrentRegionId = () => {
+  try {
+    const userInfo = localStorage.getItem("u_i");
+    if (userInfo) {
+      const parsed = JSON.parse(userInfo);
+      return parsed.region?.id || null;
+    }
+  } catch (error) {
+
+    console.error('Error getting region id:', error);
+  }
+  return null;
+};
+
+// Lifecycle
+onMounted(() => {
+  // Initialize any necessary data
+  // Note: The original had getAllInventorywithsoDeviceDetailsWithCount() call
+  // This should be handled by the parent component or through store initialization
+});
+</script>
+
+<style scoped>
+.bottom-border {
+  border-bottom: 1px solid #e0e0e0;
+}
+
+.customTableClass {
+  width: 100%;
+}
+
+.cursor-pointer {
+  cursor: pointer;
+}
+
+.shadow-5 {
+  box-shadow: 0 10px 20px rgba(0, 0, 0, 0.19), 0 6px 6px rgba(0, 0, 0, 0.23);
+}
+
+.shadow-0 {
+  box-shadow: none;
+}
+
+.text-subtitle1 {
+  font-size: 1rem;
+  font-weight: 500;
+}
+
+.text-body1 {
+  font-size: 1rem;
+  font-weight: 400;
+}
+
+.q-col-gutter-md > * {
+  padding: 8px;
+}
+
+@media (max-width: 768px) {
+  .col-md-4, .col-md-8 {
+    width: 100%;
+  }
+  
+  .row {
+    flex-direction: column;
+  }
+  
+  .col-md-4 {
+    border-right: none;
+    border-bottom: 1px solid #ccc;
+  }
+  
+  .q-ma-md {
+    margin: 8px;
+  }
+  
+  .text-subtitle1 {
+    font-size: 0.875rem;
+  }
+}
+</style>

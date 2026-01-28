@@ -1,0 +1,272 @@
+<template>
+  <div>
+    <q-dialog
+      v-model="toggleModel"
+      @hide="emitfnshowConvertToSat"
+      persistent
+    >
+      <q-card class="q-pa-md" style="min-width: 30vw;">
+        <q-card-section>
+          <div class="text-h6">Edit ShortLead</div>
+
+          <q-form @submit.prevent="submitShortLead(formData)">
+            <q-input
+              v-model="formData.id"
+              label="Lead ID"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.leadName"
+              label="Lead Name"
+              :error="!!$v.formData.leadName.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.leadNumber"
+              label="Lead Number"
+              :error="!!$v.formData.leadNumber.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.shortleadDate"
+              label="Short Lead Date"
+              :error="!!$v.formData.shortleadDate.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.contactNumber"
+              label="Contact Number"
+              :error="!!$v.formData.contactNumber.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.alternateContactNumber"
+              label="Alternate Contact"
+              :error="!!$v.formData.alternateContactNumber.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.email"
+              label="Email"
+              :error="!!$v.formData.email.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.leadAddress"
+              label="Lead Address"
+              :error="!!$v.formData.leadAddress.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.pincode"
+              label="Pincode"
+              :error="!!$v.formData.pincode.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.city"
+              label="City"
+              :error="!!$v.formData.city.$error"
+              dense
+              clearable
+            />
+            <q-input
+              v-model="formData.state"
+              label="State"
+              :error="!!$v.formData.state.$error"
+              dense
+              clearable
+            />
+
+            <q-select
+              v-model="formData.leadSource"
+              :options="dropDown.leadSourceOptions"
+              label="Lead Source"
+              :error="!!$v.formData.leadSource.$error"
+              dense
+              @update:model-value="fnleadSource"
+            />
+
+            <q-select
+              v-model="formData.device"
+              :options="dropDown.deviceOptions"
+              label="Device"
+              :error="!!$v.formData.device.$error"
+              dense
+              @update:model-value="fnDevice"
+            />
+
+            <q-select
+              v-model="formData.merchantCategory"
+              :options="dropDown.merchantCategory"
+              label="Merchant Category"
+              :error="!!$v.formData.merchantCategory.$error"
+              dense
+              @update:model-value="fnMerchantCategory"
+            />
+
+            <q-select
+              v-model="formData.plan"
+              :options="dropDown.planOptions"
+              label="Plan"
+              :error="!!$v.formData.plan.$error"
+              dense
+              @update:model-value="fnPlan"
+            />
+
+            <q-input
+              v-model="formData.amountCollected"
+              label="Amount Collected"
+              :error="!!$v.formData.amountCollected.$error"
+              dense
+              clearable
+            />
+
+            <q-input
+              v-model="formData.paymentMadeon"
+              type="datetime-local"
+              label="Transaction Made On"
+              :error="!!$v.formData.paymentMadeon.$error"
+              dense
+              clearable
+            />
+
+            <q-select
+              v-model="formData.paymentOption"
+              :options="paymentType"
+              label="Payment Type"
+              :error="!!$v.formData.paymentOption.$error"
+              dense
+            />
+
+            <div class="row q-mt-sm justify-end">
+              <q-btn flat label="Cancel" color="grey" @click="emitfnshowConvertToSat" />
+              <q-btn label="Submit to SAT" color="purple" type="submit" />
+            </div>
+          </q-form>
+        </q-card-section>
+      </q-card>
+    </q-dialog>
+  </div>
+</template>
+
+<script>
+import { reactive, toRefs, watch, onMounted } from "vue";
+import useVuelidate from "@vuelidate/core";
+import { required, numeric } from "@vuelidate/validators";
+
+export default {
+  props: ["propShowConvertToSat", "propRowDetails"],
+  setup(props, { emit }) {
+    const toggleModel = reactive({ value: props.propShowConvertToSat });
+
+    const formData = reactive({
+      id: props.propRowDetails.id,
+      leadNumber: props.propRowDetails.leadNumber,
+      leadName: props.propRowDetails.leadName,
+      shortleadDate: props.propRowDetails.shortleadDate,
+      contactNumber: props.propRowDetails.contactNumber,
+      alternateContactNumber: "",
+      email: "",
+      leadAddress: "",
+      pincode: "",
+      city: "",
+      state: "",
+      leadSource: "",
+      device: "",
+      merchantCategory: "",
+      plan: "",
+      amountCollected: "",
+      paymentMadeon: "",
+      paymentOption: 1,
+    });
+
+    const rules = {
+      leadNumber: { required },
+      leadName: { required },
+      shortleadDate: { required },
+      contactNumber: { required },
+      alternateContactNumber: { required },
+      email: { required },
+      leadAddress: { required },
+      pincode: { required },
+      city: { required },
+      state: { required },
+      leadSource: { required },
+      device: { required },
+      merchantCategory: { required },
+      plan: { required },
+      amountCollected: { required },
+      paymentMadeon: { required },
+      paymentOption: { required, numeric },
+    };
+
+    const v$ = useVuelidate(rules, formData);
+
+    const emitfnshowConvertToSat = () => {
+      emit("emitfnshowConvertToSat");
+    };
+
+    const submitShortLead = async () => {
+      v$.value.$touch();
+      if (v$.value.$invalid) {
+        alert("Please review fields again");
+        return;
+      }
+      console.log("Submit Payload:", formData);
+      // Add API call here
+    };
+
+    const dropDown = reactive({
+      deviceOptions: [],
+      leadSourceOptions: [],
+      merchantCategory: [],
+      planOptions: [],
+    });
+
+    const fnleadSource = (item) => {
+      formData.leadSource = item;
+    };
+    const fnDevice = (item) => {
+      formData.device = item;
+    };
+    const fnMerchantCategory = (item) => {
+      formData.merchantCategory = item;
+    };
+    const fnPlan = (item) => {
+      formData.plan = item;
+    };
+
+    return {
+      ...toRefs(formData),
+      toggleModel,
+      dropDown,
+      v$,
+      emitfnshowConvertToSat,
+      submitShortLead,
+      fnleadSource,
+      fnDevice,
+      fnMerchantCategory,
+      fnPlan,
+      paymentType: [
+        { label: "Cheque", value: 2 },
+        { label: "NEFT", value: 1 },
+        { label: "SWIPE", value: 3 },
+      ],
+    };
+  },
+};
+</script>
+
+<style scoped>
+/* Add any custom styling if needed */
+</style>

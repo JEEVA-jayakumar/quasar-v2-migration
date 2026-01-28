@@ -1,0 +1,6 @@
+# .eslintignore
+node_modules/
+dist/
+*.min.js
+**/pdfobject.min.js
+**/assets/js/*.min.js

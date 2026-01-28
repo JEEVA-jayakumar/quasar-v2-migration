@@ -1,0 +1,103 @@
+import * as Vue from "vue";
+// Removed unused api import
+
+function COMMON_FILE_DOWNLOAD(response) {
+  return new Blob([response.data], {
+    type: response.headers.get("content-type")
+  });
+}
+
+const InventoryCentral = {
+  namespaced: true,
+  state: {
+    allStatesData: [],
+    apiStatusLog: {
+      apiStatusCode: null,
+      apiPending: false,
+      apiSuccess: false,
+      apiFailure: false,
+      apiData: []
+    },
+    centralInventoryDashboardCount: [],
+    AggregatorsCentralInventoryDashboardCount: [],
+    allInventoryDevicesTypesData: [],
+    allInventoryDevicesWihtCountData: [],
+    allPhonepeInventoryDevicesWihtCountData: [],
+    allInventoryDevicesData: [],
+    allPhonepeInventoryDevicesData: [],
+    regionsData: [],
+    masterInventoryData: [],
+    inventoryWithMerchant: [],
+    AggregatorsinventoryWithMerchant: [],
+    invenotryAsFaulty: [],
+    regionBasedSo: [],
+    regionBasedResellar: []
+  },
+
+  mutations: {
+    API_RESPONSE_LOG(state, payload) {
+      let statusMessage;
+      if (payload.apiStatusCode == 200) {
+        statusMessage = "Success";
+      } else if (payload.apiStatusCode == 409) {
+        statusMessage = "Data confict!";
+      } else if (payload.apiStatusCode == 400) {
+        statusMessage = "Bad Request! Please try again";
+      } else {
+        statusMessage = "Oops! Something went wrong, please again";
+      }
+      state.apiStatusLog = {
+        apiStatusCode: payload.apiStatusCode,
+        apiStatusMessage: statusMessage,
+        apiPending: payload.apiPending,
+        apiSuccess: payload.apiSuccess,
+        apiFailure: payload.apiFailure,
+        apiData: payload.apiData
+      };
+    },
+  },
+
+  actions: {
+    async STATIC_QR_LEAD_VALIDATION_DOWNLOAD_FILE() { // Removed unused commit and request parameters
+      return await api
+        .get("download-file", {
+          responseType: "arraybuffer"
+        })
+        .then(response => {
+          let blob = COMMON_FILE_DOWNLOAD(response);
+          let link = document.createElement("a");
+          link.href = window.URL.createObjectURL(blob);
+          link.download = "Axis_Merchant.zip";
+          link.click();
+        });
+    },
+
+    FEED_STATIC_QR_LEAD_UPLOAD_DATA({
+      commit,
+      rootState
+    }, request) {
+      return api
+        .post(rootState.GlobalVariables.SAT_STATICQRFILEUPLOADURL, request.file, {
+          headers: {
+            "Content-Type": 'multipart/form-data',
+            "Authorization": "Token " + localStorage.getItem(
+              "auth_token")
+          }
+        })
+        .then(() => { // Removed unused response parameter
+          commit("API_RESPONSE_LOG", {
+            apiStatusCode: 200,
+            apiPending: false,
+            apiSuccess: true,
+            apiFailure: false,
+            apiData: null
+          });
+        })
+    },
+  },
+
+  getters: {
+
+  }
+};
+export default InventoryCentral;

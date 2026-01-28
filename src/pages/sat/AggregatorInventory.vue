@@ -1,0 +1,127 @@
+<template>
+  <q-page padding>
+    <div class="text-grey-9">
+      <div class="row bottom-border q-pa-sm items-center">
+        <div class="col">
+          <q-tabs
+            v-model="inventoryOptionSelected"
+            no-caps
+            dense
+            class="shadow-1"
+            active-color="primary"
+            indicator-color="primary"
+            align="justify"
+          >
+            <!-- Tabs -->
+            <q-tab name="Aggregatorspare" label="Spare Parts" />
+            <q-tab name="Aggregatorcount" label="Inventory Count" />
+            <q-tab name="AggregatorDispatch" label="Dispatched Inventory" />
+            <q-tab name="AggregatorDamagedDevices" label="Add Damaged Devices" />
+            <q-tab name="AggregatorAllocatetoso" label="Allocate to SO" />
+            <q-tab name="AggregatorInventoryWithSo" label="Inventory With SO" />
+            <q-tab name="AggregatorAllocateSotoso" label="Allocate SO to SO" />
+            <q-tab name="RequestSOList" label="REQUEST" />
+          </q-tabs>
+
+          <!-- Tab Panels -->
+          <q-tab-panels v-model="inventoryOptionSelected" animated>
+            <q-tab-panel name="Aggregatorspare">
+              <AggregatorsInventoryspareParts />
+            </q-tab-panel>
+
+            <q-tab-panel name="Aggregatorcount">
+              <AggregatorinventoryCount />
+            </q-tab-panel>
+
+            <q-tab-panel name="AggregatorDispatch">
+              <AggregatorDispatchedInventory />
+            </q-tab-panel>
+
+            <q-tab-panel name="AggregatorDamagedDevices">
+              <AggregatorshowAddDamagedDevices
+                :propDeviceTypes="getAllRegionalInventoryDeviceDetailsWithCount"
+              />
+            </q-tab-panel>
+
+            <q-tab-panel name="AggregatorAllocatetoso">
+              <AggregatorInventoryallocatetoso />
+            </q-tab-panel>
+
+            <q-tab-panel name="AggregatorAllocateSotoso">
+              <AggregatorSOtoso />
+            </q-tab-panel>
+
+            <q-tab-panel name="AggregatorInventoryWithSo">
+              <AggregatorInventoryWithSo />
+            </q-tab-panel>
+
+            <q-tab-panel name="RequestSOList">
+              <AggregatorSODeviceReassigned />
+            </q-tab-panel>
+          </q-tab-panels>
+        </div>
+      </div>
+    </div>
+  </q-page>
+</template>
+
+<script>
+import { ref } from "vue";
+import { mapGetters, mapActions } from "vuex";
+
+import AggregatorsInventoryspareParts from "../../components/sat/AggregatorInventory/AggregatorsInventoryspareParts.vue";
+import AggregatorinventoryCount from "../../components/sat/AggregatorInventory/AggregatorinventoryCount.vue";
+import AggregatorDispatchedInventory from "../../components/sat/AggregatorInventory/AggregatorDispatchedInventory.vue";
+import AggregatorshowAddDamagedDevices from "../../components/sat/AggregatorshowAddDamagedDevices.vue";
+import AggregatorInventoryallocatetoso from "../../pages/sat/AggregatorInventoryallocatetoso.vue";
+import AggregatorSOtoso from "../../pages/sat/AggregatorSOtoso.vue";
+import AggregatorInventoryWithSo from "../../pages/sat/AggregatorInventoryWithSo.vue";
+import AggregatorSODeviceReassigned from "../../pages/sat/AggregatorSODeviceReassigned.vue";
+
+export default {
+  name: "inventoryAllocation",
+  components: {
+    AggregatorsInventoryspareParts,
+    AggregatorinventoryCount,
+    AggregatorDispatchedInventory,
+    AggregatorshowAddDamagedDevices,
+    AggregatorInventoryallocatetoso,
+    AggregatorSOtoso,
+    AggregatorInventoryWithSo,
+    AggregatorSODeviceReassigned,
+  },
+  setup() {
+    const inventoryOptionSelected = ref("Aggregatorcount");
+
+    return {
+      inventoryOptionSelected,
+    };
+  },
+  computed: {
+    ...mapGetters("SAT_RegionalInventoryAllocation", [
+      "getAllRegionalInventoryDeviceDetailsWithCount",
+      "getCurrentPODNumber",
+      "getCurrentDeviceId",
+      "getAllInventorywithsoDeviceDetailsWithCount",
+    ]),
+    ...mapGetters("InventoryWithSo", ["getAllInventoryWithSo"]),
+  },
+  methods: {
+    ...mapActions("SAT_RegionalInventoryAllocation", [
+      "FETCH_REGIONAL_INVENTORY_DEVICE_DETAIL_WITH_COUNT",
+      "FETCH_REGIONAL_INVENTORY_SERIAL_NUMBER_BY_DEVICE",
+      "FETCH_INVENTORY_WITH_SO_DEVICE_DETAIL_WITH_COUNT",
+    ]),
+    ...mapActions("InventoryWithSo", ["FETCH_INVENTORY_WITH_SO"]),
+  },
+};
+</script>
+
+<style scoped>
+.border-1 {
+  border: 1px solid rgba(0, 0, 0, 0.1);
+}
+.border-2 {
+  border: 3px solid rgba(48, 48, 48, 0.5);
+}
+</style>
