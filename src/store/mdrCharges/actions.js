@@ -1,5 +1,5 @@
 import api from "../api.js";
-export const FETCH_ALL_MDR_PLAN_DETAILS = ({
+const FETCH_ALL_MDR_PLAN_DETAILS = ({
   commit
 }, request) => {
   let sorting = request.pagination.sortBy == null ? "" : request.pagination.descending ? "asc" : "desc"
@@ -23,3 +23,8 @@ FETCH_ALL_MDR_PLAN_EDIT_DETAILS = ({
   });
 };
 
+
+
+export default {
+  FETCH_ALL_MDR_PLAN_DETAILS
+};

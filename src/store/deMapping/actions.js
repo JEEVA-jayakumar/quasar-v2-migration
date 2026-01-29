@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const DEMAPPING_STATUS_LIST = async ({ commit }, request) => {
+const DEMAPPING_STATUS_LIST = async ({ commit }, request) => {
   try {
     const selectedTab = localStorage.getItem("selectedTab")
     const aggregatorId = selectedTab ? JSON.parse(selectedTab.split('|')[1]) : ''
@@ -19,7 +19,7 @@ export const DEMAPPING_STATUS_LIST = async ({ commit }, request) => {
 }
 
 // Remove unused 'commit' parameter
-export const REMARKS_REASON_DETAILS = async (_, request) => {
+const REMARKS_REASON_DETAILS = async (_, request) => {
   try {
     console.log("REMARKS_REASON_DETAILS Request:", JSON.stringify(request))
 
@@ -30,3 +30,8 @@ export const REMARKS_REASON_DETAILS = async (_, request) => {
     throw error
   }
 }
+
+export default {
+  DEMAPPING_STATUS_LIST,
+  REMARKS_REASON_DETAILS
+};

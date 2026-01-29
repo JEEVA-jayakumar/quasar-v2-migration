@@ -1,7 +1,13 @@
-export const SET_DEVICE_WITH_HISTORY = (state, payload) => {
+const SET_DEVICE_WITH_HISTORY = (state, payload) => {
   state.DeviceWithHistory = payload;
 };
 
-export const SET_AGGREGATORS_DEVICE_WITH_HISTORY = (state, payload) => {
+const SET_AGGREGATORS_DEVICE_WITH_HISTORY = (state, payload) => {
   state.AggregatorsDeviceWithHistory = payload;
+};
+
+
+export default {
+  SET_DEVICE_WITH_HISTORY,
+  SET_AGGREGATORS_DEVICE_WITH_HISTORY
 };

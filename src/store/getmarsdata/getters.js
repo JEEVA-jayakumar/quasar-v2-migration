@@ -1,9 +1,15 @@
-export function getAllMarsData(state) {
+function getAllMarsData(state) {
     return state.getMars
 }
-export function getImplementedQueue(state) {
+function getImplementedQueue(state) {
     return state.getImplementedQueue
 }
-export function getMidBasedList(state) {
+function getMidBasedList(state) {
     return state.getMidBasedList
 }
+
+export default {
+  getAllMarsData,
+  getImplementedQueue,
+  getMidBasedList
+};

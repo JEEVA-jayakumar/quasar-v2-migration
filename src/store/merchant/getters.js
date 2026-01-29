@@ -1,3 +1,8 @@
-export const getDeviceWithMerchant = (state) => {
+const getDeviceWithMerchant = (state) => {
     return state.DeviceWithMerchant 
   }
+
+
+export default {
+  getDeviceWithMerchant
+};

@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const CITY_FORM_ADDITIONAL_TID = ({
+const CITY_FORM_ADDITIONAL_TID = ({
   commit,
   rootState
 }, request) => {
@@ -21,3 +21,7 @@ export const CITY_FORM_ADDITIONAL_TID = ({
       throw error;
     });
 }
+
+export default {
+  CITY_FORM_ADDITIONAL_TID
+};

@@ -1,12 +1,12 @@
 import api from "../api.js";
 
-export const PHONEPE_IMPLEMENTATION_QUEUE = (_, request) => {
+const PHONEPE_IMPLEMENTATION_QUEUE = (_, request) => {
   // Changed from _ to _ since commit is not used
   console.log("ACTION REQUEST------------>", JSON.stringify(request));
   return api.put("implementation-queue-assigned-to/" + request.userId + "/" + request.action, request);
 };
 
-export const PHONEPE_IMPLEMENTATION_QUEUE_UNASSIGNED_LIST = ({ commit }, request) => {
+const PHONEPE_IMPLEMENTATION_QUEUE_UNASSIGNED_LIST = ({ commit }, request) => {
   console.log("request of Unassigned datas----------->", request);
   let sorting = request.pagination.descending ? "asc" : "desc";
   console.log("Implementation Queue Unassigned Data : " + request);
@@ -27,7 +27,7 @@ export const PHONEPE_IMPLEMENTATION_QUEUE_UNASSIGNED_LIST = ({ commit }, request
   });
 };
 
-export const PHONEPE_IMPLEMENTATION_QUEUE_ASSIGNED_LIST = ({ commit }, request) => {
+const PHONEPE_IMPLEMENTATION_QUEUE_ASSIGNED_LIST = ({ commit }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   
@@ -45,7 +45,7 @@ export const PHONEPE_IMPLEMENTATION_QUEUE_ASSIGNED_LIST = ({ commit }, request) 
   });
 };
 
-export const PHONEPE_IMPLEMENTATION_QUEUE_COURIER_LIST = ({ commit }, request) => {
+const PHONEPE_IMPLEMENTATION_QUEUE_COURIER_LIST = ({ commit }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   
@@ -63,7 +63,7 @@ export const PHONEPE_IMPLEMENTATION_QUEUE_COURIER_LIST = ({ commit }, request) =
   });
 };
 
-export const PHONEPE_CANCELLED_MERCHANTS = ({ commit }, request) => {
+const PHONEPE_CANCELLED_MERCHANTS = ({ commit }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
   const tabId = JSON.parse(localStorage.getItem("selectedTab")?.split('|')[1] || 'null');
   
@@ -82,7 +82,7 @@ export const PHONEPE_CANCELLED_MERCHANTS = ({ commit }, request) => {
 };
 
 /* PHONEPE API START */
-export const PHONEPE_IMPLEMENTATION_QUEUE_SUBMIT = (_, request) => {
+const PHONEPE_IMPLEMENTATION_QUEUE_SUBMIT = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put(
     "Aggregator-implementation-queue-assigned-to/" + request.userId + "/" + request.action,
@@ -92,7 +92,7 @@ export const PHONEPE_IMPLEMENTATION_QUEUE_SUBMIT = (_, request) => {
 /* PHONEPE API END */
 
 /* PHONEPE API START */
-export const PHONEPE_CANCELLED_MERCHANT_SUBMIT = (_, request) => {
+const PHONEPE_CANCELLED_MERCHANT_SUBMIT = (_, request) => {
   // Changed from _ to _ since commit is not used
   // console.log("REQUEST------------------->"+JSON.stringify(request.leadInformation.id))
   return api.post(
@@ -102,7 +102,18 @@ export const PHONEPE_CANCELLED_MERCHANT_SUBMIT = (_, request) => {
 };
 /* PHONEPE API END */
 
-export const CHANGE_REGION = (_, request) => {
+const CHANGE_REGION = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("reassign-region", request);
+};
+
+export default {
+  PHONEPE_IMPLEMENTATION_QUEUE,
+  PHONEPE_IMPLEMENTATION_QUEUE_UNASSIGNED_LIST,
+  PHONEPE_IMPLEMENTATION_QUEUE_ASSIGNED_LIST,
+  PHONEPE_IMPLEMENTATION_QUEUE_COURIER_LIST,
+  PHONEPE_CANCELLED_MERCHANTS,
+  PHONEPE_IMPLEMENTATION_QUEUE_SUBMIT,
+  PHONEPE_CANCELLED_MERCHANT_SUBMIT,
+  CHANGE_REGION
 };

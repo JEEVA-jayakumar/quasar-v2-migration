@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const ONBOARDING_MERCHANT_ASSIGNED_LIST = ({commit}, request) => {
+const ONBOARDING_MERCHANT_ASSIGNED_LIST = ({commit}, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
   console.log("requested datas:----------------:assigned-----"+JSON.stringify(request))
   return api
@@ -26,7 +26,7 @@ export const ONBOARDING_MERCHANT_ASSIGNED_LIST = ({commit}, request) => {
     })
 }
 
-export const ONBOARDING_MERCHANT_UNASSIGNED_LIST = ({
+const ONBOARDING_MERCHANT_UNASSIGNED_LIST = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
@@ -57,14 +57,21 @@ export const ONBOARDING_MERCHANT_UNASSIGNED_LIST = ({
     })
 }
 
-export const ONBOARDING_MERCHANT_SUBMIT = (_, request) => {
+const ONBOARDING_MERCHANT_SUBMIT = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api
     .put("qr-implementation-assigned-to/" + request.userId + "/4", request)
 }
 
-export const ONBOARDING_MERCHANT_SUBMIT_UNASSIGN = (_, request) => {
+const ONBOARDING_MERCHANT_SUBMIT_UNASSIGN = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api
     .put("qr-implementation-assigned-to/" + request.userId + "/1", request)
 }
+
+export default {
+  ONBOARDING_MERCHANT_ASSIGNED_LIST,
+  ONBOARDING_MERCHANT_UNASSIGNED_LIST,
+  ONBOARDING_MERCHANT_SUBMIT,
+  ONBOARDING_MERCHANT_SUBMIT_UNASSIGN
+};

@@ -1,4 +1,9 @@
-export const SET_DEVICE_WITH_MERCHANT = (state, payload) => {
+const SET_DEVICE_WITH_MERCHANT = (state, payload) => {
     state.DeviceWithMerchant = payload
   }
 
+
+
+export default {
+  SET_DEVICE_WITH_MERCHANT
+};

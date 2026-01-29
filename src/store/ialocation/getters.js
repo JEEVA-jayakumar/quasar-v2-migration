@@ -1,3 +1,8 @@
-export const getiaLocation = state => {
+const getiaLocation = state => {
   return state.iaLocation;
+};
+
+
+export default {
+  getiaLocation
 };

@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_AGGREGATOR_POD_LIST = ({ commit }, request) => {
+const FETCH_AGGREGATOR_POD_LIST = ({ commit }, request) => {
   const sorting = request.pagination.descending ? 'asc' : 'desc'
 
   const selectedTab = localStorage.getItem('selectedTab')
@@ -19,3 +19,8 @@ export const FETCH_AGGREGATOR_POD_LIST = ({ commit }, request) => {
     commit('SET_ALL_AGGREGATOR_POD_LIST', response.data.data)
   })
 }
+
+
+export default {
+  FETCH_AGGREGATOR_POD_LIST
+};

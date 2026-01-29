@@ -1,13 +1,20 @@
-export const getRegionalSummaryList = (state) => {
+const getRegionalSummaryList = (state) => {
     return state.RegionalSummaryList 
   } 
 
-  export const getSimStatus = (state) => {
+  const getSimStatus = (state) => {
    
     return state.simStatus 
   }
 
-  export const getInventorySimStatus = (state) => {
+  const getInventorySimStatus = (state) => {
    
     return state.simStatus 
   }
+
+
+export default {
+  getInventorySimStatus,
+  getRegionalSummaryList,
+  getSimStatus
+};

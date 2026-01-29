@@ -1,7 +1,12 @@
-export const getrejectStatusList = (state) => {
+const getrejectStatusList = (state) => {
     return state.rejectStatusList
   }
-  export const getleadStatusList = (state) => {
+  const getleadStatusList = (state) => {
     return state.leadStatusList
   }
-  
+
+
+export default {
+  getleadStatusList,
+  getrejectStatusList
+};

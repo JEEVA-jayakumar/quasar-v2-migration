@@ -1,7 +1,7 @@
 import api from "../api.js";
 // Removed unused Vue import
 
-export const DEVICE_WITH_MERCHANT = ({
+const DEVICE_WITH_MERCHANT = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
@@ -26,3 +26,7 @@ export const DEVICE_WITH_MERCHANT = ({
       // END=> COMMIT with data received'
     });
 }
+
+export default {
+  DEVICE_WITH_MERCHANT
+};

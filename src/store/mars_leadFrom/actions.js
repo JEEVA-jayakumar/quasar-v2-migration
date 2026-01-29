@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const LEAD_FROM_FROM_MARS = ({
+const LEAD_FROM_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -22,3 +22,7 @@ export const LEAD_FROM_FROM_MARS = ({
       throw error;
     });
 }
+
+export default {
+  LEAD_FROM_FROM_MARS
+};

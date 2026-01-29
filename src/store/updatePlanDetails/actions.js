@@ -1,6 +1,6 @@
 import * as Vue from "vue";
 // Removed unused 'api' import
-export const UPDATE_PLAN_DETAILS_DATAS = ({ commit }, request) => {
+const UPDATE_PLAN_DETAILS_DATAS = ({ commit }, request) => {
   // Removed unused 'rootState' parameter
   return api
     .put("update-m-atm-plan-details/" + request.params.id, request)
@@ -8,4 +8,8 @@ export const UPDATE_PLAN_DETAILS_DATAS = ({ commit }, request) => {
       commit("SET_UPDATE_PLAN_DETAILS_DATAS", response.data);
       return response;
     });
+};
+
+export default {
+  UPDATE_PLAN_DETAILS_DATAS
 };

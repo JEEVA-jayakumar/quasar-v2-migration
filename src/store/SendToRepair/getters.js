@@ -1,16 +1,24 @@
-export const getSendToRepairDetails = (state) => {
+const getSendToRepairDetails = (state) => {
   return state.SendToRepairDetails
 }
 /*AGGREGATORS API */
-export const getAggregatorsSendToRepairDetails = (state) => {
+const getAggregatorsSendToRepairDetails = (state) => {
   return state.AggregatorsSendToRepairDetails
 }
 
-export const getMovedToScrapDetails = (state) => {
+const getMovedToScrapDetails = (state) => {
   return state.MovedToScrapDetails
 }
  /*Aggregators API */
-export const getAggregatorsMovedToScrapDetails = (state) => {
+const getAggregatorsMovedToScrapDetails = (state) => {
   return state.AggregatorsMovedToScrapDetails
 }
 /*Aggregators API */
+
+
+export default {
+  getSendToRepairDetails,
+  getAggregatorsSendToRepairDetails,
+  getMovedToScrapDetails,
+  getAggregatorsMovedToScrapDetails
+};

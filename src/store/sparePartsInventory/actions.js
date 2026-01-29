@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const UPDATE_SPARE_PARTS_INVENTORY_DATAS = (request) => {
+const UPDATE_SPARE_PARTS_INVENTORY_DATAS = (request) => {
   console.log("SUBMIT request", JSON.stringify(request))
   // let pathVar = 0;
   // if(request.allocate_region != null && request.allocate_so == null){
@@ -17,14 +17,14 @@ export const UPDATE_SPARE_PARTS_INVENTORY_DATAS = (request) => {
 
 /* PHONEPE API START */
 
-export const UPDATE_PHONEPE_SPARE_PARTS_INVENTORY_DATAS = (request) => {
+const UPDATE_PHONEPE_SPARE_PARTS_INVENTORY_DATAS = (request) => {
   console.log("SUBMIT request", JSON.stringify(request))
   return api.post("aggregator-spare-parts/agg-createSoPod/" + JSON.parse(localStorage.getItem("selectedTab").split('|')[1]), request)
 }
 
 /* PHONEPE API END */
 
-export const CREATE_SPARE_POD_LIST_INVENTORY = (request) => {
+const CREATE_SPARE_POD_LIST_INVENTORY = (request) => {
   console.log("SUBMIT request", JSON.stringify(request))
   let pathVar = 0;
   if (request.allocate_region != null && request.allocate_so == null) {
@@ -41,7 +41,7 @@ export const CREATE_SPARE_POD_LIST_INVENTORY = (request) => {
 
 /* PHONEPE API START */
 
-export const CREATE_PHONEPE_SPARE_POD_LIST_INVENTORY = (request) => {
+const CREATE_PHONEPE_SPARE_POD_LIST_INVENTORY = (request) => {
   console.log("SUBMIT request", JSON.stringify(request))
   let pathVar = 0;
   if (request.allocate_region != null && request.allocate_so == null) {
@@ -57,3 +57,10 @@ export const CREATE_PHONEPE_SPARE_POD_LIST_INVENTORY = (request) => {
 }
 
 /* PHONEPE API END */
+
+export default {
+  UPDATE_SPARE_PARTS_INVENTORY_DATAS,
+  UPDATE_PHONEPE_SPARE_PARTS_INVENTORY_DATAS,
+  CREATE_SPARE_POD_LIST_INVENTORY,
+  CREATE_PHONEPE_SPARE_POD_LIST_INVENTORY
+};

@@ -1,7 +1,7 @@
 import * as Vue from "vue";
 // Removed unused api import
 
-export const FETCH_AXIS_BANK_PINCODE_DISTRICT = ({
+const FETCH_AXIS_BANK_PINCODE_DISTRICT = ({
   commit,
   rootState
 }, request) => {
@@ -20,3 +20,7 @@ export const FETCH_AXIS_BANK_PINCODE_DISTRICT = ({
       commit("SET_ALL_AXIS_BANK_PINCODE_DISTRICT", axisBank)
     })
 }
+
+export default {
+  FETCH_AXIS_BANK_PINCODE_DISTRICT
+};

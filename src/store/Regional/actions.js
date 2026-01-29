@@ -1,13 +1,13 @@
 import api from "../api.js";
 
-export const REGIONAL_SUMMARY_LIST = ({commit}) => {
+const REGIONAL_SUMMARY_LIST = ({commit}) => {
   // Removed unused 'request' parameter
   return api.get("getDevicesRegion").then(response => {
     commit("SET_REGIONAL_SUMMARY_LIST", response.data.data);
   });
 };
 
-export const FETCH_ALL_SIM_STATUS_BY_REGION = ({ commit }, request) => {
+const FETCH_ALL_SIM_STATUS_BY_REGION = ({ commit }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
   console.log("FILTER", request.filter);
   
@@ -50,7 +50,7 @@ export const FETCH_ALL_SIM_STATUS_BY_REGION = ({ commit }, request) => {
   }
 };
 
-export const FETCH_ALL_SIM_STATUS = ({ commit }, request) => {
+const FETCH_ALL_SIM_STATUS = ({ commit }, request) => {
   console.log("FILTER", request.filter);
   let sorting = request.pagination.descending ? "asc" : "desc";
   
@@ -93,4 +93,10 @@ export const FETCH_ALL_SIM_STATUS = ({ commit }, request) => {
         commit("SET_FETCH_ALL_SIM_STATUS", response.data.data);
       });
   }
+};
+
+export default {
+  REGIONAL_SUMMARY_LIST,
+  FETCH_ALL_SIM_STATUS_BY_REGION,
+  FETCH_ALL_SIM_STATUS
 };

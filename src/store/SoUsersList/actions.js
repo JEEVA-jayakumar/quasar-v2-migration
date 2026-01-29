@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const SO_USERS_LIST = ({
+const SO_USERS_LIST = ({
   commit
 }) => { // Removed unused request parameter
   return api
@@ -11,3 +11,7 @@ export const SO_USERS_LIST = ({
       // END=> COMMIT with data received'
     })
 }
+
+export default {
+  SO_USERS_LIST
+};

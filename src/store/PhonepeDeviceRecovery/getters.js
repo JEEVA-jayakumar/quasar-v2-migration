@@ -1,7 +1,13 @@
-export function getPhonepeDeviceRecoveryDatas(state) {
+function getPhonepeDeviceRecoveryDatas(state) {
     return state.PhonepeDeviceRecoveryDatas
 }
 
-export function getPhonepeDeviceAfterScannedToSubmit(state) {
+function getPhonepeDeviceAfterScannedToSubmit(state) {
     return state.allPhonepeDeviceAfterScannedToSubmit
 }
+
+
+export default {
+  getPhonepeDeviceRecoveryDatas,
+  getPhonepeDeviceAfterScannedToSubmit
+};

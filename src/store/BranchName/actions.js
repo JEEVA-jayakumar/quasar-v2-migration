@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FECTCH_ALL_BRANCH = async ({ commit, rootState }, request) => {
+const FECTCH_ALL_BRANCH = async ({ commit, rootState }, request) => {
   try {
     const response = await api.get(
       `${rootState.GlobalVariables.STATE_LOCAL_API}getbranch/${request}`
@@ -17,4 +17,9 @@ export const FECTCH_ALL_BRANCH = async ({ commit, rootState }, request) => {
     console.error('FECTCH_ALL_BRANCH error:', error);
     throw error;
   }
+};
+
+
+export default {
+  FECTCH_ALL_BRANCH
 };

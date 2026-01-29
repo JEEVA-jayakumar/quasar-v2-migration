@@ -1,3 +1,8 @@
-export function getShortLead(state) {
+function getShortLead(state) {
   return state.shortLead
 }
+
+
+export default {
+  getShortLead
+};

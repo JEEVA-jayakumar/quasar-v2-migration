@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_UNAPPROVED_QR_LIST = ({
+const FETCH_UNAPPROVED_QR_LIST = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -23,7 +23,7 @@ export const FETCH_UNAPPROVED_QR_LIST = ({
     })
 }
 
-export const FETCH_APPROVED_QR_LIST = ({
+const FETCH_APPROVED_QR_LIST = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -46,7 +46,7 @@ export const FETCH_APPROVED_QR_LIST = ({
     })
 }
 
-export const FETCH_UNAPPROVED_QR_LIST_OF_SO = ({
+const FETCH_UNAPPROVED_QR_LIST_OF_SO = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -68,7 +68,7 @@ export const FETCH_UNAPPROVED_QR_LIST_OF_SO = ({
     })
 }
 
-export const FETCH_APPROVED_QR_LIST_OF_SO = ({
+const FETCH_APPROVED_QR_LIST_OF_SO = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -90,7 +90,7 @@ export const FETCH_APPROVED_QR_LIST_OF_SO = ({
     })
 }
 
-export const FETCH_REJECTED_QR_LIST_OF_SO = ({
+const FETCH_REJECTED_QR_LIST_OF_SO = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -112,7 +112,7 @@ export const FETCH_REJECTED_QR_LIST_OF_SO = ({
     })
 }
 
-export const FETCH_STATIC_QR_REGIONAL_INVENTORY_COUNT = ({
+const FETCH_STATIC_QR_REGIONAL_INVENTORY_COUNT = ({
   commit
 }) => { // Removed unused request parameter
   return api.get('qr-gen/qrRegionInventory').then(response => {
@@ -120,3 +120,12 @@ export const FETCH_STATIC_QR_REGIONAL_INVENTORY_COUNT = ({
     return response.data.data
   })
 }
+
+export default {
+  FETCH_UNAPPROVED_QR_LIST,
+  FETCH_APPROVED_QR_LIST,
+  FETCH_UNAPPROVED_QR_LIST_OF_SO,
+  FETCH_APPROVED_QR_LIST_OF_SO,
+  FETCH_REJECTED_QR_LIST_OF_SO,
+  FETCH_STATIC_QR_REGIONAL_INVENTORY_COUNT
+};

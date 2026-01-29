@@ -1,5 +1,5 @@
 import api from "../api.js";
-export const REVENUE_TRACKER = ({
+const REVENUE_TRACKER = ({
   commit
 }, request) => {
   return api
@@ -10,3 +10,8 @@ export const REVENUE_TRACKER = ({
       // END=> COMMIT with data received'
     })
 }
+
+
+export default {
+  REVENUE_TRACKER
+};

@@ -1,7 +1,7 @@
 import api from "../api.js";
 // Removed unused Vue import
 
-export const GET_MARS_INSTITUTION_DETAILS = ({
+const GET_MARS_INSTITUTION_DETAILS = ({
   commit
 }) => {
   // Removed unused request parameter
@@ -11,17 +11,24 @@ export const GET_MARS_INSTITUTION_DETAILS = ({
   });
 };
 
-export const ADD_NEW_INSTANCE = (_, request) => {
+const ADD_NEW_INSTANCE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("mars-institution", request);
 };
 
-export const UPDATE_INSTANCE = (_, request) => {
+const UPDATE_INSTANCE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.put("mars-institution/" + request.id, request);
 };
 
-export const DELETE_INSTANCE = (_, request) => {
+const DELETE_INSTANCE = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.delete("mars-institution/" + request);
+};
+
+export default {
+  GET_MARS_INSTITUTION_DETAILS,
+  ADD_NEW_INSTANCE,
+  UPDATE_INSTANCE,
+  DELETE_INSTANCE
 };

@@ -1,8 +1,13 @@
-export const additionalTidFromMars = (state) => {
+const additionalTidFromMars = (state) => {
   console.log("Getter Datas------------------>"+JSON.stringify(state.TidFromMars))
   return state.TidFromMars;
 }
 
-export const additionalTidFromBackEnd = (state) => {
+const additionalTidFromBackEnd = (state) => {
   return state.TidFromBackEnd;
 }
+
+export default {
+  additionalTidFromMars,
+  additionalTidFromBackEnd
+};

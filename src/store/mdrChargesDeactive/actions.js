@@ -1,5 +1,5 @@
 import api from "../api.js";
-export const FETCH_ALL_DEACTIVATED_MDR_PLAN_DETAILS = ({
+const FETCH_ALL_DEACTIVATED_MDR_PLAN_DETAILS = ({
   commit
 }, request) => {
   let sorting = request.pagination.sortBy == null ? "" : request.pagination.descending ? "asc" : "desc"
@@ -10,4 +10,8 @@ export const FETCH_ALL_DEACTIVATED_MDR_PLAN_DETAILS = ({
   return api.get("manage/data/mdr-details/0?page=" + reqParams).then(response => {
     commit("SET_ALL_DEACTIVATED_MDR_PLAN_DETAILS", response.data.data);
   });
+};
+
+export default {
+  FETCH_ALL_DEACTIVATED_MDR_PLAN_DETAILS
 };

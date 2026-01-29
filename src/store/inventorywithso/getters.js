@@ -1,9 +1,16 @@
-export function getAllInventoryWithSo(state) {
+function getAllInventoryWithSo(state) {
     return state.inventoryWithSo
 }
- export function getAllAggregatorsInventoryWithSo(state) {
+ function getAllAggregatorsInventoryWithSo(state) {
     return state.AggregatorsInventoryWithSo
 }
-export function getAllInventoryWithSobasedonRegion(state) {
+function getAllInventoryWithSobasedonRegion(state) {
     return state.inventoryWithSobasedonRegion
 }
+
+
+export default {
+  getAllAggregatorsInventoryWithSo,
+  getAllInventoryWithSo,
+  getAllInventoryWithSobasedonRegion
+};

@@ -2,7 +2,7 @@
 // import api from "../api.js";
 import * as Vue from "vue";
 
-export const FETCH_SHARING_MODEL_BASED_SHARING_PARTNER_CODE = ({
+const FETCH_SHARING_MODEL_BASED_SHARING_PARTNER_CODE = ({
   commit,
   rootState
 }, request) => {
@@ -25,4 +25,8 @@ export const FETCH_SHARING_MODEL_BASED_SHARING_PARTNER_CODE = ({
       
       commit("SET_ALL_SHARINGMODE_BASED_SHARINGPARTNER", sharingModeBasedSharingPartner);
     });
+};
+
+export default {
+  FETCH_SHARING_MODEL_BASED_SHARING_PARTNER_CODE
 };

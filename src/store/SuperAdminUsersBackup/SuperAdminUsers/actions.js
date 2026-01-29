@@ -3,7 +3,7 @@ import api from "../api.js";
 /* 
 () to fetch all user data
 */
-export const FETCH_ALL_USERS_DATA = ({commit}) => {
+const FETCH_ALL_USERS_DATA = ({commit}) => {
   // Removed unused 'request' parameter
   return api
     .get("user")

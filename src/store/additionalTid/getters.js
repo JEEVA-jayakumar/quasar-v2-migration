@@ -1,4 +1,10 @@
-export const getadditionalTid = (state) => state.additionalTid
+const getadditionalTid = (state) => state.additionalTid
 
-export const getadditionalTidVerifyData = (state) =>
+const getadditionalTidVerifyData = (state) =>
   state.additionalTidVerifyData
+
+
+export default {
+  getadditionalTid,
+  getadditionalTidVerifyData
+};

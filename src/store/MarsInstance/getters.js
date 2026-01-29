@@ -1,4 +1,8 @@
-export const getMarsInstanceDetails = state => {
+const getMarsInstanceDetails = state => {
     console.log("GETTER getAllHostDetails ----->",JSON.stringify(state.AllHostDetails))
     return state.MarsInstanceDetails;
+};
+
+export default {
+  getMarsInstanceDetails
 };

@@ -1,3 +1,8 @@
-export const getFseMenu = (state) => {
+const getFseMenu = (state) => {
     return state.FseMenu
   }
+
+
+export default {
+  getFseMenu
+};

@@ -1,11 +1,18 @@
-export const getissueDatasDetails = (state) => {
+const getissueDatasDetails = (state) => {
   return state.issueDatasDetails
 }
 
-export const getsubIssueDatasDetails = (state) => {
+const getsubIssueDatasDetails = (state) => {
   return state.subIssueDatasDetails
 }
 
-export const getremarksDatasDetails = (state) => {
+const getremarksDatasDetails = (state) => {
   return state.remarksDatasDetails
 }
+
+
+export default {
+  getissueDatasDetails,
+  getsubIssueDatasDetails,
+  getremarksDatasDetails
+};

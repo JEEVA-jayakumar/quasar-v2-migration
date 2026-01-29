@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const IMPLEMENTATION_QUEUE_ASSIGNED_LIST = ({ commit }, request) => {
+const IMPLEMENTATION_QUEUE_ASSIGNED_LIST = ({ commit }, request) => {
   console.log("request of assigned datas----------->", request);
   console.log("Implementation Queue Data : " + request);
   const sorting = request.pagination.descending ? "asc" : "desc";
@@ -14,7 +14,7 @@ export const IMPLEMENTATION_QUEUE_ASSIGNED_LIST = ({ commit }, request) => {
     });
 };
 
-export const IMPLEMENTATION_QUEUE_UNASSIGNED_LIST = ({ commit }, request) => {
+const IMPLEMENTATION_QUEUE_UNASSIGNED_LIST = ({ commit }, request) => {
   console.log("request of Unassigned datas----------->", request);
   console.log("Implementation Queue Unassigned Data : " + request);
   const sorting = request.pagination.descending ? "asc" : "desc";
@@ -29,7 +29,7 @@ export const IMPLEMENTATION_QUEUE_UNASSIGNED_LIST = ({ commit }, request) => {
   });
 };
 
-export const IMPLEMENTATION_QUEUE_COURIER_LIST = ({ commit }, request) => {
+const IMPLEMENTATION_QUEUE_COURIER_LIST = ({ commit }, request) => {
   const sorting = request.pagination.descending ? "asc" : "desc";
   return api.get("implementation-data-with-without-courier-device/1/1?page=" + request.pagination.page + "&size=" + request.pagination.rowsPerPage + "&search=" + request.filter 
   + "&sort=" + request.pagination.sortBy + "&" + request.pagination.sortBy + ".dir=" + sorting
@@ -42,14 +42,14 @@ export const IMPLEMENTATION_QUEUE_COURIER_LIST = ({ commit }, request) => {
   });
 };
 
-export const IMPLEMENTATION_QUEUE_SUBMIT = (_, request) => {
+const IMPLEMENTATION_QUEUE_SUBMIT = (_, request) => {
   return api.put(
     "implementation-assigned-to/" + request.userId + "/" + request.action,
     request
   );
 };
 
-export const IMPLEMENTATION_CANCELLED_MERCHANTS = ({ commit }, request) => {
+const IMPLEMENTATION_CANCELLED_MERCHANTS = ({ commit }, request) => {
   // console.log("request of CANCELLED MERCHANTS----------->",request)
   // console.log("Implementation Queue CANCELLED MERCHANTS : " + request);
   const sorting = request.pagination.descending ? "asc" : "desc";
@@ -64,10 +64,19 @@ export const IMPLEMENTATION_CANCELLED_MERCHANTS = ({ commit }, request) => {
   });
 };
 
-export const IMPLEMENTATION_CANCELLED_MERCHANT_SUBMIT = (_, request) => {
+const IMPLEMENTATION_CANCELLED_MERCHANT_SUBMIT = (_, request) => {
   // console.log("REQUEST------------------->"+JSON.stringify(request.leadInformation.id))
   return api.post(
     "cancelOnBoarding/" + 1 + "/" + 1,
     request
   );
+};
+
+export default {
+  IMPLEMENTATION_QUEUE_ASSIGNED_LIST,
+  IMPLEMENTATION_QUEUE_UNASSIGNED_LIST,
+  IMPLEMENTATION_QUEUE_COURIER_LIST,
+  IMPLEMENTATION_QUEUE_SUBMIT,
+  IMPLEMENTATION_CANCELLED_MERCHANTS,
+  IMPLEMENTATION_CANCELLED_MERCHANT_SUBMIT
 };

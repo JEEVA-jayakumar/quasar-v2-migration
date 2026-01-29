@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const MCC_FROM_MARS = ({
+const MCC_FROM_MARS = ({
   commit,
   rootState
 }) => {
@@ -22,7 +22,7 @@ export const MCC_FROM_MARS = ({
     });
 }
 
-export const QR_MCC_FROM_MARS = ({
+const QR_MCC_FROM_MARS = ({
   commit,
   rootState
 }) => {
@@ -41,3 +41,8 @@ export const QR_MCC_FROM_MARS = ({
       throw error;
     });
 }
+
+export default {
+  MCC_FROM_MARS,
+  QR_MCC_FROM_MARS
+};

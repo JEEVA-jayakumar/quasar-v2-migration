@@ -1,3 +1,8 @@
 /*
-export const someMutation = (state) => {}
+const someMutation = (state) => {}
  */
+
+
+export default {
+  someMutation
+};

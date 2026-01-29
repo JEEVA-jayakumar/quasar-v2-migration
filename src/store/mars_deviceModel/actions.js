@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const DEVICE_MODEL_FROM_MARS = ({ commit }, request) => {
+const DEVICE_MODEL_FROM_MARS = ({ commit }, request) => {
   // Removed unused rootState parameter
   // Using api instead of api for Vue 3 compatibility
   
@@ -24,3 +24,7 @@ export const DEVICE_MODEL_FROM_MARS = ({ commit }, request) => {
       throw error;
     });
 }
+
+export default {
+  DEVICE_MODEL_FROM_MARS
+};

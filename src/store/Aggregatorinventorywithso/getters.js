@@ -1,7 +1,13 @@
-export const getAllAggregatorInventoryWithSo = (state) => {
+const getAllAggregatorInventoryWithSo = (state) => {
   return state.AggregatorinventoryWithSo
 }
 
-export const getAllInventoryWithSobasedonRegion = (state) => {
+const getAllInventoryWithSobasedonRegion = (state) => {
   return state.inventoryWithSobasedonRegion
 }
+
+
+export default {
+  getAllAggregatorInventoryWithSo,
+  getAllInventoryWithSobasedonRegion
+};

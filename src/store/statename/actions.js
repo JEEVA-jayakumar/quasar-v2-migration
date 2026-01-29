@@ -1,7 +1,7 @@
 import * as Vue from "vue";
 // Removed unused api import
 
-export const FETCH_IOR_STATE = ({
+const FETCH_IOR_STATE = ({
   commit,
   rootState
 }, request) => {
@@ -19,3 +19,7 @@ export const FETCH_IOR_STATE = ({
       commit("SET_ALL_IOR_STATE", iorState)
     })
 }
+
+export default {
+  FETCH_IOR_STATE
+};

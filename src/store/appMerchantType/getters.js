@@ -1,2 +1,8 @@
-export const getappMerchantDocumentType = state => state.appMerchantTypes
-export const getsorentalplan = state => state.sorentalplan
+const getappMerchantDocumentType = state => state.appMerchantTypes
+const getsorentalplan = state => state.sorentalplan
+
+
+export default {
+  getappMerchantDocumentType,
+  getsorentalplan
+};

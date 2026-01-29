@@ -1,7 +1,7 @@
 import api from "../api.js";
 // Removed unused Vue import
 
-export const MARS_FINAL_SUBMIT_INTERNAL = (_, request) => {
+const MARS_FINAL_SUBMIT_INTERNAL = (_, request) => {
   // Changed from _ to _ since commit is not used
   console.log("REQUEST---------------------->" + request.merchant.leadInformation);
   return api.post(
@@ -11,4 +11,8 @@ export const MARS_FINAL_SUBMIT_INTERNAL = (_, request) => {
     request.action,
     request.merchant
   );
+};
+
+export default {
+  MARS_FINAL_SUBMIT_INTERNAL
 };

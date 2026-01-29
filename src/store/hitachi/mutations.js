@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     console.log("API_RESPONSE >>", payload);
     let statusMessage;
     if (payload.apiStatusCode == 200) {
@@ -34,3 +34,8 @@ export const API_RESPONSE_LOG = (state, payload) => {
 //   console.log("ADDITIONAL_TID_VERIFY_DATA: ------------ : " +  JSON.stringify(payload))
 //   state.additionalTidVerifyData = payload;
 // }
+
+
+export default {
+  API_RESPONSE_LOG
+};

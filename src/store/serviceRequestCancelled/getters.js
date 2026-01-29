@@ -1,4 +1,9 @@
-export const getserviceRequestCancelReasonDetails= (state) => {
+const getserviceRequestCancelReasonDetails= (state) => {
     console.log("GETTER SERVICE STATUS: ------------ : " +  JSON.stringify(state.sparePartsGetTypes))
     return state.serviceCancelReasonRequest
   }
+
+
+export default {
+  getserviceRequestCancelReasonDetails
+};

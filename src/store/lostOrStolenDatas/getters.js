@@ -1,11 +1,17 @@
-export const getLostOrStolenDatas = (state) => {
+const getLostOrStolenDatas = (state) => {
   return state.allLostDeviceDatas
 }
 
 /* AGGregators API */
 
-export const getAggregatorsLostOrStolenDatas = (state) => {
+const getAggregatorsLostOrStolenDatas = (state) => {
   return state.allAggregatorsLostDeviceDatas
 }
 
 /* AGGregators API */
+
+
+export default {
+  getLostOrStolenDatas,
+  getAggregatorsLostOrStolenDatas
+};

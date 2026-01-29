@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_AXIS_BANK_CITY_LOCATION = ({ commit, rootState }, request) => {
+const FETCH_AXIS_BANK_CITY_LOCATION = ({ commit, rootState }, request) => {
   return api
     .get(
       `${rootState.GlobalVariables.STATE_AXIS_API}axisCityName/${request}`
@@ -15,3 +15,8 @@ export const FETCH_AXIS_BANK_CITY_LOCATION = ({ commit, rootState }, request) =>
       return response
     })
 }
+
+
+export default {
+  FETCH_AXIS_BANK_CITY_LOCATION
+};

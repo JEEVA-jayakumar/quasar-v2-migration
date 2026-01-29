@@ -1,3 +1,8 @@
-export const SET_CHANGE_MANAGEMENT_LIST = (state, payload) => {
+const SET_CHANGE_MANAGEMENT_LIST = (state, payload) => {
   state.changemanagementList = payload
 }
+
+
+export default {
+  SET_CHANGE_MANAGEMENT_LIST
+};

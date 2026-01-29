@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     console.log("API_RESPONSE >>", payload);
     let statusMessage;
     if (payload.apiStatusCode == 200) {
@@ -34,3 +34,8 @@ SET_AGGREGATORS_INVENTORY_WITH_REGION_DATAS= (state, payload) => {
 
   state.aggregatorInventoryWithRegionData = payload;
 }
+
+
+export default {
+  API_RESPONSE_LOG
+};

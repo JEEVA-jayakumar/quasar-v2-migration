@@ -1,44 +1,57 @@
-export const getregionalInventoryPodDetails = (state) => {
+const getregionalInventoryPodDetails = (state) => {
     return state.regionalInventoryPodDetails
   }
 
-  export const getsinglePodDetails = (state) => {
+  const getsinglePodDetails = (state) => {
     console.log("GETTER====>>>",JSON.stringify(state))
     return state.singlePodData
   }
-  export const getsparePartsSetsAndCounts = (state) => {
+  const getsparePartsSetsAndCounts = (state) => {
     return state.sparePartsSetsAndCounts
   }
 
 
-  export const getregionalInventoryStocksPodDetails = (state) => {
+  const getregionalInventoryStocksPodDetails = (state) => {
     return state.regionalInventoryStocksPodDetails
   }
 
-  export const getregionalInventoryAllocatedSoPodDetails = (state) => {
+  const getregionalInventoryAllocatedSoPodDetails = (state) => {
     return state.regionalInventoryAllocatedSoPodDetails
   }
   // PhonepeRegionalInventoryAllocatedSoPodDetails
 
-  export const getphonepeRegionalInventoryAllocatedSoPodDetails = (state) => {
+  const getphonepeRegionalInventoryAllocatedSoPodDetails = (state) => {
     return state.PhonepeRegionalInventoryAllocatedSoPodDetails
   }
 
 
   // PhonepeRegionalInventoryStocksPodDetails
    
-  export const getPhonepeRegionalInventoryStocksPodDetails = (state) => {
+  const getPhonepeRegionalInventoryStocksPodDetails = (state) => {
     return state.PhonepeRegionalInventoryStocksPodDetails
   }
 
   // regionalInventoryPhonepeAllocatedSoPodDetails
 
-  export const getPhonePeRegionalInventoryAllocatedSoPodDetails = (state) => {
+  const getPhonePeRegionalInventoryAllocatedSoPodDetails = (state) => {
     return state.regionalInventoryPhonepeAllocatedSoPodDetails
   }
 
   /*PHONEPE GETTER */
 
-  export const getPhonepeSparePartsSetsAndCounts = (state) => {
+  const getPhonepeSparePartsSetsAndCounts = (state) => {
     return state.PhonepeSparePartsSetsAndCounts
   }
+
+
+export default {
+  getPhonePeRegionalInventoryAllocatedSoPodDetails,
+  getPhonepeRegionalInventoryStocksPodDetails,
+  getPhonepeSparePartsSetsAndCounts,
+  getphonepeRegionalInventoryAllocatedSoPodDetails,
+  getregionalInventoryAllocatedSoPodDetails,
+  getregionalInventoryPodDetails,
+  getregionalInventoryStocksPodDetails,
+  getsinglePodDetails,
+  getsparePartsSetsAndCounts
+};

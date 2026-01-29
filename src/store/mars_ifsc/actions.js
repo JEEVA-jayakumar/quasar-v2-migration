@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const IFSC_FROM_MARS = ({
+const IFSC_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -21,3 +21,7 @@ export const IFSC_FROM_MARS = ({
       throw error;
     });
 }
+
+export default {
+  IFSC_FROM_MARS
+};

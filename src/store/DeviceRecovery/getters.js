@@ -1,7 +1,13 @@
-export const getDeviceRecoveryAssignedList = (state) => {
+const getDeviceRecoveryAssignedList = (state) => {
   return state.deviceRecoveryAssignedList;
 };
 
-export const getDeviceRecoveryUnassignedList = (state) => {
+const getDeviceRecoveryUnassignedList = (state) => {
   return state.deviceRecoveryUnassignedList;
+};
+
+
+export default {
+  getDeviceRecoveryAssignedList,
+  getDeviceRecoveryUnassignedList
 };

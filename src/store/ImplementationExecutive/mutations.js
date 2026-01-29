@@ -1,6 +1,12 @@
-export const SET_IMPLEMENTATION_EXECUTIVE_LIST = (state, payload) => {
+const SET_IMPLEMENTATION_EXECUTIVE_LIST = (state, payload) => {
   state.implementationExecutiveList = payload
 }
-export const SET_REGION_LIST = (state, payload) => {
+const SET_REGION_LIST = (state, payload) => {
   state.regionlist = payload
 }
+
+
+export default {
+  SET_IMPLEMENTATION_EXECUTIVE_LIST,
+  SET_REGION_LIST
+};

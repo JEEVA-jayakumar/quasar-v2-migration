@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const DEACTIVATE_MATM_USER_DETAILS = async (_, request) => {
+const DEACTIVATE_MATM_USER_DETAILS = async (_, request) => {
   try {
     const response = await api.delete(
       `delete-m-atm-plan/${request}`
@@ -13,3 +13,7 @@ export const DEACTIVATE_MATM_USER_DETAILS = async (_, request) => {
     throw error
   }
 }
+
+export default {
+  DEACTIVATE_MATM_USER_DETAILS
+};

@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_ALL_ZONE = ({ commit, rootState }) => {
+const FETCH_ALL_ZONE = ({ commit, rootState }) => {
   return api
     .get(
       rootState.GlobalVariables.STATE_LOCAL_API + 'getallzone'
@@ -16,3 +16,8 @@ export const FETCH_ALL_ZONE = ({ commit, rootState }) => {
       commit('SET_ALL_ZONE', zone)
     })
 }
+
+
+export default {
+  FETCH_ALL_ZONE
+};

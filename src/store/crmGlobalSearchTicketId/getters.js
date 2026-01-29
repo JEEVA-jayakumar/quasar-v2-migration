@@ -1,3 +1,8 @@
-export const getcrmGlobalSearchTicketId = (state) => {
+const getcrmGlobalSearchTicketId = (state) => {
   return state.crmGlobalSearchTicketId
 }
+
+
+export default {
+  getcrmGlobalSearchTicketId
+};

@@ -1,5 +1,5 @@
 import api from "../api.js";
-export const FETCH_ALL_RENTAL_PLAN_DETAILS = ({
+const FETCH_ALL_RENTAL_PLAN_DETAILS = ({
   commit
 }, request) => {
   let sorting = request.pagination.sortBy == null ? "" : request.pagination.descending ? "asc" : "desc"
@@ -17,7 +17,7 @@ export const FETCH_ALL_RENTAL_PLAN_DETAILS = ({
     });
 }
 
-export const FETCH_DEACTIVATED_RENTAL_PLAN_DETAILS = ({
+const FETCH_DEACTIVATED_RENTAL_PLAN_DETAILS = ({
   commit
 }, request) => {
   let sorting = request.pagination.sortBy == null ? "" : request.pagination.descending ? "asc" : "desc"
@@ -35,7 +35,7 @@ export const FETCH_DEACTIVATED_RENTAL_PLAN_DETAILS = ({
     });
 };
 
-export const  FETCH_ALL_RENTAl_PLAN_EDIT_DETAILS = ({
+const FETCH_ALL_RENTAl_PLAN_EDIT_DETAILS = ({
     commit
   }, request) => {
     return api.get("manage/data/rental-plan-details/1", request).then(response => {
@@ -46,7 +46,7 @@ export const  FETCH_ALL_RENTAl_PLAN_EDIT_DETAILS = ({
 
   // ENABLE_OR_DISABLE_MDR_PLAN
 
-  export const  ENABLE_OR_DISABLE_RENTAL_PLAN = ({
+  const ENABLE_OR_DISABLE_RENTAL_PLAN = ({
     commit
   }, request) => {
     return api.get("manage/data/rental-plan-details/1", request).then(response => {
@@ -55,3 +55,11 @@ export const  FETCH_ALL_RENTAl_PLAN_EDIT_DETAILS = ({
 
   };
 
+
+
+export default {
+  ENABLE_OR_DISABLE_RENTAL_PLAN,
+  FETCH_ALL_RENTAL_PLAN_DETAILS,
+  FETCH_ALL_RENTAl_PLAN_EDIT_DETAILS,
+  FETCH_DEACTIVATED_RENTAL_PLAN_DETAILS
+};

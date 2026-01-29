@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
   let statusMessage;
   if (payload.apiStatusCode == 200) {
     statusMessage = "Success";
@@ -18,21 +18,32 @@ export const API_RESPONSE_LOG = (state, payload) => {
     apiData: payload.apiData,
   };
 };
-export const SET_LEAD_STATUS_USER_DETAILS = (state, payload) => {
+const SET_LEAD_STATUS_USER_DETAILS = (state, payload) => {
   state.leadStatusUserDetails = payload;
 };
-export const SET_LEAD_STATUS_USER_DETAILS_SO = (state, payload) => {
+const SET_LEAD_STATUS_USER_DETAILS_SO = (state, payload) => {
   state.leadStatusUserDetails_ShortLeads = payload;
 };
-export const SET_LEAD_STATUS_USER_DETAILS_WIP = (state, payload) => {
+const SET_LEAD_STATUS_USER_DETAILS_WIP = (state, payload) => {
   state.leadStatusUserDetails_WIP = payload;
 };
-export const SET_LEAD_STATUS_USER_DETAILS_REJECTED = (state, payload) => {
+const SET_LEAD_STATUS_USER_DETAILS_REJECTED = (state, payload) => {
   state.leadStatusUserDetails_Rejected = payload;
 };
-export const SET_LEAD_STATUS_USER_DETAILS_IMPLEMENTATION = (state, payload) => {
+const SET_LEAD_STATUS_USER_DETAILS_IMPLEMENTATION = (state, payload) => {
   state.leadStatusUserDetails_Implementation = payload;
 };
-export const SET_SALES_MANAGER_LEAD_STATUS_USER_DETAILS = (state, payload) => {
+const SET_SALES_MANAGER_LEAD_STATUS_USER_DETAILS = (state, payload) => {
   state.userBasedLeadsData = payload;
+};
+
+
+export default {
+  API_RESPONSE_LOG,
+  SET_LEAD_STATUS_USER_DETAILS,
+  SET_LEAD_STATUS_USER_DETAILS_SO,
+  SET_LEAD_STATUS_USER_DETAILS_WIP,
+  SET_LEAD_STATUS_USER_DETAILS_REJECTED,
+  SET_LEAD_STATUS_USER_DETAILS_IMPLEMENTATION,
+  SET_SALES_MANAGER_LEAD_STATUS_USER_DETAILS
 };

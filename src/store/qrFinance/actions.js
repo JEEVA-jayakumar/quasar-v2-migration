@@ -1,11 +1,11 @@
 import api from '../api.js'
 
-export const QR_APPROVE_FINANCE_EXCEPTION = (_, request) => {
+const QR_APPROVE_FINANCE_EXCEPTION = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("verify-qr-lead-finance-exception/" + request.leadId, request);
 };
 
-export const FETCH_ALL_QR_PAYMENT_TRACKER_DATA = ({ commit }, request) => {
+const FETCH_ALL_QR_PAYMENT_TRACKER_DATA = ({ commit }, request) => {
   if (request.pagination.sortBy == null) {
     return api
       .get('qr-finance-verification-tracker-list-paged?page=' +
@@ -40,7 +40,7 @@ export const FETCH_ALL_QR_PAYMENT_TRACKER_DATA = ({ commit }, request) => {
   }
 };
 
-export const FETCH_ALL_APPROVED_QR_FINANCE_DATA = ({ commit }, request) => {
+const FETCH_ALL_APPROVED_QR_FINANCE_DATA = ({ commit }, request) => {
   if (request.pagination.sortBy == null) {
     return api
       .get('qr-finance-approved-tracker-list-paged?page=' +
@@ -75,7 +75,14 @@ export const FETCH_ALL_APPROVED_QR_FINANCE_DATA = ({ commit }, request) => {
   }
 };
 
-export const QR_REJECT_FINANCE_EXCEPTION = (_, request) => {
+const QR_REJECT_FINANCE_EXCEPTION = (_, request) => {
   // Changed from _ to _ since commit is not used
   return api.post("verify-qr-lead-finance-exception/" + request.leadId, request);
+};
+
+export default {
+  QR_APPROVE_FINANCE_EXCEPTION,
+  FETCH_ALL_QR_PAYMENT_TRACKER_DATA,
+  FETCH_ALL_APPROVED_QR_FINANCE_DATA,
+  QR_REJECT_FINANCE_EXCEPTION
 };

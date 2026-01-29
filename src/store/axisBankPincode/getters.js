@@ -1,1 +1,6 @@
-export const getAxisBankPincode = state => state.axisBankPincode;
+const getAxisBankPincode = state => state.axisBankPincode;
+
+
+export default {
+  getAxisBankPincode
+};

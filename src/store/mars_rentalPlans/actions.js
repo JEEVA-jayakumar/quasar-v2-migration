@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const RENTAL_PLAN_FROM_MARS = ({
+const RENTAL_PLAN_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -20,4 +20,8 @@ export const RENTAL_PLAN_FROM_MARS = ({
       console.error("Error fetching rental plan from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  RENTAL_PLAN_FROM_MARS
 };

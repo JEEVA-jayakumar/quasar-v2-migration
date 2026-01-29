@@ -1,12 +1,20 @@
-export function getAllStaticQrLeadsValidationInfo (state) {
+function getAllStaticQrLeadsValidationInfo (state) {
   return state.staticQrLeadsValidationData
 }
-export function getAllStaticQrShortLeadDatas (state) {
+function getAllStaticQrShortLeadDatas (state) {
   return state.staticQrShortLeadDatas
 }
-export function getStaicQrInventoryCount (state) {
+function getStaicQrInventoryCount (state) {
   return state.staicQrInventoryCount
 }
-export function getStaicQrExistingMerchantMarsId (state) {
+function getStaicQrExistingMerchantMarsId (state) {
   return state.staicQrExistingMerchantMarsId
 }
+
+
+export default {
+  getAllStaticQrLeadsValidationInfo,
+  getAllStaticQrShortLeadDatas,
+  getStaicQrInventoryCount,
+  getStaicQrExistingMerchantMarsId
+};

@@ -1,4 +1,9 @@
 // Empty Vuex getters
-export const someGetter = (state) => {
+const someGetter = (state) => {
   return state.someState || null
 }
+
+
+export default {
+  someGetter
+};

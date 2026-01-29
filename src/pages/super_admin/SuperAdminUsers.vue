@@ -268,7 +268,7 @@ import { ref, onMounted, onBeforeMount } from 'vue'
 import { useRouter } from 'vue-router'
 import { useQuasar } from 'quasar'
 import { storeToRefs } from 'pinia'
-import { useSuperAdminUsersStore } from 'src/stores/super-admin-users'
+import {  useSuperAdminUsersStore  } from 'src/stores/super-admin-users';
 import JsonExcel from 'vue-json-excel3'
 import DeleteUsersDetails from '../../components/super_admin/DeleteUsersDetails.vue'
 

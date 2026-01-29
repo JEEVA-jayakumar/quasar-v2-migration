@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
   console.log('API_RESPONSE >>', payload)
 
   let statusMessage = 'Oops! Something went wrong, please again'
@@ -23,7 +23,7 @@ export const API_RESPONSE_LOG = (state, payload) => {
   console.log('state.apiStatusLog >>', state.apiStatusLog)
 }
 
-export const SET_ADDITIONAL_TID_DATAS = (state, payload) => {
+const SET_ADDITIONAL_TID_DATAS = (state, payload) => {
   console.log(
     'ADDITIONAL TID Payload ------------ : ',
     JSON.stringify(payload)
@@ -31,10 +31,17 @@ export const SET_ADDITIONAL_TID_DATAS = (state, payload) => {
   state.additionalTid = payload
 }
 
-export const SET_ADDITIONAL_TID_VERIFY_DATA = (state, payload) => {
+const SET_ADDITIONAL_TID_VERIFY_DATA = (state, payload) => {
   console.log(
     'ADDITIONAL TID VERIFY Payload ------------ : ',
     JSON.stringify(payload)
   )
   state.additionalTidVerifyData = payload
 }
+
+
+export default {
+  API_RESPONSE_LOG,
+  SET_ADDITIONAL_TID_DATAS,
+  SET_ADDITIONAL_TID_VERIFY_DATA
+};

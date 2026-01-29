@@ -28,6 +28,8 @@
     "quasar": "^2.16.0",
     "vue": "^3.4.0",
     "vue-chartjs": "^5.2.0",
+    "vue-json-excel": "^0.3.0",
+    "vue-json-excel3": "^1.0.30",
     "vue-router": "^4.2.0",
     "vuex": "^4.0.2",
     "xlsx": "^0.18.5"

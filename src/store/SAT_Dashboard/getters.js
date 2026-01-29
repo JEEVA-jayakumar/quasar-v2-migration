@@ -1,18 +1,28 @@
-export const getSatDashboard = state => {
+const getSatDashboard = state => {
   return state.satDashboard;
 };
- export const getAggregatorsSatDashboard = state => {
+ const getAggregatorsSatDashboard = state => {
   return state.AggregatorssatDashboard;
 };
-export const getSatAgingTrackerdata = state => {
+const getSatAgingTrackerdata = state => {
   return state.satAgingTrackerData;
 };
-export const getSatAgingTrackerListdata = state => {
+const getSatAgingTrackerListdata = state => {
   return state.satAgingTrackerLeadsData;
 };
-export const getSatDashboardGraphData = state => {
+const getSatDashboardGraphData = state => {
   return state.satDashboardGraphData;
 };
-export const getSatDashboardAgingGraphData = state => {
+const getSatDashboardAgingGraphData = state => {
   return state.satDashboardAgingGraphData;
+};
+
+
+export default {
+  getAggregatorsSatDashboard,
+  getSatAgingTrackerListdata,
+  getSatAgingTrackerdata,
+  getSatDashboard,
+  getSatDashboardAgingGraphData,
+  getSatDashboardGraphData
 };

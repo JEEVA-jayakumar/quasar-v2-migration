@@ -1,7 +1,7 @@
 import api from "../api.js";
 // Removed unused Vue import
 
-export const FETCH_TID = ({
+const FETCH_TID = ({
   commit
   // Removed unused rootState parameter
 }, request) => {
@@ -23,12 +23,12 @@ export const FETCH_TID = ({
     });
 };
 
-export const FETCH_TID_SERIAL_NUMBER = (_, request) => {
+const FETCH_TID_SERIAL_NUMBER = (_, request) => {
   return api.get("getSno/" + request.url.tid);
   // Note: .then() handler was commented out, so just returning the promise
 };
 
-export const UPDATE_SERIAL_NUMBER = (_, request) => {
+const UPDATE_SERIAL_NUMBER = (_, request) => {
   return api.post(
     "updateDeviceSerialNo/" + 
     request.url.tid + 
@@ -36,4 +36,10 @@ export const UPDATE_SERIAL_NUMBER = (_, request) => {
     request.url.newSerialNumber
   );
   // Note: .then() handler was commented out, so just returning the promise
+};
+
+export default {
+  FETCH_TID,
+  FETCH_TID_SERIAL_NUMBER,
+  UPDATE_SERIAL_NUMBER
 };

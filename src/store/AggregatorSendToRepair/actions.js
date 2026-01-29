@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_PHONEPE_SEND_TO_REPAIR_DETAILS = ({ commit }, request) => {
+const FETCH_PHONEPE_SEND_TO_REPAIR_DETAILS = ({ commit }, request) => {
   const { pagination, filter } = request
 
   if (!pagination.sortBy) {
@@ -26,7 +26,7 @@ export const FETCH_PHONEPE_SEND_TO_REPAIR_DETAILS = ({ commit }, request) => {
   })
 }
 
-export const APPROVE_PHONEPE_SEND_TO_REPAIR = ({ commit }, request) => {
+const APPROVE_PHONEPE_SEND_TO_REPAIR = ({ commit }, request) => {
   const selectedTab = localStorage.getItem('selectedTab')
   const aggregatorId = selectedTab
     ? JSON.parse(selectedTab.split('|')[1])
@@ -48,7 +48,7 @@ export const APPROVE_PHONEPE_SEND_TO_REPAIR = ({ commit }, request) => {
   })
 }
 
-export const PHONEPE_MOVED_TO_SCRAP_DATAS = ({ commit }, request) => {
+const PHONEPE_MOVED_TO_SCRAP_DATAS = ({ commit }, request) => {
   const selectedTab = localStorage.getItem('selectedTab')
   const aggregatorId = selectedTab
     ? JSON.parse(selectedTab.split('|')[1])
@@ -70,7 +70,7 @@ export const PHONEPE_MOVED_TO_SCRAP_DATAS = ({ commit }, request) => {
   })
 }
 
-export const FETCH_ALL_MOVED_TO_SCRAP_DATA = ({ commit }, request) => {
+const FETCH_ALL_MOVED_TO_SCRAP_DATA = ({ commit }, request) => {
   const { pagination, filter } = request
   const sorting = pagination.descending ? 'desc' : 'asc'
 
@@ -84,3 +84,11 @@ export const FETCH_ALL_MOVED_TO_SCRAP_DATA = ({ commit }, request) => {
     commit('SET_PHONEPE_ALL_MOVED_TO_SCRAP_DATA', response.data.data)
   })
 }
+
+
+export default {
+  FETCH_PHONEPE_SEND_TO_REPAIR_DETAILS,
+  APPROVE_PHONEPE_SEND_TO_REPAIR,
+  PHONEPE_MOVED_TO_SCRAP_DATAS,
+  FETCH_ALL_MOVED_TO_SCRAP_DATA
+};

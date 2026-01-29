@@ -1,3 +1,8 @@
-export const getAllAggregatorPodList = (state) => {
+const getAllAggregatorPodList = (state) => {
   return state.AggregatorpodList
 }
+
+
+export default {
+  getAllAggregatorPodList
+};

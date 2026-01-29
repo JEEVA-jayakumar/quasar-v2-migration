@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     console.log("API_RESPONSE >>", payload);
     let statusMessage;
     if (payload.apiStatusCode == 200) {
@@ -69,3 +69,8 @@ SET_FETCH_SINGLE_POD_DETAILS= (state, payload) => {
   }
 
   
+
+
+export default {
+  API_RESPONSE_LOG
+};

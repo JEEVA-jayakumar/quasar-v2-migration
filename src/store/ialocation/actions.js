@@ -1,6 +1,6 @@
 import * as Vue from "vue";
 
-export const FETCH_IA_LOCATION = ({
+const FETCH_IA_LOCATION = ({
   commit,
   rootState
 }) => {
@@ -16,4 +16,8 @@ export const FETCH_IA_LOCATION = ({
       });
       commit("SET_ALL_IA_LOCATION", iaLocation);
     });
+};
+
+export default {
+  FETCH_IA_LOCATION
 };

@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const FETCH_ALL_SERIAL_NUMBER = async ({ commit }, request) => {
+const FETCH_ALL_SERIAL_NUMBER = async ({ commit }, request) => {
   const response = await api.get(
     `search-device-by-mid-tid-mobile?serialNumber=${request}`
   );
@@ -12,4 +12,9 @@ export const FETCH_ALL_SERIAL_NUMBER = async ({ commit }, request) => {
 
   commit("SET_SERIAL_NUMBER", merchant);
   return response;
+};
+
+
+export default {
+  FETCH_ALL_SERIAL_NUMBER
 };

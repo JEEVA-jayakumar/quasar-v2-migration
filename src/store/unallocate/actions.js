@@ -1,6 +1,6 @@
 import api from "../api.js"; 
 
-export const UNALLOCATED_DEVICE = ({
+const UNALLOCATED_DEVICE = ({
   commit
 }, request) => {
   if (request.filter === '') {
@@ -29,4 +29,8 @@ export const UNALLOCATED_DEVICE = ({
         commit("SET_UNALLOCATED_DEVICE", response.data.data);
       });
   }
+};
+
+export default {
+  UNALLOCATED_DEVICE
 };

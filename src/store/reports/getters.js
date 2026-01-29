@@ -1,6 +1,12 @@
-export const getLeadApprovalTracker = (state) => {
+const getLeadApprovalTracker = (state) => {
   return state.leadApprovalTracker
 }
-export const getProxyLeadMisselling = (state) => {
+const getProxyLeadMisselling = (state) => {
   return state.proxyLeadMisselling
 }
+
+
+export default {
+  getLeadApprovalTracker,
+  getProxyLeadMisselling
+};

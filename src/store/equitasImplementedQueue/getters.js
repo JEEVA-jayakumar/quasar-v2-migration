@@ -1,7 +1,18 @@
-export const getEquitasReport = (state) => state.equitasImplementedQueue
-export const getbijdeactivelist = (state) => state.bijdeactivelist
-export const getaggImplementedverificationqueue = (state) => state.aggImplementedverificationqueue
-export const getaggdeactivelist = (state) => state.aggdeactivelist
-export const getserviceticketlist = (state) => state.serviceticketlist
-export const getserviceapprove = (state) => state.serviceapprove
-export const getservicereject = (state) => state.servicereject
+const getEquitasReport = (state) => state.equitasImplementedQueue
+const getbijdeactivelist = (state) => state.bijdeactivelist
+const getaggImplementedverificationqueue = (state) => state.aggImplementedverificationqueue
+const getaggdeactivelist = (state) => state.aggdeactivelist
+const getserviceticketlist = (state) => state.serviceticketlist
+const getserviceapprove = (state) => state.serviceapprove
+const getservicereject = (state) => state.servicereject
+
+
+export default {
+  getEquitasReport,
+  getbijdeactivelist,
+  getaggImplementedverificationqueue,
+  getaggdeactivelist,
+  getserviceticketlist,
+  getserviceapprove,
+  getservicereject
+};

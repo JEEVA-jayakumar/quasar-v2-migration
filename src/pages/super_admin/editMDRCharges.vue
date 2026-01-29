@@ -308,7 +308,7 @@ const emitfnshowEditMDR = () => {
 // const store = useStore()
 
 // Example with Pinia (if you're using Pinia):
-// import { useSomeStore } from 'stores/some-store'
+// import {  useSomeStore  } from 'stores/some-store';
 
 // Then in setup():
 // const someStore = useSomeStore()

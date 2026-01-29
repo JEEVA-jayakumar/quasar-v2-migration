@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const SHARING_PARTNER_FROM_MARS = ({
+const SHARING_PARTNER_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -23,4 +23,8 @@ export const SHARING_PARTNER_FROM_MARS = ({
       console.error("Error fetching sharing partner from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  SHARING_PARTNER_FROM_MARS
 };

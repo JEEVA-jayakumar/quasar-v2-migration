@@ -5,7 +5,7 @@ const getSelectedTabValue = () => {
   return tab ? JSON.parse(tab.split('|')[1]) : null
 }
 
-export const FETCH_AGGREGATOR_INVENTORY_WITH_SO = async ({ commit }, request) => {
+const FETCH_AGGREGATOR_INVENTORY_WITH_SO = async ({ commit }, request) => {
   const selectedTab = getSelectedTabValue()
   if (!selectedTab) return
 
@@ -16,7 +16,13 @@ export const FETCH_AGGREGATOR_INVENTORY_WITH_SO = async ({ commit }, request) =>
   commit('SET_AGGREGATOR_ALL_INVENTORY_WITH_SO_LIST', response.data.data)
 }
 
-export const FETCH_INVENTORY_WITH_SO_BASED_ON_REGION = async ({ commit }, request) => {
+const FETCH_INVENTORY_WITH_SO_BASED_ON_REGION = async ({ commit }, request) => {
   const response = await api.get(`allsoinventorydetails/${request}`)
   commit('SET_ALL_INVENTORY_WITH_SO_LIST_BASED_REGION', response.data.data)
 }
+
+
+export default {
+  FETCH_AGGREGATOR_INVENTORY_WITH_SO,
+  FETCH_INVENTORY_WITH_SO_BASED_ON_REGION
+};

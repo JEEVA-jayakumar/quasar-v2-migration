@@ -1,3 +1,8 @@
-export const marsSavedDataFromInternal = state => {
+const marsSavedDataFromInternal = state => {
   return state.marsSavedData;
+};
+
+
+export default {
+  marsSavedDataFromInternal
 };

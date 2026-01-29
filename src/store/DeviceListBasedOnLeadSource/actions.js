@@ -1,6 +1,6 @@
 import api from "../api.js";
 
-export const DEVICE_LIST_BASED_ON_LEAD_SOURCE = async ({ commit }, request) => {
+const DEVICE_LIST_BASED_ON_LEAD_SOURCE = async ({ commit }, request) => {
   const response = await api.get(`device-list-based-on-lead-source/${request}`);
 
   const data = {
@@ -15,4 +15,9 @@ export const DEVICE_LIST_BASED_ON_LEAD_SOURCE = async ({ commit }, request) => {
   commit("SET_DEVICE_LIST_BASED_ON_LEAD_SOURCE", response.data.data);
 
   return response;
+};
+
+
+export default {
+  DEVICE_LIST_BASED_ON_LEAD_SOURCE
 };

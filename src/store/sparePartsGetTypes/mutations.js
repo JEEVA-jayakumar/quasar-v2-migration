@@ -1,9 +1,9 @@
-export const SET_SPARE_PARTS_GET_TYPES = (state, payload) => {
+const SET_SPARE_PARTS_GET_TYPES = (state, payload) => {
   console.log("Spare parts Mutations: ------------ : " +  JSON.stringify(payload))
   state.sparePartsGetTypes = payload;
 }
 
-export const SET_ALL_SPARE_PARTS_INVENTORY_DATAS = (state, payload) => {
+const SET_ALL_SPARE_PARTS_INVENTORY_DATAS = (state, payload) => {
   console.log("allInventorySparePartsGetTypes Mutations: ------------ : " +  JSON.stringify(payload))
   state.allInventorySparePartsGetTypes = payload;
 }
@@ -11,7 +11,14 @@ export const SET_ALL_SPARE_PARTS_INVENTORY_DATAS = (state, payload) => {
 /*PHONEPE MUTATION */
 
 
-export const SET_ALL_PHONEPE_SPARE_PARTS_INVENTORY_DATAS = (state, payload) => {
+const SET_ALL_PHONEPE_SPARE_PARTS_INVENTORY_DATAS = (state, payload) => {
   console.log("allInventorySparePartsGetTypes Mutations: ------------ : " +  JSON.stringify(payload))
   state.allInventoryPhonepeSparePartsGetTypes = payload;
 }
+
+
+export default {
+  SET_SPARE_PARTS_GET_TYPES,
+  SET_ALL_SPARE_PARTS_INVENTORY_DATAS,
+  SET_ALL_PHONEPE_SPARE_PARTS_INVENTORY_DATAS
+};

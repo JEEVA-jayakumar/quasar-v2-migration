@@ -1,7 +1,13 @@
-export const getAggregatorDeviceRecoveryAssignedList = (state) => {
+const getAggregatorDeviceRecoveryAssignedList = (state) => {
   return state.AggregatorDeviceRecoveryAssignedList
 }
 
-export const getAggregatorDeviceRecoveryUnassignedList = (state) => {
+const getAggregatorDeviceRecoveryUnassignedList = (state) => {
   return state.AggregatorDeviceRecoveryUnassignedList
 }
+
+
+export default {
+  getAggregatorDeviceRecoveryAssignedList,
+  getAggregatorDeviceRecoveryUnassignedList
+};

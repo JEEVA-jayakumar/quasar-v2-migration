@@ -1,3 +1,8 @@
-export const getCityBasedLocation = (state) => {
+const getCityBasedLocation = (state) => {
   return state.cityBasedLocation
 }
+
+
+export default {
+  getCityBasedLocation
+};

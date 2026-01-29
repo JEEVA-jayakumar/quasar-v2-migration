@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const FECTCH_MCC_BASED_LEADSOURCE = (_, request) => {
+const FECTCH_MCC_BASED_LEADSOURCE = (_, request) => {
   // Changed from { commit, rootState } to _ since neither is used
   // Using api instead of api for Vue 3 compatibility
   
@@ -11,4 +11,8 @@ export const FECTCH_MCC_BASED_LEADSOURCE = (_, request) => {
   
   return api
     .post("getMccLeadSourceBasedOnMccAndLeadSource", request);
+};
+
+export default {
+  FECTCH_MCC_BASED_LEADSOURCE
 };

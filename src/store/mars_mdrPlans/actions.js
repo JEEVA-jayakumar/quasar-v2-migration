@@ -2,7 +2,7 @@
 // Keep api import if you might use it later
 import api from "../api.js";
 
-export const MDR_PLAN_FROM_MARS = ({
+const MDR_PLAN_FROM_MARS = ({
   commit,
   rootState
 }, request) => {
@@ -20,4 +20,8 @@ export const MDR_PLAN_FROM_MARS = ({
       console.error("Error fetching MDR plans from MARS:", error);
       throw error;
     });
+};
+
+export default {
+  MDR_PLAN_FROM_MARS
 };

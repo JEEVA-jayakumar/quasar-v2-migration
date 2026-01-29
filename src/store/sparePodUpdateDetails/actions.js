@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const SPARE_PARTS_POD_UPDATE_DETAILS = (request) => {
+const SPARE_PARTS_POD_UPDATE_DETAILS = (request) => {
   console.log("SUBMIT request ----> Action", JSON.stringify(request))
   // let path = 2;
   // if(request.allocate_region != null && request.allocate_so == null){
@@ -13,7 +13,7 @@ export const SPARE_PARTS_POD_UPDATE_DETAILS = (request) => {
 
 /* PHONEPE API START */
 
-export const PHONEPE_SPARE_PARTS_POD_UPDATE_DETAILS = (request) => {
+const PHONEPE_SPARE_PARTS_POD_UPDATE_DETAILS = (request) => {
   console.log("SUBMIT request ----> Action", JSON.stringify(request))
   // let path = 2;
   // if(request.allocate_region != null && request.allocate_so == null){
@@ -35,3 +35,8 @@ export const PHONEPE_SPARE_PARTS_POD_UPDATE_DETAILS = (request) => {
 //   console.log("SUBMIT request", JSON.stringify(request))
 //   return api.post("spare-pod/updatePod/" + request.podNumber + "/1", request)
 // };
+
+export default {
+  SPARE_PARTS_POD_UPDATE_DETAILS,
+  PHONEPE_SPARE_PARTS_POD_UPDATE_DETAILS
+};

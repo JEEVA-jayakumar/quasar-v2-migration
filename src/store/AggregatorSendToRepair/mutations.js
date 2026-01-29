@@ -1,4 +1,4 @@
-export const API_PHONEPE_RESPONSE_LOG = (state, payload) => {
+const API_PHONEPE_RESPONSE_LOG = (state, payload) => {
   let statusMessage
 
   if (payload.apiStatusCode === 200) {
@@ -21,10 +21,17 @@ export const API_PHONEPE_RESPONSE_LOG = (state, payload) => {
   }
 }
 
-export const SET_PHONEPE_SEND_TO_REPAIR_DATA = (state, payload) => {
+const SET_PHONEPE_SEND_TO_REPAIR_DATA = (state, payload) => {
   state.PhonepeSendToRepairDetails = payload
 }
 
-export const SET_PHONEPE_ALL_MOVED_TO_SCRAP_DATA = (state, payload) => {
+const SET_PHONEPE_ALL_MOVED_TO_SCRAP_DATA = (state, payload) => {
   state.PhonepeMovedToScrapDetails = payload
 }
+
+
+export default {
+  API_PHONEPE_RESPONSE_LOG,
+  SET_PHONEPE_SEND_TO_REPAIR_DATA,
+  SET_PHONEPE_ALL_MOVED_TO_SCRAP_DATA
+};

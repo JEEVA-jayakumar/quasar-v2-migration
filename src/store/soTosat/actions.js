@@ -2,7 +2,7 @@
 // import api from "../api.js";
 import * as Vue from "vue";
 
-export const SO_TO_SAT = ({
+const SO_TO_SAT = ({
   // Remove 'commit' since it's not used
   // commit,
   rootState
@@ -12,4 +12,8 @@ export const SO_TO_SAT = ({
     .then(response => {
       console.log(response);
     })
+};
+
+export default {
+  SO_TO_SAT
 };

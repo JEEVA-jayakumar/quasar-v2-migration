@@ -1,3 +1,8 @@
-export const getAllBranchName = (state) => {
+const getAllBranchName = (state) => {
   return state.allBranchName;
+};
+
+
+export default {
+  getAllBranchName
 };

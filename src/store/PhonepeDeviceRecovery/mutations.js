@@ -1,4 +1,4 @@
-export const  API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     let statusMessage;
     if (payload.apiStatusCode == 200) {
         statusMessage = "Success";
@@ -21,11 +21,18 @@ export const  API_RESPONSE_LOG = (state, payload) => {
 
 
 
-export const SET_PHONEPE_DEVICE_RECOVERY_DATAS = (
+const SET_PHONEPE_DEVICE_RECOVERY_DATAS = (
     state, payload) => {
     state.PhonepeDeviceRecoveryDatas = payload
 };
 
-export const SET_PHONEPE_DEVICE_AFTER_SCANNED_TO_SUBMIT = (state, payload) => {
+const SET_PHONEPE_DEVICE_AFTER_SCANNED_TO_SUBMIT = (state, payload) => {
     state.allPhonepeDeviceAfterScannedToSubmit = payload;
+};
+
+
+export default {
+  API_RESPONSE_LOG,
+  SET_PHONEPE_DEVICE_RECOVERY_DATAS,
+  SET_PHONEPE_DEVICE_AFTER_SCANNED_TO_SUBMIT
 };

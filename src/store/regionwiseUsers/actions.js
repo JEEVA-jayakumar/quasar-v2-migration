@@ -2,7 +2,7 @@ import api from "../api.js";
 // Removed unused Vue import
 // Removed rootState from destructuring since it's not used
 
-export const FETCH_REGION_WISE_LIST = ({
+const FETCH_REGION_WISE_LIST = ({
   commit
   // rootState removed since it's not used
 }, request) => {
@@ -13,4 +13,8 @@ export const FETCH_REGION_WISE_LIST = ({
     .then(response => {
       commit("SET_REGION_WISE_LIST", response.data.data);
     });
+};
+
+export default {
+  FETCH_REGION_WISE_LIST
 };

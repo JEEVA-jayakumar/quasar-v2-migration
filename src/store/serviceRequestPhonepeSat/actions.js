@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const FETCH_PHONEPE_UNASSIGNED_SERVICE_REQUEST_DATAS1 = ({
+const FETCH_PHONEPE_UNASSIGNED_SERVICE_REQUEST_DATAS1 = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -25,7 +25,7 @@ export const FETCH_PHONEPE_UNASSIGNED_SERVICE_REQUEST_DATAS1 = ({
     })
 }
 
-export const FETCH_PHONEPE_ASSIGNED_SERVICE_REQUEST_DATAS = ({
+const FETCH_PHONEPE_ASSIGNED_SERVICE_REQUEST_DATAS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -49,7 +49,7 @@ export const FETCH_PHONEPE_ASSIGNED_SERVICE_REQUEST_DATAS = ({
     })
 }
 
-export const FETCH_PHONEPE_CANCELLED_SERVICE_REQUEST_DATAS = ({
+const FETCH_PHONEPE_CANCELLED_SERVICE_REQUEST_DATAS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -75,7 +75,7 @@ export const FETCH_PHONEPE_CANCELLED_SERVICE_REQUEST_DATAS = ({
 }
 
 // Remove unused commit parameter
-export const PHONEPE_SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE = (context, request) => {
+const PHONEPE_SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE = (context, request) => {
   console.log('PHONEPE_SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE-->', JSON.stringify(request))
   return api
     .post(
@@ -84,7 +84,7 @@ export const PHONEPE_SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE = (context, req
 }
 
 // Remove unused commit parameter
-export const PHONEPE_SERVICE_REQUEST_TO_ASSIGNED_REGION = (context, request) => {
+const PHONEPE_SERVICE_REQUEST_TO_ASSIGNED_REGION = (context, request) => {
   return api
     .post(
       'crm-request/change-region', JSON.stringify(request)
@@ -92,7 +92,7 @@ export const PHONEPE_SERVICE_REQUEST_TO_ASSIGNED_REGION = (context, request) => 
 }
 
 // Remove unused request parameter
-export const FETCH_PHONEPE_SERVICE_REQUEST_COUNT_DETAILS = ({commit}) => {
+const FETCH_PHONEPE_SERVICE_REQUEST_COUNT_DETAILS = ({commit}) => {
   return api
     .get('service-request/getRequestCount').then(response => {
       console.log('FETCH_PHONEPE_SERVICE_REQUEST_COUNT_DETAILS', response)
@@ -100,7 +100,7 @@ export const FETCH_PHONEPE_SERVICE_REQUEST_COUNT_DETAILS = ({commit}) => {
     })
 }
 
-export const FETCH_PHONEPE_REOPEN_TICKET = ({
+const FETCH_PHONEPE_REOPEN_TICKET = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -124,7 +124,7 @@ export const FETCH_PHONEPE_REOPEN_TICKET = ({
     })
 }
 
-export const FETCH_PHONEPE_REOPENED_ASSIGNED_TICKET = ({
+const FETCH_PHONEPE_REOPENED_ASSIGNED_TICKET = ({
   commit
 }, request) => {
   console.log("Request", JSON.stringify(request))
@@ -150,14 +150,14 @@ export const FETCH_PHONEPE_REOPENED_ASSIGNED_TICKET = ({
 }
 
 // Remove unused commit parameter
-export const PHONEPE_REOPENED_UNASSIGED_TO_ASSIGNED_STATE = (context, request) => {
+const PHONEPE_REOPENED_UNASSIGED_TO_ASSIGNED_STATE = (context, request) => {
   return api
     .post(
       'service-request/assignTicket/' + request.userId + "/1", request.request
     )
 }
 
-export const FETCH_PHONEPE_OPENED_TICKETS = ({
+const FETCH_PHONEPE_OPENED_TICKETS = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -182,7 +182,7 @@ export const FETCH_PHONEPE_OPENED_TICKETS = ({
     })
 }
 
-export const FETCH_PHONEPE_RESOLVED_TICKET = ({
+const FETCH_PHONEPE_RESOLVED_TICKET = ({
   commit
 }, request) => {
   let sorting = request.pagination.descending ? 'asc' : 'desc'
@@ -208,7 +208,7 @@ export const FETCH_PHONEPE_RESOLVED_TICKET = ({
 }
 
 // Remove unused commit parameter
-export const PHONEPE_PICKUP_TICKET_ASSIGNED = (context, request) => {
+const PHONEPE_PICKUP_TICKET_ASSIGNED = (context, request) => {
   console.log('PHONEPE_PICKUP_TICKET_ASSIGNED-->', JSON.stringify(request))
   return api
     .post(
@@ -217,7 +217,7 @@ export const PHONEPE_PICKUP_TICKET_ASSIGNED = (context, request) => {
 }
 
 // Remove unused commit parameter
-export const PHONEPE_REASSIGNED_MERCHANT_TICKETS = (context, request) => {
+const PHONEPE_REASSIGNED_MERCHANT_TICKETS = (context, request) => {
   console.log("PHONEPE_REASSIGNED_MERCHANT_TICKETS", JSON.stringify(request))
   return api
   .post(
@@ -225,7 +225,7 @@ export const PHONEPE_REASSIGNED_MERCHANT_TICKETS = (context, request) => {
   )
 }
 
-export const CRM_LOGS_LISTS = ({
+const CRM_LOGS_LISTS = ({
   commit
 }, request) => {
   return api
@@ -235,7 +235,7 @@ export const CRM_LOGS_LISTS = ({
     })
 }
 
-export const ASSIGN_HISTORY_REMARKS_LIST = ({
+const ASSIGN_HISTORY_REMARKS_LIST = ({
   commit
 }, request) => {
   return api
@@ -244,3 +244,21 @@ export const ASSIGN_HISTORY_REMARKS_LIST = ({
       commit("SET_ASSIGN_HISTORY_REMARKS_LIST", response.data.data)
     })
 }
+
+export default {
+  FETCH_PHONEPE_UNASSIGNED_SERVICE_REQUEST_DATAS1,
+  FETCH_PHONEPE_ASSIGNED_SERVICE_REQUEST_DATAS,
+  FETCH_PHONEPE_CANCELLED_SERVICE_REQUEST_DATAS,
+  PHONEPE_SERVICE_REQUEST_UNASSIGED_TO_ASSIGNED_STATE,
+  PHONEPE_SERVICE_REQUEST_TO_ASSIGNED_REGION,
+  FETCH_PHONEPE_SERVICE_REQUEST_COUNT_DETAILS,
+  FETCH_PHONEPE_REOPEN_TICKET,
+  FETCH_PHONEPE_REOPENED_ASSIGNED_TICKET,
+  PHONEPE_REOPENED_UNASSIGED_TO_ASSIGNED_STATE,
+  FETCH_PHONEPE_OPENED_TICKETS,
+  FETCH_PHONEPE_RESOLVED_TICKET,
+  PHONEPE_PICKUP_TICKET_ASSIGNED,
+  PHONEPE_REASSIGNED_MERCHANT_TICKETS,
+  CRM_LOGS_LISTS,
+  ASSIGN_HISTORY_REMARKS_LIST
+};

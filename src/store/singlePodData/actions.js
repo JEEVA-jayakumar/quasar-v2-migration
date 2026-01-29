@@ -1,6 +1,6 @@
 import api from '../api.js';
 
-export const FETCH_SINGLE_POD_DETAILS = (context, request) => {
+const FETCH_SINGLE_POD_DETAILS = (context, request) => {
   // console.log("API ACTION REQUEST DETAILS-------->",JSON.stringify(request))
   return api
     .get("spare-pod/getSparePod/" + request.pod_number)
@@ -11,7 +11,7 @@ export const FETCH_SINGLE_POD_DETAILS = (context, request) => {
 
 /* PHONEPE API START */
 
-export const FETCH_PHONEPE_SINGLE_POD_DETAILS = (context, request) => {
+const FETCH_PHONEPE_SINGLE_POD_DETAILS = (context, request) => {
   // console.log("API ACTION REQUEST DETAILS-------->",JSON.stringify(request))
   return api
     .get(
@@ -29,3 +29,8 @@ export const FETCH_PHONEPE_SINGLE_POD_DETAILS = (context, request) => {
 };
 
 /* PHONEPE API END */
+
+export default {
+  FETCH_SINGLE_POD_DETAILS,
+  FETCH_PHONEPE_SINGLE_POD_DETAILS
+};

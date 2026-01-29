@@ -7,7 +7,7 @@ import api from "../api.js";
  * @param {Object} commit - Vuex commit
  * @param {String} request - pincode or search term
  */
-export const FETCH_AXIS_BANK_PINCODE_LOCATION = async ({ commit, rootState }, request) => {
+const FETCH_AXIS_BANK_PINCODE_LOCATION = async ({ commit, rootState }, request) => {
   try {
     // Using axios instance instead of api
     const response = await api.get(`${rootState.GlobalVariables.STATE_AXIS_API}Pincode/${request}`);
@@ -25,4 +25,9 @@ export const FETCH_AXIS_BANK_PINCODE_LOCATION = async ({ commit, rootState }, re
     console.error("FETCH_AXIS_BANK_PINCODE_LOCATION error:", error);
     throw error; // Allow calling component to handle errors
   }
+};
+
+
+export default {
+  FETCH_AXIS_BANK_PINCODE_LOCATION
 };

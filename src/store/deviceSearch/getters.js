@@ -1,1 +1,6 @@
-export const getdeviceSearch = (state) => state.merchant;
+const getdeviceSearch = (state) => state.merchant;
+
+
+export default {
+  getdeviceSearch
+};

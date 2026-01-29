@@ -9,7 +9,7 @@ import api from "../api.js";
 //       // END=> COMMIT with data received'
 //     });
 // };
-export const LEAD_STATUS_LIST = ({ commit }, request) => {
+const LEAD_STATUS_LIST = ({ commit }, request) => {
   let sorting = request.pagination.descending ? "asc" : "desc";
   return api.get("implementation-queue-list?page=" + request.pagination.page + "&size=" + request.pagination.rowsPerPage + "&search=" + request.filter 
   + "&sort=" + request.pagination.sortBy + "&" + request.pagination.sortBy + ".dir=" + sorting
@@ -17,4 +17,9 @@ export const LEAD_STATUS_LIST = ({ commit }, request) => {
     commit("SET_LEAD_STATUS_LIST", response.data.data);
     // END=> COMMIT with data received'
   });
+};
+
+
+export default {
+  LEAD_STATUS_LIST
 };

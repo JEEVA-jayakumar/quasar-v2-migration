@@ -1,6 +1,6 @@
 import api from '../api.js'
 
-export const CMS_LIST = ({ commit }, request) => {
+const CMS_LIST = ({ commit }, request) => {
   const sorting = request.pagination.descending ? 'asc' : 'desc'
 
   return api
@@ -16,3 +16,8 @@ export const CMS_LIST = ({ commit }, request) => {
       commit('SET_CMS_LIST', response.data.data)
     })
 }
+
+
+export default {
+  CMS_LIST
+};

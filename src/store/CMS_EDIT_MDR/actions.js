@@ -18,7 +18,7 @@ function getNiiHeaders() {
   }
 }
 
-export const CMS_EDIT_MDR = ({ rootState }, request) => {
+const CMS_EDIT_MDR = ({ rootState }, request) => {
   const { nii, res } = getNiiHeaders()
 
   const baseUrl =
@@ -33,7 +33,7 @@ export const CMS_EDIT_MDR = ({ rootState }, request) => {
   )
 }
 
-export const CMS_EDIT_MERCHANT = ({ rootState }, request) => {
+const CMS_EDIT_MERCHANT = ({ rootState }, request) => {
   const { nii, res } = getNiiHeaders()
 
   const baseUrl =
@@ -48,7 +48,7 @@ export const CMS_EDIT_MERCHANT = ({ rootState }, request) => {
   )
 }
 
-export const CMS_EDIT_TERMINAL = ({ rootState }, request) => {
+const CMS_EDIT_TERMINAL = ({ rootState }, request) => {
   request.terminalparams.merchant.paymentDetails.installationDate =
     commonDateFormat(
       request.terminalparams.merchant.paymentDetails.installationDate
@@ -73,7 +73,7 @@ export const CMS_EDIT_TERMINAL = ({ rootState }, request) => {
   )
 }
 
-export const CMS_EDIT_TERMINAL_DEVICE = ({ rootState }, request) => {
+const CMS_EDIT_TERMINAL_DEVICE = ({ rootState }, request) => {
   request.terminalparams.merchant.paymentDetails.installationDate =
     commonDateFormat(
       request.terminalparams.merchant.paymentDetails.installationDate
@@ -109,13 +109,13 @@ export const CMS_EDIT_TERMINAL_DEVICE = ({ rootState }, request) => {
   )
 }
 
-export const CMS_STATUS_CHANGE = ({ rootState }, request) => {
+const CMS_STATUS_CHANGE = ({ rootState }, request) => {
   return api.put(
     `${rootState.GlobalVariables.STATE_APP_API}submit-cms-data-to-mars/${request}`
   )
 }
 
-export const CMS_EDIT_KYC = ({ rootState }, request) => {
+const CMS_EDIT_KYC = ({ rootState }, request) => {
   const { nii, res } = getNiiHeaders()
 
   const baseUrl =
@@ -129,3 +129,13 @@ export const CMS_EDIT_KYC = ({ rootState }, request) => {
     { headers: { NII: nii } }
   )
 }
+
+
+export default {
+  CMS_EDIT_MDR,
+  CMS_EDIT_MERCHANT,
+  CMS_EDIT_TERMINAL,
+  CMS_EDIT_TERMINAL_DEVICE,
+  CMS_STATUS_CHANGE,
+  CMS_EDIT_KYC
+};

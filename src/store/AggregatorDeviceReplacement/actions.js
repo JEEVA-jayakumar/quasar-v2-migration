@@ -1,5 +1,5 @@
 import api from "../api.js";
-export const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_ASSIGNED_LIST = ({ commit }, request) => {
+const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_ASSIGNED_LIST = ({ commit }, request) => {
   if(JSON.parse(localStorage.getItem("selectedTab").split('|')[1])=='3')
   {
   console.log("requested datas:----------------:Unassigned-----"+JSON.stringify(request.pagination))
@@ -35,7 +35,7 @@ export const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_ASSIGNED_LIST = ({ commit }, re
     }
 }
 
-export const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_UNASSIGNED_LIST = ({ commit }, request) => {
+const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_UNASSIGNED_LIST = ({ commit }, request) => {
 
       if(JSON.parse(localStorage.getItem("selectedTab").split('|')[1])=='3')
       {
@@ -92,9 +92,15 @@ export const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_UNASSIGNED_LIST = ({ commit }, 
     }
 };
 
-export const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_SUBMIT = (context, request) => {
+const AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_SUBMIT = (context, request) => {
     return api.put(
         "DeviceReplacement-assigned-to/" + request.userId,
         request
     );
+};
+
+export default {
+  AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_ASSIGNED_LIST,
+  AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_UNASSIGNED_LIST,
+  AGGREGATOR_DEVICE_REPLACEMENT_QUEUE_SUBMIT
 };

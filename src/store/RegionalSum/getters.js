@@ -1,4 +1,9 @@
-export const getRegionalSummary = (state) => {
+const getRegionalSummary = (state) => {
     return state.RegionalSummary 
   }
   
+
+
+export default {
+  getRegionalSummary
+};

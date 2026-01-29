@@ -1,3 +1,8 @@
-export const getMposCity = state => {
+const getMposCity = state => {
   return state.mposCity;
+};
+
+
+export default {
+  getMposCity
 };

@@ -1,3 +1,8 @@
-export const stateFromMars = (state) => {
+const stateFromMars = (state) => {
   return state.MARS_state
 }
+
+
+export default {
+  stateFromMars
+};

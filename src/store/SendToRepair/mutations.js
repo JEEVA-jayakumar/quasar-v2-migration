@@ -1,4 +1,4 @@
-export const API_RESPONSE_LOG = (state, payload) => {
+const API_RESPONSE_LOG = (state, payload) => {
     console.log('API_RESPONSE >>', payload)
     let statusMessage
     if (payload.apiStatusCode == 200) {
@@ -48,3 +48,8 @@ export const API_RESPONSE_LOG = (state, payload) => {
     console.log('RESPONSE------------------>' + JSON.stringify(payload))
   }
   /*AGgregators API */
+
+
+export default {
+  API_RESPONSE_LOG
+};

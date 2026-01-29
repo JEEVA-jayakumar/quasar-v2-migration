@@ -1,75 +1,99 @@
-export const getPhonepeMerchantDetails = state => {
+const getPhonepeMerchantDetails = state => {
     return state.phonepeMerchantDetails;
   };
-  export const getPhonepeCompletedData = state => {
+  const getPhonepeCompletedData = state => {
     return state.phonepeCompletedDetails;
   };
-  export const getphonepeDate = state => {
+  const getphonepeDate = state => {
     console.log("CRM DATE GETTER",JSON.stringify(state.phonepeDate))
     return state.phonepeDate;
   };
-  export function getupdateRemarks(state) {
+  function getupdateRemarks(state) {
     return state.updateRemarks
 }
-export const getstaticNewRequestsLead = state => {
+const getstaticNewRequestsLead = state => {
   console.log("GetterstaticNewRequestsLead",JSON.stringify(state.staticNewRequestsLead))
   return state.staticNewRequestsLead;
 };
-export const getstaticReferBackLead = state => {
+const getstaticReferBackLead = state => {
   console.log("GetterstaticReferBackLead",JSON.stringify(state.staticNewRequestsLead))
   return state.staticReferBackLead;
 };
-export const getstaticCourierLead = state => {
+const getstaticCourierLead = state => {
   console.log("GetterstaticCourierLeadLead",JSON.stringify(state.staticNewRequestsLead))
   return state.staticCourierLead;
 };
-export function getupdateSacnQRNumber(state) {
+function getupdateSacnQRNumber(state) {
   return state.updateSacnQRNumber
 };
-export function getupdateSacnSoundBoxNumber(state) {
+function getupdateSacnSoundBoxNumber(state) {
   return state.updateSacnSoundBoxNumber
 };
-export function getpaperPdf(state) {
+function getpaperPdf(state) {
   return state.paperPdf
 };
-export function getphonepeCompletedPaperRoll(state) {
+function getphonepeCompletedPaperRoll(state) {
   return state.phonepeCompletedPaperRoll
 };
-export function getphonepeRtoTicket(state) {
+function getphonepeRtoTicket(state) {
   return state.phonepeRtoTicket
 };
 
-export const getphonepePaperRoll = state => {
+const getphonepePaperRoll = state => {
   console.log("phonepePaperRoll",JSON.stringify(state.phonepeDate))
   return state.phonepePaperRoll;
 };
-export function getupdatePodNumber(state) {
+function getupdatePodNumber(state) {
   return state.updatePodNumber
 };
 
 
-export function getattemptLog(state) {
+function getattemptLog(state) {
   return state.attemptLog
 };
 
-export function getoptionsList(state) {
+function getoptionsList(state) {
   return state.optionsList
 };
 
-export function getResolutionStatus(state) {
+function getResolutionStatus(state) {
   return state.resolutionList
 };
 
-export function getFetchIssueList(state) {
+function getFetchIssueList(state) {
   return state.fetchIssueList
 };
 
 
 
-export function getIssueAction(state) {
+function getIssueAction(state) {
   return state.fetchActionList
 };
 
-export function getviewlogs(state) {
+function getviewlogs(state) {
   return state.viewlogs
+};
+
+
+export default {
+  getFetchIssueList,
+  getIssueAction,
+  getPhonepeCompletedData,
+  getPhonepeMerchantDetails,
+  getResolutionStatus,
+  getattemptLog,
+  getoptionsList,
+  getpaperPdf,
+  getphonepeCompletedPaperRoll,
+  getphonepeDate,
+  getphonepePaperRoll,
+  getphonepeRtoTicket,
+  getstaticCourierLead,
+  getstaticNewRequestsLead,
+  getstaticReferBackLead,
+  getupdatePodNumber,
+  getupdateRemarks,
+  getupdateSacnQRNumber,
+  getupdateSacnSoundBoxNumber,
+  getviewlogs
 };

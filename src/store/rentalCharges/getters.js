@@ -1,10 +1,17 @@
-export const getAllRentalPlanDetails = (state) => {
+const getAllRentalPlanDetails = (state) => {
   return state.AllRentalPlanDetails
 };
 
-export const getAllRentalPlanEditDetails = (state) => {
+const getAllRentalPlanEditDetails = (state) => {
   return state.AllRentalPlanEditDetails
 };
-export const getDeactivatedRentalPlanDetails = (state) => {
+const getDeactivatedRentalPlanDetails = (state) => {
   return state.DeactivatedRentalPlanDetails
+};
+
+
+export default {
+  getAllRentalPlanDetails,
+  getAllRentalPlanEditDetails,
+  getDeactivatedRentalPlanDetails
 };

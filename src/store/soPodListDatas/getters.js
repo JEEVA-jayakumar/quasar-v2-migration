@@ -1,18 +1,26 @@
-export const getapprovedSoPodListDatas = (state) => {
+const getapprovedSoPodListDatas = (state) => {
     return state.approvedSoPodListDatas
   }
 
-  export const getrejectedSoPodListDatas = (state) => {
+  const getrejectedSoPodListDatas = (state) => {
     return state.rejectedSoPodListData
   }
 
 
-  export const getPhonepeApprovedSoPodListDatas = (state) => {
+  const getPhonepeApprovedSoPodListDatas = (state) => {
     return state.PhonepeApprovedSoPodListDatas
   }
 
   // PhonepeRejectedSoPodListData
 
-  export const getPhoneperejectedSoPodListDatas = (state) => {
+  const getPhoneperejectedSoPodListDatas = (state) => {
     return state.PhonepeRejectedSoPodListData
   }
+
+
+export default {
+  getPhonepeApprovedSoPodListDatas,
+  getPhoneperejectedSoPodListDatas,
+  getapprovedSoPodListDatas,
+  getrejectedSoPodListDatas
+};

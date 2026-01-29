@@ -1,3 +1,7 @@
-export const getPincodeDistrict = state => {
+const getPincodeDistrict = state => {
     return state.axisBankPincodeandDistrict;
+};
+
+export default {
+  getPincodeDistrict
 };

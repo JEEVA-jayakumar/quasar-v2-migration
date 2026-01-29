@@ -1,3 +1,8 @@
-export const getAllFillingTypes = state => {
+const getAllFillingTypes = state => {
   return state.fillingTypes;
+};
+
+
+export default {
+  getAllFillingTypes
 };
