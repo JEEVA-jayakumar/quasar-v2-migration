@@ -1,0 +1,56 @@
+.common-btn {
+  background-color: #008080; /* Teal for inventory */
+  color: #e3e4e5;
+}
+
+select {
+  -moz-appearance: menulist-button !important;
+  -webkit-appearance: menulist-button !important;
+}
+
+.underline {
+  text-decoration: underline;
+}
+
+.bottom-border {
+  border-bottom: 1px solid #cccccc !important;
+}
+
+.all-border {
+  border: 1px solid #cccccc !important;
+}
+
+.customTableClass thead tr th {
+  background: #f0f4f4 !important;
+  font-weight: 500 !important;
+  color: #004d40 !important;
+}
+
+.customTableClass tbody tr td {
+  font-weight: 400 !important;
+  color: #333333 !important;
+}
+
+.bg-custom-light-grey {
+  background: #f0f4f4 !important;
+}
+
+.inventory-header {
+  background: #008080 !important;
+  color: white !important;
+}
+
+.q-drawer {
+  background: #004d40 !important;
+}
+
+.menu-item-color {
+  color: #e0f2f1 !important;
+  font-size: 14px;
+}
+
+.q-item.active,
+.q-item.router-link-active,
+.q-item:focus {
+  background: rgba(255, 255, 255, 0.2) !important;
+}

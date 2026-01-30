@@ -1,0 +1,13 @@
+import api from "../api.js";
+
+const FETCH_ALL_SPARE_PARTS_REGIONAL_INVENTORY_DATAS = (request) => {
+  console.log("ACTION REQUEST DATAS------->", request)
+  return api.post(
+    "spare-pod/allocateSo/" + request.regionId + "/" + request.userId,
+    request.request
+  );
+};
+
+export default {
+  FETCH_ALL_SPARE_PARTS_REGIONAL_INVENTORY_DATAS
+};
